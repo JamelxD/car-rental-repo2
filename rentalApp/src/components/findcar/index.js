@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Container, Row, Col } from "react-bootstrap";
 import { registerLicense } from "@syncfusion/ej2-base";
@@ -8,18 +8,20 @@ import { connect } from 'react-redux';
 import { storeCars } from '../../redux/actions/storeCarsActions';
 import { isLoading } from "../../redux/actions/isLoadingActions";
 import BeatLoader from 'react-spinners/BeatLoader'
+import usePlacesService from "react-google-autocomplete/lib/usePlacesAutocompleteService";
 
 import {
   DatePickerComponent,
   TimePickerComponent,
 } from "@syncfusion/ej2-react-calendars";
 import "./style.css";
-import { useState } from "react";
 import { render } from "react-dom";
+import LocationService from "../LocationService/LocationService";
 
 registerLicense(
   "ORg4AjUWIQA/Gnt2VVhiQlFadVlJXGFWfVJpTGpQdk5xdV9DaVZUTWY/P1ZhSXxRdk1jXX9cc3dRR2BbWEM="
 );
+
 const FindCar = (props) => {
   var longlatRes;
   const { t } = useTranslation();
@@ -27,10 +29,19 @@ const FindCar = (props) => {
     e.preventDefault();
   };
 
-  const [pickUpPoint, setPickupPoint] = useState()
+  const [, setPickupPoint] = useState({pickup:'', dropoff:''})
   const [carOption, setCarOption] = useState('mini')
   const [startDate, setStartDate] = useState(new Date())
   const [endDate, setEndDate] = useState(new Date())
+
+  const handlePickupLocation = (location) => {
+    setPickupPoint(location)
+  }
+
+  console.log(props.autoLocSuggest)
+  console.log(props.autoLocSuggest.formatted_address)
+  console.log(pickUpPoint)
+
   const navigate = useNavigate();
   console.log("car option " + carOption)
   const searchCars = async () => {
@@ -74,7 +85,7 @@ const FindCar = (props) => {
   const getLatLong = async () => {
     try {
       const res = await fetch('http://localhost:9000/api/getLocation?' + new URLSearchParams({
-        query: pickUpPoint
+        query: props.autoLocSuggest.formatted_address
       }), {
         method: 'get'
       })
@@ -129,7 +140,14 @@ const FindCar = (props) => {
                       <Row>
                         <Col md={4}>
                           <p>
-                            <input
+                            {/* <input
+                              type="text"
+                              placeholder="Pickup point"
+                              onChange={(event) => setPickupPoint(event.currentTarget.value)}
+                              value={pickUpPoint}
+                            /> */}
+                            <LocationService
+                              setPickupLocation={(location) => handlePickupLocation(location.formatted_address)}
                               type="text"
                               placeholder="Pickup point"
                               onChange={(event) => setPickupPoint(event.currentTarget.value)}
@@ -204,7 +222,8 @@ const FindCar = (props) => {
 };
 const mapStateToProps = (state) => {
   return {
-    loading: state.isLoadingReducer.loader
+    loading: state.isLoadingReducer.loader,
+    autoLocSuggest: state.locationReducer.pickupLocation
   }
 }
 const mapDispatchToProps = (dispatch) => {

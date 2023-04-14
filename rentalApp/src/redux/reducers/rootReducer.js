@@ -4,15 +4,18 @@ import { combineReducers } from 'redux';
 import storeCarsReducer from './storeCarsReducer';
 import storeRentalReducer from './storeRentalReducer';
 import isLoadingReducer from './isLoadingReducer';
+import locationReducer from './locationReducer';
 const rootReducer = combineReducers({
     storeCarsReducer: storeCarsReducer,
     storeRentalReducer: storeRentalReducer,
-    isLoadingReducer: isLoadingReducer
+    isLoadingReducer: isLoadingReducer,
+    locationReducer: locationReducer
 })
 
 const persistConfig = {
     key: 'root',
-    storage
+    storage,
+    blacklist: ['locationReducer']
 }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
