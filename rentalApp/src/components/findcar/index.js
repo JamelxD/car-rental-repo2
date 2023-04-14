@@ -29,18 +29,18 @@ const FindCar = (props) => {
     e.preventDefault();
   };
 
-  const [, setPickupPoint] = useState({pickup:'', dropoff:''})
+  const [location, setLocation] = useState({ pickup: '', dropoff: '' })
   const [carOption, setCarOption] = useState('mini')
   const [startDate, setStartDate] = useState(new Date())
   const [endDate, setEndDate] = useState(new Date())
 
-  const handlePickupLocation = (location) => {
-    setPickupPoint(location)
+  const handleLocation = (type, place) => {
+    setLocation(location => ({ ...location, [type]: place.formatted_address }))
   }
 
   console.log(props.autoLocSuggest)
   console.log(props.autoLocSuggest.formatted_address)
-  console.log(pickUpPoint)
+  console.log(location)
 
   const navigate = useNavigate();
   console.log("car option " + carOption)
@@ -147,17 +147,27 @@ const FindCar = (props) => {
                               value={pickUpPoint}
                             /> */}
                             <LocationService
-                              setPickupLocation={(location) => handlePickupLocation(location.formatted_address)}
+                              key='pickup'
+                              setLocation={(place) => handleLocation('pickup', place)}
                               type="text"
                               placeholder="Pickup point"
-                              onChange={(event) => setPickupPoint(event.currentTarget.value)}
-                              value={pickUpPoint}
+                              onChange={(event) => setLocation({ ...location, pickup: event.currentTarget.value })}
+                              location={location}
+                              value={location.pickup}
                             />
                           </p>
                         </Col>
                         <Col md={4}>
                           <p>
-                            <input type="text" placeholder={t("to_address")} />
+                            <LocationService
+                              key='dropoff'
+                              setLocation={(place) => handleLocation('dropoff', place)}
+                              type="text"
+                              placeholder="Drop off point"
+                              onChange={(event) => setLocation({ ...location, dropoff: event.currentTarget.value })}
+                              location={location}
+                              value={location.dropoff}
+                            />
                           </p>
                         </Col>
                         <Col md={4}>
