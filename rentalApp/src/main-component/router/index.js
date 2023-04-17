@@ -28,7 +28,7 @@ const AllRoute = () => {
           <Route path="/home" element={<Homepage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/service" element={<ServicePage />} />
-          <Route path="/service-single" element={<ServiceSingle />} />
+          <Route path="/upgrades" element={<ServiceSingle />} />
           <Route path="/car-listing" element={<CarListingPage />} />
           <Route path="/car-booking" element={<CarBookingPage />} />
           <Route path="/gallery" element={<GalleryPage />} />

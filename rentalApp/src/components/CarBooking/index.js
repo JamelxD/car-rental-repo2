@@ -93,7 +93,7 @@ const CarBooking = (props) => {
                   Driver's minimum age is {props.rental.driverMinimumAge}
                 </p>
                 <p>
-                  Rental age duration is {props.rental.durationInDays}
+                  Rental duration is {props.rental.durationInDays} days
                 </p>
                 <div className="car-features clearfix">
                   <ul>
@@ -106,9 +106,6 @@ const CarBooking = (props) => {
                     <li>
                       <FaTachometerAlt /> {props.rental.type}
                     </li>
-                    <li>
-                      <FaEmpire /> V-6 Cylinder
-                    </li>
                   </ul>
                   <ul>
                     <li>
@@ -120,9 +117,6 @@ const CarBooking = (props) => {
                     <li>
                       <FaKey /> Remote Keyless
                     </li>
-                    <li>
-                      <FaDesktop /> Rear-Seat DVD
-                    </li>
                   </ul>
                   <ul>
                     <li>
@@ -132,10 +126,7 @@ const CarBooking = (props) => {
                       <FaCogs /> {t("automatic")}
                     </li>
                     <li>
-                      <FaTachometerAlt /> 20kmpl
-                    </li>
-                    <li>
-                      <FaEmpire /> V-6 Cylinder
+                      <FaTachometerAlt /> Car band: {props.eliteCategory === 'true' ? 'Luxury band' : 'Normal band'}
                     </li>
                   </ul>
                 </div>
@@ -153,7 +144,7 @@ const CarBooking = (props) => {
                   <h3>{t("car_booking.personal_information")}</h3>
                   <form onSubmit={SubmitHandler}>
                     <Row>
-                      <Col md={6}>
+                      <Col lg={8} md={7}>
                         <p>
                           <input
                             type="text"
@@ -261,14 +252,35 @@ const CarBooking = (props) => {
               </div>
             </Col>
             <Col lg={4}>
+              <div className="order-summury-box">
+                <h3>{t("cart.summury")}</h3>
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>{t("cart.subtotal")}</td>
+                      <td>$270</td>
+                    </tr>
+                    <tr>
+                      <td>{t("cart.shipping")}</td>
+                      <td>{t("cart.free_shipping")}</td>
+                    </tr>
+                    <tr>
+                      <td>{t("cart.order_total")}</td>
+                      <td>$270</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </Col>
+            <Col lg={8}>
               <div className="booking-right">
                 <h3>{t("car_booking.payment_method")}</h3>
                 <div className="gauto-payment clearfix">
                   <div className="payment">
                     <input type="radio" id="ss-option" name="selector" />
-                    <label htmlFor="ss-option">
+                    {/* <label htmlFor="ss-option">
                       {t("car_booking.bank_transfer")}
-                    </label>
+                    </label> */}
                     <div className="check">
                       <div className="inside" />
                     </div>

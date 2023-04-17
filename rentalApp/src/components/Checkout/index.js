@@ -93,9 +93,9 @@ const Checkout = () => {
               <div className="gauto-payment clearfix">
                 <div className="payment">
                   <input type="radio" id="ss-option" name="selector" />
-                  <label htmlFor="ss-option">
+                  {/* <label htmlFor="ss-option">
                     {t("car_booking.bank_transfer")}
-                  </label>
+                  </label> */}
                   <div className="check">
                     <div className="inside" />
                   </div>

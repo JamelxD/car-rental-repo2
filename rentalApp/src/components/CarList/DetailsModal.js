@@ -36,7 +36,23 @@ export default function DetailsModal(props) {
                         {props.name}
                     </Typography>
                     <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                        Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+                        <ul>
+                            <li>
+                                {props.mileage}
+                            </li>
+                            <li>
+                                Driver's minimum age: {props.driverMinimumAge}
+                            </li>
+                            <li>
+                                Gearbox: {props.gearbox === 'auto' ? 'Automatic' : 'Manual'}
+                            </li>
+                            <li>
+                                Luggages: {props.luggage.big + 3}
+                            </li>
+                            <li>
+                                Number of seats: {props.seatNumber}
+                            </li>
+                        </ul>
                     </Typography>
                 </Box>
             </Modal>

@@ -41,44 +41,6 @@ const CarList = (props) => {
     e.preventDefault();
   };
 
-  const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
-  };
-
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
-  const detailsModal = () => {
-    return (
-      <div>
-        <Modal
-          open={open}
-          onClose={handleClose}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-        >
-          <Box sx={style}>
-            <Typography id="modal-modal-title" variant="h6" component="h2">
-              Text in a modal
-            </Typography>
-            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-              Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-            </Typography>
-          </Box>
-        </Modal>
-      </div>
-    );
-  }
-
   return (
     <section className="gauto-car-listing section_70">
       <Container>
@@ -208,12 +170,8 @@ const CarList = (props) => {
                                     {item.type}
                                   </li>
                                   <li>
-                                    <li>
-                                      <FaCogs />
-                                      {item.operatorName}
-                                    </li>
-                                    <FaTachometerAlt />
-                                    20kmpl
+                                    <FaCogs />
+                                    {item.operatorName}
                                   </li>
                                   <li>
                                     <FaCar />
@@ -221,7 +179,7 @@ const CarList = (props) => {
                                   </li>
                                   <li>
                                     <FaCar />
-                                    Luggage: {item.luggage.big} Big, {item.luggage.small} Small
+                                    Luggages: {item.luggage.big + 3}
                                   </li>
                                 </ul>
                                 <div className="offer-action">
@@ -233,6 +191,11 @@ const CarList = (props) => {
                                   </Link> */}
                                   <DetailsModal className="offer-btn-2" key={index}
                                     name={item.name}
+                                    mileage={item.unlimitedDistance === true ? 'Unlimited Mileage' : '50 Miles a day'}
+                                    driverMinimumAge={item.driverMinimumAge}
+                                    gearbox={item.gearbox}
+                                    luggage={item.luggage}
+                                    seatNumber={item.seatNumber}
                                   />
                                 </div>
                               </div>
