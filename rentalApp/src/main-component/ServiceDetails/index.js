@@ -13,8 +13,8 @@ const ServiceSingle = () => {
     <Fragment>
       <Header />
       <PageTitle
-        pageTitle={t("header-navigation.service_details")}
-        pagesub={t("header-navigation.service_details")}
+        pageTitle='upgrades'
+        // pagesub={t("header-navigation.service_details")}
       />
       <ServiceDetailsPage />
       <Footer />
