@@ -56,7 +56,7 @@ const ServiceDetails = () => {
                             </div>
                           </RadioButton>
                           <RadioButton value="orange">
-                            Regular
+                            Reg
                           </RadioButton>
                           <RadioButton value="melon">
                             Basic
