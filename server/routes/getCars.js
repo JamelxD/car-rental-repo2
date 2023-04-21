@@ -26,8 +26,8 @@ router.get('/', function (req, res, next) {
   xmlHttp.onload = function () {
     var jsonResponse = xmlHttp.response;
     //  var parsedResponse = JSON.parse(jsonResponse)
-    console.log(xmlHttp)
-    console.log(jsonResponse)
+    // console.log(xmlHttp)
+    // console.log(jsonResponse)
     res.send(jsonResponse)
   };
   xmlHttp.send()
