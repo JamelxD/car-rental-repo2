@@ -5,17 +5,20 @@ import storeCarsReducer from './storeCarsReducer';
 import storeRentalReducer from './storeRentalReducer';
 import isLoadingReducer from './isLoadingReducer';
 import locationReducer from './locationReducer';
+import upgradesReducer from './upgradesReducer';
+
 const rootReducer = combineReducers({
     storeCarsReducer: storeCarsReducer,
     storeRentalReducer: storeRentalReducer,
     isLoadingReducer: isLoadingReducer,
-    locationReducer: locationReducer
+    locationReducer: locationReducer,
+    upgradesReducer: upgradesReducer
 })
 
 const persistConfig = {
     key: 'root',
     storage,
-    blacklist: ['locationReducer']
+    blacklist: ['locationReducer', 'upgradesReducer']
 }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)

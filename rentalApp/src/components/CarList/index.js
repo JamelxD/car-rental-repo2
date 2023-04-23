@@ -139,14 +139,10 @@ const CarList = (props) => {
                           <Col md={6}>
                             <div className="single-offers">
                               <div className="offer-image">
-                                <Link to="/car-booking">
-                                  <img crossorigin="anonymous" src={item.pictureUrl} alt="offer 1" />
-                                </Link>
+                                <img crossorigin="anonymous" src={item.pictureUrl} alt="offer 1" />
                               </div>
                               <div className="offer-text">
-                                <Link to="/car-booking">
-                                  <h3>{item.name}</h3>
-                                </Link>
+                                <h3>{item.name}</h3>
                                 <h4>
                                   £{Math.round((item.costs.total) / 190)}<span>/ {t("day")}</span>
                                 </h4>
@@ -162,7 +158,7 @@ const CarList = (props) => {
                                   </li>
                                   <li>
                                     <FaCogs />
-                                    {item.unlimitedDistance === true ? 'Unlimited Mileage' : '50 Miles a day'}
+                                    {item.unlimitedDistance === true ? 'Unlimited Mileage' : '50 miles a day'}
                                   </li>
                                   <li>
                                     <FaCogs />
@@ -183,15 +179,17 @@ const CarList = (props) => {
                                   </li>
                                 </ul>
                                 <div className="offer-action">
-                                  <Link to="/car-booking" className="offer-btn-1" onClick={() => props.storeRental(item)}>
+                                  <Link to="/upgrades" className="offer-btn-1" onClick={() => props.storeRental(item)}>
                                     {t("rent_car")}
                                   </Link>
-                                  {/* <Link className="offer-btn-2" onClick={() => console.log('hello')}>
-                                    {t("details")}
-                                  </Link> */}
-                                  <DetailsModal className="offer-btn-2" key={index}
+                                </div>
+
+                                {/* <div className="spacer" /> */}
+
+                                <div className="offer-action">
+                                  <DetailsModal key={index}
                                     name={item.name}
-                                    mileage={item.unlimitedDistance === true ? 'Unlimited Mileage' : '50 Miles a day'}
+                                    mileage={item.unlimitedDistance === true ? 'Mileage: Unlimited Mileage' : 'Mileage: 50 miles a day'}
                                     driverMinimumAge={item.driverMinimumAge}
                                     gearbox={item.gearbox}
                                     luggage={item.luggage}

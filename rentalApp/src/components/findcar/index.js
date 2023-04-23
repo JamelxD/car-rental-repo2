@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Container, Row, Col } from "react-bootstrap";
 import { registerLicense } from "@syncfusion/ej2-base";
@@ -42,6 +42,10 @@ const FindCar = (props) => {
   console.log(props.autoLocSuggest.formatted_address)
   console.log(location)
 
+  useEffect(() => {
+    props.isLoading(false)
+  }, [])
+
   const navigate = useNavigate();
   console.log("car option " + carOption)
   const searchCars = async () => {
@@ -66,15 +70,20 @@ const FindCar = (props) => {
       }).then(async response => {
         var result = await response.json()
         console.log(result)
-        if (response.status === 200 && result.length !== 0) {
+        if (response.status === 200 && result.length !== 0 && result.code !== "VALIDATION_FAILED") {
           props.storeCars(result)
           props.isLoading(false)
           navigate({
             pathname: '/car-listing',
           });
-        } else {
+        }
+        else if (result.code === "VALIDATION_FAILED") {
           props.isLoading(false)
-          alert('no cars found')
+          alert('Please fill out the required fields')
+        }
+        else {
+          props.isLoading(false)
+          alert('No cars found')
         }
       })
 
@@ -88,7 +97,7 @@ const FindCar = (props) => {
         query: props.autoLocSuggest.formatted_address
       }), {
         method: 'get'
-      })
+      }, { mode: 'cors' })
         .then(async response => {
           longlatRes = (await response.json())
           console.log(longlatRes)
@@ -150,7 +159,7 @@ const FindCar = (props) => {
                               key='pickup'
                               setLocation={(place) => handleLocation('pickup', place)}
                               type="text"
-                              placeholder="Pickup point"
+                              placeholder="Pickup point*"
                               onChange={(event) => setLocation({ ...location, pickup: event.currentTarget.value })}
                               location={location}
                               value={location.pickup}

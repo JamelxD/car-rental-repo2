@@ -230,6 +230,42 @@
   font-size: large;
 }
 
+.simple-text {
+  font-size: medium;
+}
+
+.addon-row {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  flex-direction: row;
+  list-style: none;
+}
+
+.addon-box {
+  /* flex: 1; */
+  /* width: 300px; */
+}
+
+.counter {
+  font-size: large;
+  font-weight: bold;
+  margin-top: 4%;
+}
+
+.tinted {
+  background: linear-gradient(90deg, rgba(193, 193, 212, 0) 0%, rgba(193, 193, 212, 1) 10%, rgba(193, 193, 212, 0) 100%);
+  padding: 0.5%;
+  margin-top: 4%;
+  margin-bottom: 1%;
+}
+
+.toggle {
+  font-size: large;
+  font-weight: bold;
+  margin-top: 4%;
+}
+
 .single_faq_accordian {
   margin-top: 10px;
   /* text-align: center; */

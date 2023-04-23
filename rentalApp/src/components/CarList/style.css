@@ -17,6 +17,7 @@
   transition: all 0.4s ease 0s;
   background: #ffffff !important;
 }
+
 input#datepicker,
 input#timepicker {
   height: auto !important;
@@ -24,6 +25,7 @@ input#timepicker {
   font-size: 14px;
   font-weight: 500;
 }
+
 .sidebar-widget form p input:focus,
 .sidebar-widget form p select:focus {
   border: 2px solid #ec3323;
@@ -118,6 +120,7 @@ input#timepicker {
 .propertu-page-shortby label i {
   margin-right: 5px;
 }
+
 .sidebar-widget {
   margin-bottom: 30px;
 }
@@ -158,6 +161,7 @@ input#timepicker {
   color: #ec3323;
   padding-left: 25px;
 }
+
 .car-grid-list .single-offers {
   text-align: center;
   padding: 20px;
@@ -228,10 +232,14 @@ input#timepicker {
   width: 47%;
 }
 
+.spacer {
+  margin-top: 1%;
+}
+
 .offer-action:after {
   position: absolute;
   content: "";
-  width: 66%;
+  width: 40%;
   height: 100%;
   background: #ec3323 none repeat scroll 0 0;
   right: -36px;
@@ -265,6 +273,7 @@ input#timepicker {
   margin-right: 5px;
   color: #ec3323;
 }
+
 .pagination-box-row {
   text-align: left;
 }
@@ -314,11 +323,13 @@ input#timepicker {
     margin-top: 30px;
   }
 }
+
 @media (max-width: 767px) {
   .car-listing-right {
     margin-top: 30px;
   }
 }
+
 @media only screen and (min-width: 480px) and (max-width: 767px) {
   .car-listing-right {
     margin-top: 30px;

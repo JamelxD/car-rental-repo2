@@ -12,6 +12,7 @@ import rootReducer from "./redux/reducers/rootReducer";
 import { PersistGate } from 'redux-persist/integration/react';
 import { persistStore } from 'redux-persist';
 import persistedReducer from "./redux/reducers/rootReducer";
+import 'semantic-ui-css/semantic.min.css'
 
 i18n
   .use(initReactI18next)

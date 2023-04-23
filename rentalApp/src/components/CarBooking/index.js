@@ -6,7 +6,7 @@ import {
 } from "@syncfusion/ej2-react-calendars";
 import { useTranslation } from "react-i18next";
 import { connect } from "react-redux";
-
+import { Divider, Header, Icon, Table } from 'semantic-ui-react'
 import { Container, Row, Col } from "react-bootstrap";
 import {
   FaStar,
@@ -29,7 +29,6 @@ import "./style.css";
 
 const CarBooking = (props) => {
   console.log(props)
-  console.log(props.rental.pictureUrl)
 
   const { t } = useTranslation();
 
@@ -45,6 +44,12 @@ const CarBooking = (props) => {
   const max = 2023;
   const rand = min + Math.random() * (max - min);
 
+  const price = Math.round((props.rental.costs.total) / 190)
+
+  const priceCalc = () => {
+
+  }
+
 
   return (
     <>
@@ -55,7 +60,7 @@ const CarBooking = (props) => {
             <Col lg={6}>
               <div className="car-booking-image">
                 {/* </div> <div style={{ height: '500px', width: '80%', backgroundColor: 'red' }}> */}
-                <img crossorigin="anonymous" src={props.rental.pictureUrl} alt="offer 1" />
+                <img crossOrigin="anonymous" src={props.rental.pictureUrl} alt="offer 1" />
               </div>
             </Col>
             <Col lg={6}>
@@ -65,7 +70,7 @@ const CarBooking = (props) => {
                 <div className="price-rating">
                   <div className="price-rent">
                     <h4>
-                      £{Math.round((props.rental.costs.total) / 190)}<span>/ {t("day")}</span>
+                      £{price}<span>/ {t("day")}</span>
                     </h4>
                   </div>
                   <div className="car-rating">
@@ -148,7 +153,7 @@ const CarBooking = (props) => {
                         <p>
                           <input
                             type="text"
-                            placeholder={t("car_booking.first_name")}
+                            placeholder="First Name"
                           />
                         </p>
                       </Col>
@@ -156,7 +161,7 @@ const CarBooking = (props) => {
                         <p>
                           <input
                             type="text"
-                            placeholder={t("car_booking.last_name")}
+                            placeholder="Last Name"
                           />
                         </p>
                       </Col>
@@ -166,7 +171,7 @@ const CarBooking = (props) => {
                         <p>
                           <input
                             type="email"
-                            placeholder={t("car_booking.email")}
+                            placeholder="Email Address"
                           />
                         </p>
                       </Col>
@@ -174,7 +179,7 @@ const CarBooking = (props) => {
                         <p>
                           <input
                             type="tel"
-                            placeholder={t("car_booking.phn")}
+                            placeholder="Contact Number"
                           />
                         </p>
                       </Col>
@@ -241,7 +246,7 @@ const CarBooking = (props) => {
                       <Col md={12}>
                         <p>
                           <textarea
-                            placeholder="Write Here..."
+                            placeholder="Special Requests"
                             defaultValue={""}
                           />
                         </p>
@@ -253,20 +258,121 @@ const CarBooking = (props) => {
             </Col>
             <Col lg={4}>
               <div className="order-summury-box">
-                <h3>{t("cart.summury")}</h3>
+                <h3>Booking Summary</h3>
                 <table>
                   <tbody>
                     <tr>
-                      <td>{t("cart.subtotal")}</td>
-                      <td>$270</td>
+                      <td>Subtotal</td>
+                      <td>£{price}</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <Divider horizontal>
+                  Upgrades
+                </Divider>
+                <table>
+                  <tbody>
+                    <tr>
+                      {props.upgrades.mileage === 'standard-mileage' ?
+                        <>
+                          <td>Standard Mileage</td>
+                          <td>£{Math.round(price * 0.05 * props.rental.durationInDays)}</td>
+                        </>
+                        : 'long-mileage' ?
+                          <>
+                            <td>Unlimited Miles</td>
+                            <td>£{Math.round(price * 0.09 * props.rental.durationInDays)}</td>
+                          </> :
+                          <>
+                            <td>Basic Mileage</td>
+                            <td>No added cost</td>
+                          </>}
                     </tr>
                     <tr>
-                      <td>{t("cart.shipping")}</td>
-                      <td>{t("cart.free_shipping")}</td>
+                      {props.upgrades.protection === 'standard-protection' ?
+                        <>
+                          <td>Standard Protection</td>
+                          <td>£{Math.round(price * 0.07 * props.rental.durationInDays)}</td>
+                        </>
+                        : 'full-protection' ?
+                          <>
+                            <td>Full Protection</td>
+                            <td>£{Math.round(price * 0.11 * props.rental.durationInDays)}</td>
+                          </> :
+                          <>
+                            <td>Basic Protection</td>
+                            <td>No added cost</td>
+                          </>}
                     </tr>
                     <tr>
-                      <td>{t("cart.order_total")}</td>
-                      <td>$270</td>
+                      {props.upgrades.additionalDrivers > 0 ?
+                        <>
+                          <td>Additional Drivers: {props.additionalDrivers}</td>
+                          <td>£{Math.round(price * 0.07 * props.additionalDrivers * props.rental.durationInDays)}</td>
+                        </>
+                        : <></>}
+                    </tr>
+                    <tr>
+                      {props.upgrades.gps === true ?
+                        <>
+                          <td>GPS Guaranteed</td>
+                          <td>£{Math.round(price * 0.03 * props.rental.durationInDays)}</td>
+                        </>
+                        : <></>}
+                    </tr>
+                    <tr>
+                      {props.upgrades.roadsideAssistance === true ?
+                        <>
+                          <td>Roadside Assistance</td>
+                          <td>£{Math.round(price * 0.04 * props.rental.durationInDays)}</td>
+                        </>
+                        : <></>}
+                    </tr>
+                    <tr>
+                      {props.upgrades.interiorDamage === true ?
+                        <>
+                          <td>Interior Damage Cover</td>
+                          <td>£{Math.round(price * 0.05 * props.rental.durationInDays)}</td>
+                        </>
+                        : <></>}
+                    </tr>
+                    <tr>
+                      {props.upgrades.childSeat === true ?
+                        <>
+                          <td>Child Seat</td>
+                          <td>£{Math.round(price * 0.02 * props.rental.durationInDays)}</td>
+                        </>
+                        : <></>}
+                    </tr>
+                    <tr>
+                      {props.upgrades.tireProtection === true ?
+                        <>
+                          <td>Tire and Windscreen Cover</td>
+                          <td>£{Math.round(price * 0.05 * props.rental.durationInDays)}</td>
+                        </>
+                        : <></>}
+                    </tr>
+                  </tbody>
+                </table>
+                <Divider horizontal>
+                  Taxes and Fees
+                </Divider>
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>VAT (20%)</td>
+                      <td>Included</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <Divider horizontal>
+                  Total
+                </Divider>
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>Total Price</td>
+                      <td>£{price + props.upgrades.upgradesTotal}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -277,16 +383,9 @@ const CarBooking = (props) => {
                 <h3>{t("car_booking.payment_method")}</h3>
                 <div className="gauto-payment clearfix">
                   <div className="payment">
-                    <input type="radio" id="ss-option" name="selector" />
-                    {/* <label htmlFor="ss-option">
-                      {t("car_booking.bank_transfer")}
-                    </label> */}
-                    <div className="check">
-                      <div className="inside" />
-                    </div>
                     <p>{t("car_booking.payment_text")}</p>
                   </div>
-                  <div className="payment">
+                  {/* <div className="payment">
                     <input type="radio" id="f-option" name="selector" />
                     <label htmlFor="f-option">
                       {t("car_booking.check_payment")}
@@ -294,7 +393,7 @@ const CarBooking = (props) => {
                     <div className="check">
                       <div className="inside" />
                     </div>
-                  </div>
+                  </div> */}
                   <div className="payment">
                     <input type="radio" id="s-option" name="selector" />
                     <label htmlFor="s-option">
@@ -305,13 +404,53 @@ const CarBooking = (props) => {
                     </div>
                     <img src={img2} alt="credit card" />
                   </div>
-                  <div className="payment">
+                  {/* <div className="payment">
                     <input type="radio" id="t-option" name="selector" />
                     <label htmlFor="t-option">Paypal</label>
                     <div className="check">
                       <div className="inside" />
                     </div>
                     <img src={img3} alt="credit card" />
+                  </div> */}
+                </div>
+                <div className="booking-form-left">
+                  <div className="single-booking">
+                    <Row>
+                      <Col md={6}>
+                        <p>
+                          <input
+                            type="text"
+                            placeholder="Cardholder Name"
+                          />
+                        </p>
+                      </Col>
+                      <Col md={6}>
+                        <p>
+                          <input
+                            type="text"
+                            placeholder="16 Digit Card Number"
+                          />
+                        </p>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col md={6}>
+                        <p>
+                          <input
+                            type="text"
+                            placeholder="Expiry Date"
+                          />
+                        </p>
+                      </Col>
+                      <Col md={6}>
+                        <p>
+                          <input
+                            type="text"
+                            placeholder="CVV"
+                          />
+                        </p>
+                      </Col>
+                    </Row>
                   </div>
                 </div>
                 <div className="action-btn">
@@ -329,7 +468,8 @@ const CarBooking = (props) => {
 };
 const mapStateToProps = (state) => {
   return {
-    rental: state.storeRentalReducer.rental
+    rental: state.storeRentalReducer.rental,
+    upgrades: state.upgradesReducer
   }
 }
 
