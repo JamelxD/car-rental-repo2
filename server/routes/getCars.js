@@ -7,7 +7,8 @@ router.get('/', function (req, res, next) {
   var xmlHttp = new XMLHttpRequest();
   const rentalCar = {
     //pickUpPoint : '48.8588897,2.3200410217200766',
-    pickUpPoint: `${req.query.lat},${req.query.long}`,
+    pickUpPoint: `${req.query.pickUpLat},${req.query.pickUpLong}`,
+    dropOffPoint: `${req.query.dropOffLat},${req.query.dropOffLong}`,
     startDate: (req.query.stDate).toString(),
     //startDate: '2023-03-26T07:17:47.000Z',
     endDate: (req.query.eDate).toString(),
@@ -18,11 +19,12 @@ router.get('/', function (req, res, next) {
   }
   console.log(rentalCar)
   //res.append('x-api-key',lyko.x_api_key)
-  xmlHttp.open("GET", `https://api.lyko.tech/v2.1/rentcars?pickUpPoint=${rentalCar.pickUpPoint}&startDate=${rentalCar.startDate}&endDate=${rentalCar.endDate}&carGroups[]=${rentalCar['carGroups[]']}&operators=${rentalCar.operators}&limit=${rentalCar.limit}`)
+  xmlHttp.open("GET", `https://api.lyko.tech/v2.1/rentcars?pickUpPoint=${rentalCar.pickUpPoint}&dropOffPoint=${rentalCar.dropOffPoint}&startDate=${rentalCar.startDate}&endDate=${rentalCar.endDate}&carGroups[]=${rentalCar['carGroups[]']}&operators=${rentalCar.operators}&limit=${rentalCar.limit}`)
   //xmlHttp.open("GET", 'https://api.lyko.tech/v2.1/rentcars?pickUpPoint=48.8588897,2.3200410217200766&startDate=2023-01-29T07:00:00.000Z&endDate=2023-01-30T07:00:00.000Z&carGroups[]=small&operators=all&limit=30')
   xmlHttp.responseType = 'json';
   xmlHttp.setRequestHeader('x-api-key', lyko.x_api_key)
   xmlHttp.setRequestHeader('Accept', 'application/json')
+
   xmlHttp.onload = function () {
     var jsonResponse = xmlHttp.response;
     //  var parsedResponse = JSON.parse(jsonResponse)
