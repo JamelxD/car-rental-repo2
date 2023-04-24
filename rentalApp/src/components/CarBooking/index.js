@@ -20,6 +20,7 @@ import {
   FaLock,
   FaEye,
 } from "react-icons/fa";
+import moment from 'moment';
 
 import img1 from "../../img/booking.jpg";
 import img2 from "../../img/master-card.jpg";
@@ -29,6 +30,7 @@ import "./style.css";
 
 const CarBooking = (props) => {
   console.log(props)
+  console.log(props.additionalDrivers)
 
   const { t } = useTranslation();
 
@@ -268,13 +270,15 @@ const CarBooking = (props) => {
                     </tr>
                     <tr>
                       <td>Dropoff location</td>
-                      <td>XXX</td>
-                    </tr>                    <tr>
+                      <td>{props.rental.agencyReturn.name}</td>
+                    </tr>
+                    <tr>
                       <td>Pickup date</td>
-                      <td>XXX</td>
-                    </tr>                    <tr>
+                      <td>{moment(props.rental.startDate).format("MM/DD/YYYY")}</td>
+                    </tr>
+                    <tr>
                       <td>Dropoff date</td>
-                      <td>XXX</td>
+                      <td>{moment(props.rental.endDate).format("MM/DD/YYYY")}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -329,8 +333,8 @@ const CarBooking = (props) => {
                     <tr>
                       {props.upgrades.additionalDrivers > 0 ?
                         <>
-                          <td>Additional Drivers: {props.additionalDrivers}</td>
-                          <td>£{Math.round(price * 0.07 * props.additionalDrivers * props.rental.durationInDays)}</td>
+                          <td>{props.upgrades.additionalDrivers} Additional Drivers</td>
+                          <td>£{Math.round(price * 0.07 * props.upgrades.additionalDrivers * props.rental.durationInDays)}</td>
                         </>
                         : <></>}
                     </tr>

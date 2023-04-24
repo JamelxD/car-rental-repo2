@@ -38,12 +38,16 @@ const FindCar = (props) => {
 
   const handleLocation = (type, place) => {
     setLocation(location => ({ ...location, [type]: place.formatted_address }))
-    props.storePickupLocation(location.pickup)
+    // props.storePickupLocation(location => ({ ...location, [type]: place.formatted_address }))
   }
 
   console.log(props.autoLocSuggest)
   console.log(props.autoLocSuggest.formatted_address)
   console.log(location)
+  console.log(location.pickup)
+
+  console.log(props.autoLocSuggest)
+
 
   useEffect(() => {
     props.isLoading(false)

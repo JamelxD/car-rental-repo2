@@ -294,7 +294,7 @@ const ServiceDetails = (props) => {
                 {props.roadsideAssistance === true ? <div><Icon name='minus' />24/7 Roadside assistance and breakdown cover</div> : <div />}
                 {props.interiorDamage === true ? <div><Icon name='minus' />Interior damage cover</div> : <div />}
                 {props.childSeat === true ? <div><Icon name='minus' />Child seat</div> : <div />}
-                {props.tireProtection === true ? <div><Icon name='minus' />Tire and Windscreen protection</div> : <div />}
+                {props.tireProtection === true ? <div><Icon name='minus' />Tire and Windscreen cover</div> : <div />}
 
               </div>
               <div className="offer-action">
