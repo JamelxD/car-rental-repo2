@@ -7,10 +7,12 @@ const LocationService = (props) => {
         apiKey: 'AIzaSyCkeiEl0P1RTGE60itkTtpKTHme_hUTQhw',
         onPlaceSelected: (place) => {
             console.log(props.location)
-            props.storePickupLocation(place)
             props.setLocation(place)
             console.log(place);
-        }
+        },
+        options: {
+            types: ["geocode", "establishment"],
+        },
     });
 
     return <input ref={ref}
@@ -21,11 +23,5 @@ const LocationService = (props) => {
     />
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        storePickupLocation: (location) => { dispatch(storePickupLocation(location)) },
-    }
-}
 
-
-export default connect(null, mapDispatchToProps)(LocationService)
+export default LocationService

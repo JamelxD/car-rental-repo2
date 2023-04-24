@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import { storeCars } from '../../redux/actions/storeCarsActions';
 import { isLoading } from "../../redux/actions/isLoadingActions";
 import BeatLoader from 'react-spinners/BeatLoader'
+import { storePickupLocation } from "../../redux/actions/locationActions";
 import usePlacesService from "react-google-autocomplete/lib/usePlacesAutocompleteService";
 
 import {
@@ -23,7 +24,8 @@ registerLicense(
 );
 
 const FindCar = (props) => {
-  var longlatRes;
+  var pickUpLonglatRes;
+  var dropOffLonglatRes;
   const { t } = useTranslation();
   const SubmitHandler = (e) => {
     e.preventDefault();
@@ -36,6 +38,7 @@ const FindCar = (props) => {
 
   const handleLocation = (type, place) => {
     setLocation(location => ({ ...location, [type]: place.formatted_address }))
+    props.storePickupLocation(location.pickup)
   }
 
   console.log(props.autoLocSuggest)
@@ -51,7 +54,8 @@ const FindCar = (props) => {
   const searchCars = async () => {
     try {
       props.isLoading(true)
-      await getLatLong()
+      await getPickUpLatLong()
+      await getDropOffLatLong()
       const res = await fetch('http://localhost:9000/api/getCars?' + new URLSearchParams({
         // JSON.stringify({
         //   lat: longlatRes[0].location.lat,
@@ -60,8 +64,10 @@ const FindCar = (props) => {
         //   stDate: startDate,
         //   eDate: endDate,
         // })
-        lat: longlatRes[0].location.lat,
-        long: longlatRes[0].location.lng,
+        pickUpLat: pickUpLonglatRes[0].location.lat,
+        pickUpLong: pickUpLonglatRes[0].location.lng,
+        dropOffLat: dropOffLonglatRes[0].location.lat,
+        dropOffLong: dropOffLonglatRes[0].location.lng,
         carOpt: carOption,
         stDate: startDate,
         eDate: endDate,
@@ -91,25 +97,45 @@ const FindCar = (props) => {
       alert('no cars found')
     }
   }
-  const getLatLong = async () => {
+
+  const getPickUpLatLong = async () => {
     try {
       const res = await fetch('http://localhost:9000/api/getLocation?' + new URLSearchParams({
-        query: props.autoLocSuggest.formatted_address
+        query: location.pickup
       }), {
         method: 'get'
       }, { mode: 'cors' })
         .then(async response => {
-          longlatRes = (await response.json())
-          console.log(longlatRes)
-          console.log(longlatRes[0].location.lat)
-          console.log(longlatRes[0].location.lng)
-          console.log(longlatRes[0].name)
+          pickUpLonglatRes = (await response.json())
+          console.log(pickUpLonglatRes)
+          console.log(pickUpLonglatRes[0].location.lat)
+          console.log(pickUpLonglatRes[0].location.lng)
+          console.log(pickUpLonglatRes[0].name)
         })
 
     } catch (error) {
 
     }
-    console.log('hello')
+  }
+
+  const getDropOffLatLong = async () => {
+    try {
+      const res = await fetch('http://localhost:9000/api/getLocation?' + new URLSearchParams({
+        query: location.dropoff
+      }), {
+        method: 'get'
+      }, { mode: 'cors' })
+        .then(async response => {
+          dropOffLonglatRes = (await response.json())
+          console.log(dropOffLonglatRes)
+          console.log(dropOffLonglatRes[0].location.lat)
+          console.log(dropOffLonglatRes[0].location.lng)
+          console.log(dropOffLonglatRes[0].name)
+        })
+
+    } catch (error) {
+
+    }
   }
 
   var cssOverride = {
@@ -245,10 +271,13 @@ const mapStateToProps = (state) => {
     autoLocSuggest: state.locationReducer.pickupLocation
   }
 }
+
 const mapDispatchToProps = (dispatch) => {
   return {
     storeCars: (carsArray) => { dispatch(storeCars(carsArray)) },
-    isLoading: (boolean) => { dispatch(isLoading(boolean)) }
+    isLoading: (boolean) => { dispatch(isLoading(boolean)) },
+    storePickupLocation: (location) => { dispatch(storePickupLocation(location)) },
   }
 }
+
 export default connect(mapStateToProps, mapDispatchToProps)(FindCar)

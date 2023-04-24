@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import {
   DatePickerComponent,
@@ -6,7 +6,7 @@ import {
 } from "@syncfusion/ej2-react-calendars";
 import { useTranslation } from "react-i18next";
 import { connect } from "react-redux";
-import { Divider, Header, Icon, Table } from 'semantic-ui-react'
+import { Divider, Header, Icon, Table, Checkbox } from 'semantic-ui-react'
 import { Container, Row, Col } from "react-bootstrap";
 import {
   FaStar,
@@ -46,9 +46,7 @@ const CarBooking = (props) => {
 
   const price = Math.round((props.rental.costs.total) / 190)
 
-  const priceCalc = () => {
-
-  }
+  const [termsChecked, setTermsChecked] = useState(false)
 
 
   return (
@@ -259,6 +257,30 @@ const CarBooking = (props) => {
             <Col lg={4}>
               <div className="order-summury-box">
                 <h3>Booking Summary</h3>
+                <Divider horizontal>
+                  Booking Details
+                </Divider>
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>Pickup location</td>
+                      <td>XXX</td>
+                    </tr>
+                    <tr>
+                      <td>Dropoff location</td>
+                      <td>XXX</td>
+                    </tr>                    <tr>
+                      <td>Pickup date</td>
+                      <td>XXX</td>
+                    </tr>                    <tr>
+                      <td>Dropoff date</td>
+                      <td>XXX</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <Divider horizontal>
+                  Subtotal
+                </Divider>
                 <table>
                   <tbody>
                     <tr>
@@ -273,12 +295,12 @@ const CarBooking = (props) => {
                 <table>
                   <tbody>
                     <tr>
-                      {props.upgrades.mileage === 'standard-mileage' ?
+                      {props.upgrades.mileage === "standard-mileage" ?
                         <>
                           <td>Standard Mileage</td>
                           <td>£{Math.round(price * 0.05 * props.rental.durationInDays)}</td>
                         </>
-                        : 'long-mileage' ?
+                        : "long-mileage" ?
                           <>
                             <td>Unlimited Miles</td>
                             <td>£{Math.round(price * 0.09 * props.rental.durationInDays)}</td>
@@ -415,42 +437,66 @@ const CarBooking = (props) => {
                 </div>
                 <div className="booking-form-left">
                   <div className="single-booking">
-                    <Row>
-                      <Col md={6}>
-                        <p>
-                          <input
-                            type="text"
-                            placeholder="Cardholder Name"
-                          />
-                        </p>
-                      </Col>
-                      <Col md={6}>
-                        <p>
-                          <input
-                            type="text"
-                            placeholder="16 Digit Card Number"
-                          />
-                        </p>
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col md={6}>
-                        <p>
-                          <input
-                            type="text"
-                            placeholder="Expiry Date"
-                          />
-                        </p>
-                      </Col>
-                      <Col md={6}>
-                        <p>
-                          <input
-                            type="text"
-                            placeholder="CVV"
-                          />
-                        </p>
-                      </Col>
-                    </Row>
+                    <form>
+                      <Row>
+                        <Col md={6}>
+                          <p>
+                            <input
+                              type="text"
+                              placeholder="Cardholder Name"
+                            />
+                          </p>
+                        </Col>
+                        <Col md={6}>
+                          <p>
+                            <input
+                              type="text"
+                              placeholder="16 Digit Card Number"
+                            />
+                          </p>
+                        </Col>
+                      </Row>
+                      <Row>
+                        <Col md={6}>
+                          <p>
+                            <input
+                              type="text"
+                              placeholder="Expiry Date"
+                            />
+                          </p>
+                        </Col>
+                        <Col md={6}>
+                          <p>
+                            <input
+                              type="text"
+                              placeholder="CVV"
+                            />
+                          </p>
+                        </Col>
+                      </Row>
+                    </form>
+                    <div style={{ marginTop: '2%' }} />
+                    <div className="payment">
+                      <p>
+                        Renter must be eligible to hire vehicle
+                        Renter meets the licence, documents, payment and age requirements to hire a vehicle.
+
+                        Renter understands reservation should be modified if requirements are not met in order to avoid cancellation fee.
+
+                        Please read the complete Pay Now Terms & Conditions for details.
+
+
+                        Renter must acknowledge refund policy when booking reservation
+                        Full refund if renter cancels 3 days or more before booking
+
+                        Fee charged if renter cancels less than 3 days
+
+                      </p>
+                      <p>
+                        <Checkbox checked={termsChecked} onChange={() => { setTermsChecked(!termsChecked) }} style={{ marginRight: '1%' }} />
+                        I have read and accept the <Link to={"/terms-and-conditions"}>terms and conditions </Link>.
+                      </p>
+                    </div>
                   </div>
                 </div>
                 <div className="action-btn">
@@ -469,7 +515,8 @@ const CarBooking = (props) => {
 const mapStateToProps = (state) => {
   return {
     rental: state.storeRentalReducer.rental,
-    upgrades: state.upgradesReducer
+    upgrades: state.upgradesReducer,
+    pickUpLocation: state.locationReducer.pickupLocation
   }
 }
 

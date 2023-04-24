@@ -273,48 +273,6 @@ const ServiceDetails = (props) => {
                             </Segment>
                           </Grid.Column>
                         </Grid.Row>
-
-                        <Grid.Row columns='equal' stretched>
-                          <Grid.Column>
-                            <Segment>
-                              <div className='upgrade-header'>
-                                <Icon name='id card outline' />
-                                Additional Drivers
-                              </div>
-                              <div>
-                                <Icon name='minus' />
-                                Add other drivers
-                              </div>
-                              <Checkbox />
-                            </Segment>
-                          </Grid.Column>
-                          <Grid.Column>
-                            <Segment>
-                              <div className='upgrade-header'>
-                                <Icon name='id card outline' />
-                                GPS
-                              </div>
-                              <div>
-                                <Icon name='minus' />
-                                Add a SatNav to your vehicle
-                              </div>
-                              <Checkbox />
-                            </Segment>
-                          </Grid.Column>
-                          <Grid.Column>
-                            <Segment>
-                              <div className='upgrade-header'>
-                                <Icon name='id card outline' />
-                                Roadside Assistance
-                              </div>
-                              <div>
-                                <Icon name='minus' />
-                                Add 24/7 roadside assistance and breakdown cover
-                              </div>
-                              <Checkbox />
-                            </Segment>
-                          </Grid.Column>
-                        </Grid.Row>
                       </Grid>
 
 
@@ -329,12 +287,12 @@ const ServiceDetails = (props) => {
                 You have added:
               </p>
               <div className="simple-text">
-                {props.mileage === 'standard-mileage' ? <div><Icon name='minus' />Standard Mileage: Up to XXX miles</div> : 'long-mileage' ? <div><Icon name='minus' />Long Distance: Unlimited miles</div> : <div><Icon name='minus' />Basic Mileage: Up to XXX miles</div>}
-                {props.protection === 'standard-protection' ? <div><Icon name='minus' />Standard Protection: X, X and X cover</div> : 'full-protection' ? <div><Icon name='minus' />Full Protection:  X, X and X cover</div> : <div><Icon name='minus' />Basic Protection:  X, X and X cover</div>}
+                {props.mileage === 'standard-mileage' ? <div><Icon name='minus' />Standard Mileage: Up to 300 miles allowance for your rental period, additional miles will incur extra costs.</div> : 'long-mileage' ? <div><Icon name='minus' />Long Distance: Unlimited miles for the duration of your rental period.</div> : <div><Icon name='minus' />Basic Mileage: Up to 600 miles allowance for your rental period, additional miles will incur extra costs.</div>}
+                {props.protection === 'standard-protection' ? <div><Icon name='minus' />Standard Protection: Cover for damage to tires, windshield, windows and theft cover.</div> : 'full-protection' ? <div><Icon name='minus' />Full Protection:  Cover for damage to tires, windshield, windows, interior, theft cover and roadside assistance.</div> : <div><Icon name='minus' />Basic Protection: Damage and theft cover up to £1,000,000, cover for tire, windshield and window damage.</div>}
                 {props.additionalDrivers > 0 ? <div><Icon name='minus' />Additional Drivers: {props.additionalDrivers}</div> : <div />}
-                {props.gps === true ? <div><Icon name='minus' />GPS Guaranteed</div> : <div />}
-                {props.roadsideAssistance === true ? <div><Icon name='minus' />Roadside assistance</div> : <div />}
-                {props.interiorDamage === true ? <div><Icon name='minus' />Interior damage</div> : <div />}
+                {props.gps === true ? <div><Icon name='minus' />GPS Guaranteed for this vehicle</div> : <div />}
+                {props.roadsideAssistance === true ? <div><Icon name='minus' />24/7 Roadside assistance and breakdown cover</div> : <div />}
+                {props.interiorDamage === true ? <div><Icon name='minus' />Interior damage cover</div> : <div />}
                 {props.childSeat === true ? <div><Icon name='minus' />Child seat</div> : <div />}
                 {props.tireProtection === true ? <div><Icon name='minus' />Tire and Windscreen protection</div> : <div />}
 
