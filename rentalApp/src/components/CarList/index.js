@@ -38,20 +38,25 @@ const CarList = (props) => {
     automatic: ''
   }
 
-  var hello = 'hi'
-
   const [condition, setCondition] = useState('');
+  const [property, setProperty] = useState(properties)
+
+  // var global = 'ok'
+
+  // const setProperty = async () => {
+  //   let newArr = Object.keys(properties).forEach(i => properties[i] = '');
+  //   Object.assign(properties, newArr)
+  //   // global = 'no';
+  //   // properties[property] = "active"
+  // }
+
+  // setProperty()
 
 
-  const setProperty = () => {
-    // Object.keys(properties).forEach(i => properties[i] = '');
-    hello = 'yo'
-    // properties[property] = "active"
-  }
+  // console.log(properties)
+  console.log(property.property)
 
-  console.log(properties)
 
-  console.log(hello)
 
   const { t } = useTranslation();
 
@@ -104,13 +109,20 @@ const CarList = (props) => {
               </div>
               <div className="sidebar-widget">
                 <ul className="service-menu">
-                  <li className={properties.allCars}>
-                    <Link to="#" onClick={() => { setCondition(''); setProperty() }}>
+                  <li className={property.property.allCars}>
+                    <Link to='#' onClick={() => { setCondition(''); setProperty({ property: properties }) }}>
                       All Cars<span>(2376)</span>
                     </Link>
                   </li>
-                  <li className={properties.automatic}>
-                    <Link to="#" onClick={() => setCondition({ type: 'gearbox', opt: 'auto' })} onChange={() => setProperty()}>
+                  <li className={property.property.automatic}>
+                    <Link onClick={() => {
+                      setCondition({ type: 'gearbox', opt: 'auto' }); setProperty({
+                        property: {
+                          allCars: '',
+                          automatic: 'active'
+                        }
+                      })
+                    }}>
                       Automatic Gearbox<span>(2376)</span>
                     </Link>
                   </li>
@@ -268,7 +280,7 @@ const CarList = (props) => {
           </Col>
         </Row>
       </Container>
-    </section>
+    </section >
   );
 };
 const mapStateToProps = (state) => {
