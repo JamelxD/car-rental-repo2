@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Container, Row, Col } from "react-bootstrap";
 import { connect } from "react-redux";
-import { Icon, Image } from 'semantic-ui-react';
+import { Icon, Image, Segment, Chec } from 'semantic-ui-react';
 import { storeRental } from "../../redux/actions/storeRentalActions";
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -31,6 +31,28 @@ import DetailsModal from "./DetailsModal";
 
 const CarList = (props) => {
   console.log(props)
+
+
+  var properties = {
+    allCars: 'active',
+    automatic: ''
+  }
+
+  var hello = 'hi'
+
+  const [condition, setCondition] = useState('');
+
+
+  const setProperty = () => {
+    // Object.keys(properties).forEach(i => properties[i] = '');
+    hello = 'yo'
+    // properties[property] = "active"
+  }
+
+  console.log(properties)
+
+  console.log(hello)
+
   const { t } = useTranslation();
 
   const SubmitHandler = (e) => {
@@ -82,13 +104,18 @@ const CarList = (props) => {
               </div>
               <div className="sidebar-widget">
                 <ul className="service-menu">
-                  <li className="active">
-                    <Link to="/" onClick={onClick}>
-                      All Brands<span>(2376)</span>
+                  <li className={properties.allCars}>
+                    <Link to="#" onClick={() => { setCondition(''); setProperty() }}>
+                      All Cars<span>(2376)</span>
+                    </Link>
+                  </li>
+                  <li className={properties.automatic}>
+                    <Link to="#" onClick={() => setCondition({ type: 'gearbox', opt: 'auto' })} onChange={() => setProperty()}>
+                      Automatic Gearbox<span>(2376)</span>
                     </Link>
                   </li>
                   <li>
-                    <Link to="/" onClick={onClick}>
+                    <Link to="#" onClick={onClick}>
                       Toyota<span>(237)</span>
                     </Link>
                   </li>
@@ -132,9 +159,9 @@ const CarList = (props) => {
                 <Row>
                   {props.carsData.map(agency => {
                     return (
-                      agency.cars.map((item, index) => {
-                        console.log(item)
-                        console.log(index)
+                      agency.cars.filter(filter => filter[condition.type] === condition.opt).map((item, index) => {
+                        // console.log(item)
+                        // console.log(index)
                         return (
                           <Col md={6}>
                             <div className="single-offers">

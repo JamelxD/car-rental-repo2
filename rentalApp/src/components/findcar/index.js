@@ -7,6 +7,7 @@ import moment from 'moment';
 import { connect } from 'react-redux';
 import { storeCars } from '../../redux/actions/storeCarsActions';
 import { isLoading } from "../../redux/actions/isLoadingActions";
+import { Checkbox } from 'semantic-ui-react'
 import BeatLoader from 'react-spinners/BeatLoader'
 import { storePickupLocation } from "../../redux/actions/locationActions";
 import usePlacesService from "react-google-autocomplete/lib/usePlacesAutocompleteService";
@@ -35,10 +36,11 @@ const FindCar = (props) => {
   const [carOption, setCarOption] = useState('mini')
   const [startDate, setStartDate] = useState(new Date())
   const [endDate, setEndDate] = useState(new Date())
+  const [differentLocation, setDifferentLocation] = useState(false)
+
 
   const handleLocation = (type, place) => {
     setLocation(location => ({ ...location, [type]: place.formatted_address }))
-    // props.storePickupLocation(location => ({ ...location, [type]: place.formatted_address }))
   }
 
   console.log(props.autoLocSuggest)
@@ -58,6 +60,7 @@ const FindCar = (props) => {
   const searchCars = async () => {
     try {
       props.isLoading(true)
+      props.storePickupLocation(location.pickup)
       await getPickUpLatLong()
       await getDropOffLatLong()
       const res = await fetch('http://localhost:9000/api/getCars?' + new URLSearchParams({
@@ -72,6 +75,46 @@ const FindCar = (props) => {
         pickUpLong: pickUpLonglatRes[0].location.lng,
         dropOffLat: dropOffLonglatRes[0].location.lat,
         dropOffLong: dropOffLonglatRes[0].location.lng,
+        carOpt: carOption,
+        stDate: startDate,
+        eDate: endDate,
+      }), {
+        method: 'get'
+      }).then(async response => {
+        var result = await response.json()
+        console.log(result)
+        if (response.status === 200 && result.length !== 0 && result.code !== "VALIDATION_FAILED") {
+          props.storeCars(result)
+          props.isLoading(false)
+          navigate({
+            pathname: '/car-listing',
+          });
+        }
+        else if (result.code === "VALIDATION_FAILED") {
+          props.isLoading(false)
+          alert('Please fill out the required fields')
+        }
+        else {
+          props.isLoading(false)
+          alert('No cars found')
+        }
+      })
+
+    } catch (error) {
+      alert('no cars found')
+    }
+  }
+
+  const searchCarsOneWay = async () => {
+    try {
+      props.isLoading(true)
+      props.storePickupLocation(location.pickup)
+      await getPickUpLatLong()
+      const res = await fetch('http://localhost:9000/api/getCars?' + new URLSearchParams({
+        pickUpLat: pickUpLonglatRes[0].location.lat,
+        pickUpLong: pickUpLonglatRes[0].location.lng,
+        dropOffLat: '',
+        dropOffLong: '',
         carOpt: carOption,
         stDate: startDate,
         eDate: endDate,
@@ -170,45 +213,77 @@ const FindCar = (props) => {
               <Row className="align-items-center">
                 <Col md={4}>
                   <div className="find-text">
-                    <h3>{t("search_best_car")}</h3>
+                    <h3>Search cars here</h3>
                   </div>
                 </Col>
                 <Col md={8}>
                   <div className="find-form">
                     <form onSubmit={SubmitHandler}>
+
                       <Row>
-                        <Col md={4}>
-                          <p>
-                            {/* <input
+                        <Checkbox toggle checked={differentLocation} onChange={() => setDifferentLocation(!differentLocation)} />
+                        <span>
+                          Return to a different location
+                        </span>
+                      </Row>
+
+                      <Row>
+                        {differentLocation === false ?
+                          <Col md={8}>
+                            <p>
+                              {/* <input
                               type="text"
                               placeholder="Pickup point"
                               onChange={(event) => setPickupPoint(event.currentTarget.value)}
                               value={pickUpPoint}
                             /> */}
-                            <LocationService
-                              key='pickup'
-                              setLocation={(place) => handleLocation('pickup', place)}
+                              <LocationService
+                                key='pickup'
+                                setLocation={(place) => handleLocation('pickup', place)}
+                                type="text"
+                                placeholder="Pickup point*"
+                                onChange={(event) => setLocation({ ...location, pickup: event.currentTarget.value })}
+                                location={location}
+                                value={location.pickup}
+                              />
+                            </p>
+                          </Col>
+                          :
+                          <>
+                            <Col md={4}>
+                              <p>
+                                {/* <input
                               type="text"
-                              placeholder="Pickup point*"
-                              onChange={(event) => setLocation({ ...location, pickup: event.currentTarget.value })}
-                              location={location}
-                              value={location.pickup}
-                            />
-                          </p>
-                        </Col>
-                        <Col md={4}>
-                          <p>
-                            <LocationService
-                              key='dropoff'
-                              setLocation={(place) => handleLocation('dropoff', place)}
-                              type="text"
-                              placeholder="Drop off point"
-                              onChange={(event) => setLocation({ ...location, dropoff: event.currentTarget.value })}
-                              location={location}
-                              value={location.dropoff}
-                            />
-                          </p>
-                        </Col>
+                              placeholder="Pickup point"
+                              onChange={(event) => setPickupPoint(event.currentTarget.value)}
+                              value={pickUpPoint}
+                            /> */}
+                                <LocationService
+                                  key='pickup'
+                                  setLocation={(place) => handleLocation('pickup', place)}
+                                  type="text"
+                                  placeholder="Pickup point*"
+                                  onChange={(event) => setLocation({ ...location, pickup: event.currentTarget.value })}
+                                  location={location}
+                                  value={location.pickup}
+                                />
+                              </p>
+                            </Col>
+                            <Col md={4}>
+                              <p>
+                                <LocationService
+                                  key='dropoff'
+                                  setLocation={(place) => handleLocation('dropoff', place)}
+                                  type="text"
+                                  placeholder="Drop off point"
+                                  onChange={(event) => setLocation({ ...location, dropoff: event.currentTarget.value })}
+                                  location={location}
+                                  value={location.dropoff}
+                                />
+                              </p>
+                            </Col>
+                          </>
+                        }
                         <Col md={4}>
                           <p>
                             <select onChange={(e) => setCarOption(e.target.value)} placeholder="Car Size">
@@ -250,13 +325,22 @@ const FindCar = (props) => {
                             ></DatePickerComponent>
                           </p>
                         </Col>
-                        <Col md={4}>
+                        {differentLocation === true ? <Col md={4}>
                           <p>
                             <button type="submit" onClick={() => searchCars()} className="gauto-theme-btn">
                               {t("find_car")}
                             </button>
                           </p>
-                        </Col>
+                        </Col> :
+                          <Col md={4}>
+                            <p>
+                              <button type="submit" onClick={() => searchCarsOneWay()} className="gauto-theme-btn">
+                                {t("find_car")}
+                              </button>
+                            </p>
+                          </Col>
+                        }
+
                       </Row>
                     </form>
                   </div>
