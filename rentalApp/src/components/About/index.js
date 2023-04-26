@@ -4,6 +4,8 @@ import { Container, Row, Col } from "react-bootstrap";
 import { FaCheck } from "react-icons/fa";
 import signature from "../../img/signature.png";
 import Img1 from "../../img/about.png";
+import image from "../images/bb0ce5e8434f912ec485dad40a784e17.jpg"
+
 import "./style.css";
 const About = () => {
   const { t } = useTranslation();
@@ -57,7 +59,7 @@ const About = () => {
           </Col>
           <Col lg={6}>
             <div className="about-right">
-              <img src={Img1} alt="car" />
+              <img src={image} alt="car" />
             </div>
           </Col>
         </Row>

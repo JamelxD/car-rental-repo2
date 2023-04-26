@@ -7,6 +7,9 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import hero1 from "../../img/slider-1.jpg";
 import hero2 from "../../img/slider-2.jpg";
+import image from "../images/0100r120008c4gqff10FB.jpg";
+import image2 from "../images/bridge.jpg";
+
 
 import "./style.css";
 
@@ -34,7 +37,9 @@ const Hero = () => {
         <div className="slide">
           <div
             className=" gauto-main-slide"
-            style={{ backgroundImage: `url(${hero1})` }}
+            style={{
+              backgroundImage: `url(${image})`
+            }}
           >
             <div className="gauto-main-caption">
               <div className="gauto-caption-cell">
@@ -58,7 +63,7 @@ const Hero = () => {
         <div className="slide">
           <div
             className=" gauto-main-slide"
-            style={{ backgroundImage: `url(${hero2})` }}
+            style={{ backgroundImage: `url(${image2})` }}
           >
             <div className="gauto-main-caption">
               <div className="gauto-caption-cell">
@@ -80,7 +85,7 @@ const Hero = () => {
           </div>
         </div>
       </Slider>
-    </section>
+    </section >
   );
 };
 

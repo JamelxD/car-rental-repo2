@@ -19,7 +19,11 @@ router.get('/', function (req, res, next) {
   }
   console.log(rentalCar)
   //res.append('x-api-key',lyko.x_api_key)
-  xmlHttp.open("GET", `https://api.lyko.tech/v2.1/rentcars?pickUpPoint=${rentalCar.pickUpPoint}&dropOffPoint=${rentalCar.dropOffPoint}&startDate=${rentalCar.startDate}&endDate=${rentalCar.endDate}&carGroups[]=${rentalCar['carGroups[]']}&operators=${rentalCar.operators}&limit=${rentalCar.limit}`)
+  if (req.query.carOpt !== 'all') {
+    xmlHttp.open("GET", `https://api.lyko.tech/v2.1/rentcars?pickUpPoint=${rentalCar.pickUpPoint}&dropOffPoint=${rentalCar.dropOffPoint}&startDate=${rentalCar.startDate}&endDate=${rentalCar.endDate}&carGroups[]=${rentalCar['carGroups[]']}&operators=${rentalCar.operators}&limit=${rentalCar.limit}`)
+  } else {
+    xmlHttp.open("GET", `https://api.lyko.tech/v2.1/rentcars?pickUpPoint=${rentalCar.pickUpPoint}&dropOffPoint=${rentalCar.dropOffPoint}&startDate=${rentalCar.startDate}&endDate=${rentalCar.endDate}&carGroups[]=small&carGroups[]=mini&carGroups[]=medium&carGroups[]=large&carGroups[]=suv&carGroups[]=minivan&carGroups[]=convertible&carGroups[]=premium&carGroups[]=small_vans&carGroups[]=medium_vans&carGroups[]=large_vans&operators=${rentalCar.operators}&limit=${rentalCar.limit}`)
+  }
   //xmlHttp.open("GET", 'https://api.lyko.tech/v2.1/rentcars?pickUpPoint=48.8588897,2.3200410217200766&startDate=2023-01-29T07:00:00.000Z&endDate=2023-01-30T07:00:00.000Z&carGroups[]=small&operators=all&limit=30')
   xmlHttp.responseType = 'json';
   xmlHttp.setRequestHeader('x-api-key', lyko.x_api_key)

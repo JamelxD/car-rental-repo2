@@ -69,7 +69,7 @@ const Header = () => {
                   <FaUserAlt />
                   {t("register")}
                 </Link>
-                <Dropdown>
+                {/* <Dropdown>
                   <Dropdown.Toggle variant="success" id="dropdown-basic">
                     <FaGlobe /> {t("language")}
                   </Dropdown.Toggle>
@@ -89,7 +89,7 @@ const Header = () => {
                       </Dropdown.Item>
                     ))}
                   </Dropdown.Menu>
-                </Dropdown>
+                </Dropdown> */}
               </div>
             </Col>
           </Row>
@@ -105,7 +105,7 @@ const Header = () => {
                 </a>
               </div>
             </Col>
-            <Col lg={6} sm={9}>
+            {/* <Col lg={6} sm={9}>
               <div className="header-promo">
                 <div className="single-header-promo">
                   <div className="header-promo-icon">
@@ -126,14 +126,14 @@ const Header = () => {
                   </div>
                 </div>
               </div>
-            </Col>
-            <div className="col-lg-3">
+            </Col> */}
+            {/* <div className="col-lg-3">
               <div className="header-action">
                 <Link to="/contact">
                   <FaPhoneAlt /> {t("request_call")}
                 </Link>
               </div>
-            </div>
+            </div> */}
           </Row>
         </Container>
       </header>
@@ -184,11 +184,11 @@ const Header = () => {
                         </li>
                       </ul>
                     </li>
-                    <li>
+                    {/* <li>
                       <Link to="/gallery">
                         {t("header-navigation.gallery")}
                       </Link>
-                    </li>
+                    </li> */}
                     <li>
                       <Link to="/" onClick={onClick}>
                         {t("header-navigation.shop")}
@@ -258,21 +258,21 @@ const Header = () => {
             <Col lg={3} sm={12}>
               <div className="main-search-right">
                 <MobileMenu />
-                <div className="header-cart-box">
+                {/* <div className="header-cart-box">
                   <div className="login dropdown">
                     <Link to="/cart" className="cart-icon" id="dropdownMenu1">
                       <span>2</span>
                     </Link>
                   </div>
-                </div>
-                <div className="search-box">
+                </div> */}
+                {/* <div className="search-box">
                   <form onSubmit={SubmitHandler}>
                     <input type="search" placeholder="Search" />
                     <button type="submit">
                       <FaSearch />
                     </button>
                   </form>
-                </div>
+                </div> */}
               </div>
             </Col>
           </Row>

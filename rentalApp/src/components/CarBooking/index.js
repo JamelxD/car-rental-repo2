@@ -19,12 +19,14 @@ import {
   FaKey,
   FaLock,
   FaEye,
+  FaLuggageCart
 } from "react-icons/fa";
 import moment from 'moment';
 
 import img1 from "../../img/booking.jpg";
 import img2 from "../../img/master-card.jpg";
 import img3 from "../../img/paypal.jpg";
+import image from "../images/credit-card-logos2.png"
 
 import "./style.css";
 
@@ -75,35 +77,27 @@ const CarBooking = (props) => {
                   </div>
                   <div className="car-rating">
                     <ul>
-                      <li>
-                        <FaStar />
-                      </li>
-                      <li>
-                        <FaStar />
-                      </li>
-                      <li>
-                        <FaStar />
-                      </li>
-                      <li>
-                        <FaStar />
-                      </li>
-                      <li>
-                        <FaStarHalfAlt />
-                      </li>
+                      {String(Math.floor(Math.random() * (5 - 1 + 1) + 1))
+                        .split('').forEach(element => {
+                          return (
+                            <li>
+                              <FaStar />
+                            </li>
+                          )
+                        })}
                     </ul>
-                    <p>(123 {t("rating")})</p>
                   </div>
                 </div>
-                <p>
+                {/* <p>
                   Driver's minimum age is {props.rental.driverMinimumAge}
                 </p>
                 <p>
                   Rental duration is {props.rental.durationInDays} days
-                </p>
+                </p> */}
                 <div className="car-features clearfix">
                   <ul>
                     <li>
-                      <FaCar /> {t("model")}:{Math.round(rand)}
+                      <FaCar /> {t("model")}: {Math.round(rand)}
                     </li>
                     <li>
                       <FaCogs /> {props.rental.gearbox === 'manual' ? 'Manual' : 'Automatic'}
@@ -117,7 +111,7 @@ const CarBooking = (props) => {
                       <FaEye /> GPS Navigation
                     </li>
                     <li>
-                      <FaLock /> Anti-Lock Brakes
+                      <FaLuggageCart /> 2 lugg
                     </li>
                     <li>
                       <FaKey /> Remote Keyless
@@ -125,10 +119,7 @@ const CarBooking = (props) => {
                   </ul>
                   <ul>
                     <li>
-                      <FaCar /> Seat number:{props.rental.seatNumber}
-                    </li>
-                    <li>
-                      <FaCogs /> {t("automatic")}
+                      <FaCar /> Number of seats: {props.rental.seatNumber}
                     </li>
                     <li>
                       <FaTachometerAlt /> Car band: {props.eliteCategory === 'true' ? 'Luxury band' : 'Normal band'}
@@ -149,7 +140,7 @@ const CarBooking = (props) => {
                   <h3>{t("car_booking.personal_information")}</h3>
                   <form onSubmit={SubmitHandler}>
                     <Row>
-                      <Col lg={8} md={7}>
+                      <Col lg={6} md={7}>
                         <p>
                           <input
                             type="text"
@@ -178,7 +169,7 @@ const CarBooking = (props) => {
                       <Col md={6}>
                         <p>
                           <input
-                            type="tel"
+                            type="phone"
                             placeholder="Contact Number"
                           />
                         </p>
@@ -187,72 +178,101 @@ const CarBooking = (props) => {
                   </form>
                 </div>
                 <div className="single-booking">
-                  <h3>{t("car_booking.booking_details")}</h3>
-                  <form>
-                    <Row>
-                      <Col md={6}>
-                        <p>
-                          <input type="text" placeholder={t("from_address")} />
-                        </p>
-                      </Col>
-                      <Col md={6}>
-                        <p>
-                          <input type="text" placeholder={t("to_address")} />
-                        </p>
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col md={6}>
-                        <p>
-                          <select>
-                            <option data-display="Select">1 person</option>
-                            <option>2 person</option>
-                            <option>3 person</option>
-                            <option>4 person</option>
-                            <option>5-10 person</option>
-                          </select>
-                        </p>
-                      </Col>
-                      <Col md={6}>
-                        <p>
-                          <select>
-                            <option data-display="Select">1 luggage</option>
-                            <option>2 luggage</option>
-                            <option>3 luggage</option>
-                            <option>4(+) luggage</option>
-                          </select>
-                        </p>
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col md={6}>
-                        <p>
-                          <DatePickerComponent
-                            id="datepicker"
-                            placeholder={t("journey_date")}
-                          ></DatePickerComponent>
-                        </p>
-                      </Col>
-                      <Col md={6}>
-                        <p>
-                          <TimePickerComponent
-                            id="timepicker"
-                            placeholder={t("journey_time")}
-                          ></TimePickerComponent>
-                        </p>
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col md={12}>
-                        <p>
-                          <textarea
-                            placeholder="Special Requests"
-                            defaultValue={""}
-                          />
-                        </p>
-                      </Col>
-                    </Row>
-                  </form>
+                  <Col lg={12}>
+                    <div className="booking-right">
+                      <h3>{t("car_booking.payment_method")}</h3>
+                      <div className="gauto-payment">
+                        <div className="payment">
+                          <p>Please enter your debit/credit card details below:</p>
+                          {/* <input type="radio" id="s-option" name="selector" /> */}
+                          {/* <label htmlFor="s-option">
+                            {t("car_booking.credit_card")}
+                          </label> */}
+                          {/* <div className="check">
+                            <div className="inside" />
+                          </div> */}
+                          <img src={image} alt="credit card" />
+                        </div>
+                      </div>
+                      <div className="booking-form-left">
+                        <div className="single-booking">
+                          <form>
+                            <Row>
+                              <Col md={6}>
+                                <p>
+                                  <input
+                                    type="text"
+                                    placeholder="Cardholder Name"
+                                  />
+                                </p>
+                              </Col>
+                              <Col md={6}>
+                                <p>
+                                  <input
+                                    type="text"
+                                    placeholder="16 Digit Card Number"
+                                  />
+                                </p>
+                              </Col>
+                            </Row>
+                            <Row>
+                              <Col md={6}>
+                                <p>
+                                  <input
+                                    type="text"
+                                    placeholder="Expiry Date"
+                                  />
+                                </p>
+                              </Col>
+                              <Col md={6}>
+                                <p>
+                                  <input
+                                    type="text"
+                                    placeholder="CVV"
+                                  />
+                                </p>
+                              </Col>
+                              <Col md={6}>
+                                <p>
+                                  <input
+                                    type="text"
+                                    placeholder="Postal Code/ZIP Code"
+                                  />
+                                </p>
+                              </Col>
+                            </Row>
+                          </form>
+                          <div style={{ marginTop: '2%' }} />
+                          <div className="payment">
+                            <p>
+                              Renter must be eligible to hire vehicle
+                              Renter meets the licence, documents, payment and age requirements to hire a vehicle.
+
+                              Renter understands reservation should be modified if requirements are not met in order to avoid cancellation fee.
+
+                              Please read the complete Pay Now Terms & Conditions for details.
+
+
+                              Renter must acknowledge refund policy when booking reservation
+                              Full refund if renter cancels 3 days or more before booking
+
+                              Fee charged if renter cancels less than 3 days
+
+                            </p>
+                            <p>
+                              <Checkbox checked={termsChecked} onChange={() => { setTermsChecked(!termsChecked) }} style={{ marginRight: '1%' }} />
+                              I have read and accept the <Link to={"/terms-and-conditions"}>terms and conditions </Link>.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="action-btn">
+                        <Link to="/" onClick={onClick} className="gauto-btn">
+                          {t("researve_now")}
+                        </Link>
+                      </div>
+                    </div>
+                  </Col>
                 </div>
               </div>
             </Col>
@@ -266,7 +286,7 @@ const CarBooking = (props) => {
                   <tbody>
                     <tr>
                       <td>Pickup location</td>
-                      <td>XXX</td>
+                      <td>{props.pickUpLocation}</td>
                     </tr>
                     <tr>
                       <td>Dropoff location</td>
@@ -279,6 +299,14 @@ const CarBooking = (props) => {
                     <tr>
                       <td>Dropoff date</td>
                       <td>{moment(props.rental.endDate).format("MM/DD/YYYY")}</td>
+                    </tr>
+                    <tr>
+                      <td>Driver minimum age</td>
+                      <td>{props.rental.driverMinimumAge}</td>
+                    </tr>
+                    <tr>
+                      <td>Rental period</td>
+                      <td>{props.rental.durationInDays} days</td>
                     </tr>
                   </tbody>
                 </table>
@@ -402,112 +430,6 @@ const CarBooking = (props) => {
                     </tr>
                   </tbody>
                 </table>
-              </div>
-            </Col>
-            <Col lg={8}>
-              <div className="booking-right">
-                <h3>{t("car_booking.payment_method")}</h3>
-                <div className="gauto-payment clearfix">
-                  <div className="payment">
-                    <p>{t("car_booking.payment_text")}</p>
-                  </div>
-                  {/* <div className="payment">
-                    <input type="radio" id="f-option" name="selector" />
-                    <label htmlFor="f-option">
-                      {t("car_booking.check_payment")}
-                    </label>
-                    <div className="check">
-                      <div className="inside" />
-                    </div>
-                  </div> */}
-                  <div className="payment">
-                    <input type="radio" id="s-option" name="selector" />
-                    <label htmlFor="s-option">
-                      {t("car_booking.credit_card")}
-                    </label>
-                    <div className="check">
-                      <div className="inside" />
-                    </div>
-                    <img src={img2} alt="credit card" />
-                  </div>
-                  {/* <div className="payment">
-                    <input type="radio" id="t-option" name="selector" />
-                    <label htmlFor="t-option">Paypal</label>
-                    <div className="check">
-                      <div className="inside" />
-                    </div>
-                    <img src={img3} alt="credit card" />
-                  </div> */}
-                </div>
-                <div className="booking-form-left">
-                  <div className="single-booking">
-                    <form>
-                      <Row>
-                        <Col md={6}>
-                          <p>
-                            <input
-                              type="text"
-                              placeholder="Cardholder Name"
-                            />
-                          </p>
-                        </Col>
-                        <Col md={6}>
-                          <p>
-                            <input
-                              type="text"
-                              placeholder="16 Digit Card Number"
-                            />
-                          </p>
-                        </Col>
-                      </Row>
-                      <Row>
-                        <Col md={6}>
-                          <p>
-                            <input
-                              type="text"
-                              placeholder="Expiry Date"
-                            />
-                          </p>
-                        </Col>
-                        <Col md={6}>
-                          <p>
-                            <input
-                              type="text"
-                              placeholder="CVV"
-                            />
-                          </p>
-                        </Col>
-                      </Row>
-                    </form>
-                    <div style={{ marginTop: '2%' }} />
-                    <div className="payment">
-                      <p>
-                        Renter must be eligible to hire vehicle
-                        Renter meets the licence, documents, payment and age requirements to hire a vehicle.
-
-                        Renter understands reservation should be modified if requirements are not met in order to avoid cancellation fee.
-
-                        Please read the complete Pay Now Terms & Conditions for details.
-
-
-                        Renter must acknowledge refund policy when booking reservation
-                        Full refund if renter cancels 3 days or more before booking
-
-                        Fee charged if renter cancels less than 3 days
-
-                      </p>
-                      <p>
-                        <Checkbox checked={termsChecked} onChange={() => { setTermsChecked(!termsChecked) }} style={{ marginRight: '1%' }} />
-                        I have read and accept the <Link to={"/terms-and-conditions"}>terms and conditions </Link>.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="action-btn">
-                  <Link to="/" onClick={onClick} className="gauto-btn">
-                    {t("researve_now")}
-                  </Link>
-                </div>
               </div>
             </Col>
           </Row>

@@ -19,13 +19,13 @@ const HomePage = () => {
       <Hero />
       <FindCar />
       <About />
-      <Service />
-      <Promo />
-      <HotOffers />
-      <Testimonial />
-      <Team />
+      {/* <Service /> */}
+      {/* <Promo /> */}
+      {/* <HotOffers /> */}
+      {/* <Testimonial /> */}
+      {/* <Team /> */}
       <Help />
-      <Blog />
+      {/* <Blog /> */}
       <Footer />
     </Fragment>
   );

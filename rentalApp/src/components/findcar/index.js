@@ -33,7 +33,7 @@ const FindCar = (props) => {
   };
 
   const [location, setLocation] = useState({ pickup: '', dropoff: '' })
-  const [carOption, setCarOption] = useState('mini')
+  const [carOption, setCarOption] = useState('all')
   const [startDate, setStartDate] = useState(new Date())
   const [endDate, setEndDate] = useState(new Date())
   const [differentLocation, setDifferentLocation] = useState(false)
@@ -220,11 +220,8 @@ const FindCar = (props) => {
                   <div className="find-form">
                     <form onSubmit={SubmitHandler}>
 
-                      <Row>
-                        <Checkbox toggle checked={differentLocation} onChange={() => setDifferentLocation(!differentLocation)} />
-                        <span>
-                          Return to a different location
-                        </span>
+                      <Row className="parent-block">
+                        <Checkbox label="Return to a different location" toggle checked={differentLocation} onChange={() => setDifferentLocation(!differentLocation)} />
                       </Row>
 
                       <Row>
@@ -287,6 +284,7 @@ const FindCar = (props) => {
                         <Col md={4}>
                           <p>
                             <select onChange={(e) => setCarOption(e.target.value)} placeholder="Car Size">
+                              <option value='all'>All</option>
                               <option value='mini'>Mini</option>
                               <option value='small'>Small</option>
                               <option value='medium'>Medium</option>

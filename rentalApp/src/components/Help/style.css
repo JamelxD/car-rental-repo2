@@ -1,7 +1,7 @@
 /* ===================== HELP ======================*/
 
 .call-box {
-  background: url(../../img/footer-bg.jpg) no-repeat scroll 0 0 / cover;
+  background: url(../images/photographing-car-lights-at-night-4-1200x675-cropped.jpg) no-repeat scroll 0 0 / cover;
   text-align: center;
   border-radius: 5px;
   position: relative;
@@ -14,7 +14,7 @@
   margin: 0 auto;
 }
 
-.call-box:after {
+gauto-call-area .call-box:after {
   position: absolute;
   content: "";
   top: 0;
@@ -95,31 +95,37 @@
     width: 80%;
   }
 }
+
 @media (min-width: 768px) and (max-width: 991px) {
   .call-box-inner {
     width: 100%;
     padding: 0 15px;
   }
+
   .call-box h2 {
     font-size: 28px;
     line-height: 40px;
   }
 }
+
 @media (max-width: 767px) {
   .call-box-inner {
     width: 100%;
     padding: 0 15px;
   }
+
   .call-box h2 {
     font-size: 28px;
     line-height: 40px;
   }
 }
+
 @media only screen and (min-width: 480px) and (max-width: 767px) {
   .call-box h2 {
     font-size: 28px;
     line-height: 40px;
   }
+
   .call-box-inner {
     width: 100%;
     padding: 0 15px;

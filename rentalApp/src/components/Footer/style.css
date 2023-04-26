@@ -1,5 +1,6 @@
 /* ===================== FOOTER ======================*/
 .footer-top-area {
+  margin-top: 2%;
   padding: 50px 0;
   background: url(../../img/footer-bg.jpg) no-repeat scroll 0 0 / cover;
   position: relative;
@@ -46,8 +47,8 @@
   position: relative;
 }
 
-.single-footer > h3:after,
-.footer-address > h3:after {
+.single-footer>h3:after,
+.footer-address>h3:after {
   position: absolute;
   content: "";
   bottom: -13px;
@@ -193,36 +194,45 @@
   .single-footer {
     margin: 20px auto 20px;
   }
+
   .newsletter_box form {
     width: 100%;
   }
 }
+
 @media (max-width: 767px) {
   .single-footer {
     margin: 20px 0;
   }
+
   .copyright {
     text-align: center;
     margin-bottom: 10px;
   }
+
   .footer-social ul {
     text-align: center;
   }
+
   .newsletter_box form {
     width: 100%;
   }
 }
+
 @media only screen and (min-width: 480px) and (max-width: 767px) {
   .single-footer {
     margin: 20px 0;
   }
+
   .copyright {
     text-align: center;
     margin-bottom: 10px;
   }
+
   .footer-social ul {
     text-align: center;
   }
+
   .newsletter_box form {
     width: 100%;
   }

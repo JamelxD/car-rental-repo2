@@ -35,7 +35,15 @@ const CarList = (props) => {
 
   var properties = {
     allCars: 'active',
-    automatic: ''
+    automatic: '',
+    manual: '',
+    unlimitedMiles: '',
+    limitedMiles: '',
+    mini: '',
+    small: '',
+    medium: '',
+    large: '',
+    SUV: ''
   }
 
   const [condition, setCondition] = useState('');
@@ -54,7 +62,7 @@ const CarList = (props) => {
 
 
   // console.log(properties)
-  console.log(property.property)
+  console.log(property)
 
 
 
@@ -72,100 +80,105 @@ const CarList = (props) => {
     <section className="gauto-car-listing section_70">
       <Container>
         <Row>
-          <Col lg={4}>
+          <Col lg={3}>
             <div className="car-list-left">
               <div className="sidebar-widget">
-                <form onSubmit={SubmitHandler}>
-                  <p>
-                    <input type="text" placeholder={t("from_address")} />
-                  </p>
-                  <p>
-                    <input type="text" placeholder={t("to_address")} />
-                  </p>
-                  <p>
-                    <select>
-                      <option>{t("ac_car")}</option>
-                      <option>{t("non_ac_car")}</option>
-                    </select>
-                  </p>
-                  <p>
-                    <DatePickerComponent
-                      id="datepicker"
-                      placeholder={t("journey_date")}
-                    ></DatePickerComponent>
-                  </p>
-                  <p>
-                    <TimePickerComponent
-                      id="timepicker"
-                      placeholder={t("journey_time")}
-                    ></TimePickerComponent>
-                  </p>
-                  <p>
-                    <button type="submit" className="gauto-theme-btn">
-                      {t("find_car")}
-                    </button>
-                  </p>
-                </form>
-              </div>
-              <div className="sidebar-widget">
                 <ul className="service-menu">
-                  <li className={property.property.allCars}>
-                    <Link to='#' onClick={() => { setCondition(''); setProperty({ property: properties }) }}>
-                      All Cars<span>(2376)</span>
-                    </Link>
-                  </li>
-                  <li className={property.property.automatic}>
-                    <Link onClick={() => {
-                      setCondition({ type: 'gearbox', opt: 'auto' }); setProperty({
-                        property: {
-                          allCars: '',
-                          automatic: 'active'
-                        }
+                  <li className={property.allCars}>
+                    <Link to='#' onClick={() => {
+                      setCondition(''); setProperty({
+                        allCars: 'active',
                       })
                     }}>
-                      Automatic Gearbox<span>(2376)</span>
+                      All Cars
                     </Link>
                   </li>
-                  <li>
-                    <Link to="#" onClick={onClick}>
-                      Toyota<span>(237)</span>
+                  <li className={property.automatic}>
+                    <Link onClick={() => {
+                      setCondition({ type: 'gearbox', opt: 'auto' }); setProperty({
+                        automatic: 'active'
+                      })
+                    }}>
+                      Automatic Gearbox
                     </Link>
                   </li>
-                  <li>
-                    <Link to="/" onClick={onClick}>
-                      nissan<span>(123)</span>
+                  <li className={property.manual}>
+                    <Link onClick={() => {
+                      setCondition({ type: 'gearbox', opt: 'manual' }); setProperty({
+                        manual: 'active'
+                      })
+                    }}>
+                      Manual Gearbox
                     </Link>
                   </li>
-                  <li>
-                    <Link to="/" onClick={onClick}>
-                      mercedes<span>(23)</span>
+                  <li className={property.unlimitedMiles}>
+                    <Link onClick={() => {
+                      setCondition({ type: 'unlimitedDistance', opt: true }); setProperty({
+                        unlimitedMiles: 'active'
+                      })
+                    }}>
+                      Unlimited Miles
                     </Link>
                   </li>
-                  <li>
-                    <Link to="/" onClick={onClick}>
-                      hyundai<span>(467)</span>
+                  <li className={property.limitedMiles}>
+                    <Link onClick={() => {
+                      setCondition({ type: 'unlimitedDistance', opt: false }); setProperty({
+                        limitedMiles: 'active'
+                      })
+                    }}>
+                      Limited Miles
                     </Link>
                   </li>
-                  <li>
-                    <Link to="/" onClick={onClick}>
-                      Audi<span>(123)</span>
+                  <li className={property.mini}>
+                    <Link onClick={() => {
+                      setCondition({ type: 'carGroup', opt: 'MINI' }); setProperty({
+                        mini: 'active'
+                      })
+                    }}>
+                      Mini Cars
                     </Link>
                   </li>
-                  <li>
-                    <Link to="/" onClick={onClick}>
-                      datsun<span>(23)</span>
+                  <li className={property.small}>
+                    <Link onClick={() => {
+                      setCondition({ type: 'carGroup', opt: 'SMALL' }); setProperty({
+                        small: 'active'
+                      })
+                    }}>
+                      Small Cars
                     </Link>
                   </li>
-                  <li>
-                    <Link to="/" onClick={onClick}>
-                      Mitsubishi<span>(223)</span>
+                  <li className={property.medium}>
+                    <Link onClick={() => {
+                      setCondition({ type: 'carGroup', opt: 'MEDIUM' }); setProperty({
+                        medium: 'active'
+                      })
+                    }}>
+                      Medium Cars
+                    </Link>
+                  </li>
+                  <li className={property.large}>
+                    <Link onClick={() => {
+                      setCondition({ type: 'carGroup', opt: 'LARGE' }); setProperty({
+                        large: 'active'
+                      })
+                    }}>
+                      Large Cars
+                    </Link>
+                  </li>
+                  <li className={property.SUV}>
+                    <Link onClick={() => {
+                      setCondition({ type: 'carGroup', opt: 'SUV' }); setProperty({
+                        SUV: 'active'
+                      })
+                    }}>
+                      SUV
                     </Link>
                   </li>
                 </ul>
               </div>
             </div>
           </Col>
-          <Col lg={8}>
+          <Col lg={9}>
             <div className="car-listing-right">
               <div className="car-grid-list">
                 <Row>
@@ -245,7 +258,7 @@ const CarList = (props) => {
                   )}
                 </Row>
               </div>
-              <div className="pagination-box-row">
+              {/* <div className="pagination-box-row">
                 <p>Page 1 of 6</p>
                 <ul className="pagination">
                   <li className="active">
@@ -275,7 +288,7 @@ const CarList = (props) => {
                     </Link>
                   </li>
                 </ul>
-              </div>
+              </div> */}
             </div>
           </Col>
         </Row>

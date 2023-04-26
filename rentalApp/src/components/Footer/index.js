@@ -34,7 +34,7 @@ const Footer = () => {
       <div className="footer-top-area">
         <Container>
           <Row>
-            <Col lg={4}>
+            <Col lg={6}>
               <div className="single-footer">
                 <div className="footer-logo">
                   <Link to="/">
@@ -59,7 +59,7 @@ const Footer = () => {
                 </div>
               </div>
             </Col>
-            <Col lg={4}>
+            <Col lg={6}>
               <div className="single-footer quick_links">
                 <h3>{t("footer.quick_links")}</h3>
                 <ul className="quick-links">
@@ -113,7 +113,7 @@ const Footer = () => {
                 </form>
               </div>
             </Col>
-            <Col lg={4}>
+            {/* <Col lg={4}>
               <div className="single-footer">
                 <h3> {t("footer.recent_post")}</h3>
                 <ul>
@@ -170,7 +170,7 @@ const Footer = () => {
                   </li>
                 </ul>
               </div>
-            </Col>
+            </Col> */}
           </Row>
         </Container>
       </div>
@@ -180,14 +180,11 @@ const Footer = () => {
             <Col md={6}>
               <div className="copyright">
                 <p>
-                  Design With <FaHeart /> from{" "}
-                  <Link to="/" onClick={onClick}>
-                    Themescare
-                  </Link>
+                  © Galactic Rentals Inc, All Rights Reserved
                 </p>
               </div>
             </Col>
-            <Col md={6}>
+            {/* <Col md={6}>
               <div className="footer-social">
                 <ul>
                   <li>
@@ -212,11 +209,11 @@ const Footer = () => {
                   </li>
                 </ul>
               </div>
-            </Col>
+            </Col> */}
           </Row>
         </Container>
       </div>
-    </footer>
+    </footer >
   );
 };
 
