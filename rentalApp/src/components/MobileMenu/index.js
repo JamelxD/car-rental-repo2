@@ -24,7 +24,7 @@ const menus = [
     submenu: [
       {
         id: 31,
-        title: "All Services",
+        title: "T&CS",
         link: "/service",
       },
       {

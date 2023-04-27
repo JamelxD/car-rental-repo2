@@ -95,46 +95,11 @@ const Contact = () => {
                 </p>
                 <div className="single-contact-btn">
                   <h4>{t("contact_page.info_email")}</h4>
-                  <a href="mailto:info@example.com">info@example.com</a>
+                  <a href="mailto:info@example.com">support@galacticrental.com</a>
                 </div>
                 <div className="single-contact-btn">
                   <h4>{t("contact_page.info_call")}</h4>
                   <a href="tel:123456789">+(09)-2134-76894-9</a>
-                </div>
-                <div className="social-links-contact">
-                  <h4>{t("contact_page.info_follow")}</h4>
-                  <ul>
-                    <li>
-                      <Link to="/" onClick={onClick}>
-                        <FaFacebook />
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/" onClick={onClick}>
-                        <FaTwitter />
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/" onClick={onClick}>
-                        <FaLinkedin />
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/" onClick={onClick}>
-                        <FaPinterest />
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/" onClick={onClick}>
-                        <FaSkype />
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/" onClick={onClick}>
-                        <FaVimeo />
-                      </Link>
-                    </li>
-                  </ul>
                 </div>
               </div>
             </div>
