@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 
 import Header from "../../components/header";
 import PageTitle from "../../components/PageTitle";
-import ServiceList from "../../components/ServiceList";
+import ServiceList from "../TermsConditionPage";
 import Footer from "../../components/Footer";
 
 const ServicePage = () => {

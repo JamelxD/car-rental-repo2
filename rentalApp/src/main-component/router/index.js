@@ -18,6 +18,9 @@ import ErrorPage from "../ErrorPage";
 import LoginPage from "../LoginPage";
 import RegisterPage from "../RegisterPage";
 import ContactPage from "../ContactPage";
+import TermsConditions from "../TermsConditionPage";
+import PrivacyPolicy from "../PrivacyPolicy";
+import CookiePage from "../CookiePage";
 
 const AllRoute = () => {
   return (
@@ -42,6 +45,9 @@ const AllRoute = () => {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/service" element={<TermsConditions />} />
+          <Route path="/service-single" element={<PrivacyPolicy />} />
+          <Route path="/cookie" element={<CookiePage />} />
           <Route element={<ErrorPage />} />
         </Routes>
       </Router>

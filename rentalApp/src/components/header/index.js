@@ -157,12 +157,15 @@ const Header = () => {
                       <ul>
                         <li>
                           <Link to="/service">
-                            {t("header-navigation.all_service")}
+                            {t("header-navigation.terms_conditions")}
                           </Link>
                         </li>
                         <li>
                           <Link to="/service-single">
-                            {t("header-navigation.service_details")}
+                            {t("header-navigation.privacy_policy")}
+                          </Link>
+                          <Link to="/cookie">
+                            {t("header-navigation.cookie_policy")}
                           </Link>
                         </li>
                       </ul>
@@ -249,6 +252,16 @@ const Header = () => {
                     <li>
                       <Link to="/contact">
                         {t("header-navigation.contact")}
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to="/service">
+                        {t("header-navigation.terms_conditions")}
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to="/service-single">
+                        {t("header-navigation.privacy_policy")}
                       </Link>
                     </li>
                   </ul>
