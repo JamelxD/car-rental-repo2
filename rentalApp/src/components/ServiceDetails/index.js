@@ -57,7 +57,7 @@ const ServiceDetails = (props) => {
                 Upgrades incur additional costs
               </p>
               <div className="service-accordion" id="accordion">
-                <h3>{t("service_details_page.faq_text")}</h3>
+                {/* <h3>{t("service_details_page.faq_text")}</h3> */}
                 <Accordion>
                   <Accordion.Item eventKey="0" className="single_faq_accordian">
                     <Accordion.Header className="faq_accordian_header">
@@ -287,8 +287,8 @@ const ServiceDetails = (props) => {
                 You have added:
               </p>
               <div className="simple-text">
-                {props.mileage === 'standard-mileage' ? <div><Icon name='minus' />Standard Mileage: Up to 300 miles allowance for your rental period, additional miles will incur extra costs.</div> : 'long-mileage' ? <div><Icon name='minus' />Long Distance: Unlimited miles for the duration of your rental period.</div> : <div><Icon name='minus' />Basic Mileage: Up to 600 miles allowance for your rental period, additional miles will incur extra costs.</div>}
-                {props.protection === 'standard-protection' ? <div><Icon name='minus' />Standard Protection: Cover for damage to tires, windshield, windows and theft cover.</div> : 'full-protection' ? <div><Icon name='minus' />Full Protection:  Cover for damage to tires, windshield, windows, interior, theft cover and roadside assistance.</div> : <div><Icon name='minus' />Basic Protection: Damage and theft cover up to £1,000,000, cover for tire, windshield and window damage.</div>}
+                {props.mileage === 'basic-mileage' ? <div><Icon name='minus' />Basic Mileage: Up to 600 miles allowance for your rental period, additional miles will incur extra costs.</div> : props.mileage === 'long-mileage' ? <div><Icon name='minus' />Long Distance: Unlimited miles for the duration of your rental period.</div> : props.mileage === "standard-mileage" ? <div><Icon name='minus' />Standard Mileage: Up to 300 miles allowance for your rental period, additional miles will incur extra costs.</div> : null}
+                {props.protection === 'standard-protection' ? <div><Icon name='minus' />Standard Protection: Cover for damage to tires, windshield, windows and theft cover.</div> : props.protection === 'full-protection' ? <div><Icon name='minus' />Full Protection:  Cover for damage to tires, windshield, windows, interior, theft cover and roadside assistance.</div> : props.protection === 'basic-protection' ? <div><Icon name='minus' />Basic Protection: Damage and theft cover up to £1,000,000, cover for tire, windshield and window damage.</div> : <></>}
                 {props.additionalDrivers > 0 ? <div><Icon name='minus' />Additional Drivers: {props.additionalDrivers}</div> : <div />}
                 {props.gps === true ? <div><Icon name='minus' />GPS Guaranteed for this vehicle</div> : <div />}
                 {props.roadsideAssistance === true ? <div><Icon name='minus' />24/7 Roadside assistance and breakdown cover</div> : <div />}

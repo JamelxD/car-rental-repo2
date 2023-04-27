@@ -36,45 +36,36 @@ const ProductDetails = () => {
             </Col>
             <Col lg={6} md={6}>
               <div className="product-details-text">
-                <h3>car disk break</h3>
-                <div className="car-rating">
-                  <ul>
-                    <li>
-                      <FaStar />
-                    </li>
-                    <li>
-                      <FaStar />
-                    </li>
-                    <li>
-                      <FaStar />
-                    </li>
-                    <li>
-                      <FaStar />
-                    </li>
-                    <li>
-                      <FaStarHalf />
-                    </li>
-                  </ul>
-                  <p>(123 {t("rating")})</p>
-                </div>
+                <h3>We've got your booking!</h3>
                 <div className="single-pro-page-para">
                   <p>
-                    Cursus mal suada faci lisis. Lorem ipsum dolor.ipsum dolor
-                    sit amet, cons ectetur elit. Ves tibulum nec odios Suspe
-                    ndisse cursus mal suada faci lisis. Lorem ipsum dolor.ipsum
-                    dolor sit amet,.Lorem ipsum dolor.ipsum dolor sit amet, cons
-                    ectetur elit. Ves tibulum nec odios
+                    You will be receiving an email confirmation shortly.
                   </p>
                 </div>
                 <div className="single-shop-price">
                   <p>
-                    {t("price")}:<span>$180</span>
+                    Confirmation #: XXX
                   </p>
-                  <p className="qnt">
-                    {t("quantity")}:<input defaultValue={1} type="number" />
+                  <p>
+                    Vehicle:
+                  </p>
+                  <p style={{ marginLeft: '2%' }}>
+                    {'\t'} Upgrade 1
+                  </p>
+                  <p>
+                    Pickup Location:
+                  </p>
+                  <p>
+                    Pickup Location:
+                  </p>
+                  <p>
+                    Pickup Location:
+                  </p>
+                  <p>
+                    Pickup Location:
                   </p>
                 </div>
-                <div className="single-shop-page-btn">
+                {/* <div className="single-shop-page-btn">
                   <Link to="/cart" className="gauto-btn">
                     <FaShoppingCart /> {t("add_to_cart")}
                   </Link>
@@ -95,13 +86,13 @@ const ProductDetails = () => {
                       </Link>
                     </li>
                   </ul>
-                </div>
+                </div> */}
               </div>
             </Col>
           </Row>
         </Container>
       </section>
-      <section className="gauto-related-products section_b_70">
+      {/* <section className="gauto-related-products section_b_70">
         <Container>
           <Row>
             <Col md={12}>
@@ -202,7 +193,7 @@ const ProductDetails = () => {
             </Col>
           </Row>
         </Container>
-      </section>
+      </section> */}
     </>
   );
 };

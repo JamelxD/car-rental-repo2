@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { Container, Row, Col } from "react-bootstrap";
 import { connect } from "react-redux";
 import { Icon, Image, Segment, Chec } from 'semantic-ui-react';
-import { storeRental } from "../../redux/actions/storeRentalActions";
+import { storePlate, storeRental } from "../../redux/actions/storeRentalActions";
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
@@ -63,6 +63,12 @@ const CarList = (props) => {
 
   // console.log(properties)
   console.log(property)
+
+  const min = 2017;
+  const max = 2023;
+  // const rand = min + Math.random() * (max - min);
+
+  var plate;
 
 
 
@@ -201,7 +207,7 @@ const CarList = (props) => {
                                 <ul>
                                   <li>
                                     <FaCar />
-                                    {t("model")}:2017
+                                    {t("model")}: {plate = Math.round(min + Math.random() * (max - min)).toString()}
                                   </li>
                                   <li>
                                     <FaCogs />
@@ -231,7 +237,7 @@ const CarList = (props) => {
                                   </li>
                                 </ul>
                                 <div className="offer-action">
-                                  <Link to="/upgrades" className="offer-btn-1" onClick={() => props.storeRental(item)}>
+                                  <Link to="/upgrades" className="offer-btn-1" onClick={() => { props.storeRental(item); props.storePlate(plate) }}>
                                     {t("rent_car")}
                                   </Link>
                                 </div>
@@ -303,7 +309,8 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    storeRental: (rental) => { dispatch(storeRental(rental)) }
+    storeRental: (rental) => { dispatch(storeRental(rental)) },
+    storePlate: (plate) => { dispatch(storePlate(plate)) },
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(CarList)

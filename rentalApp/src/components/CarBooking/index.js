@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   DatePickerComponent,
   TimePickerComponent,
@@ -32,7 +32,22 @@ import "./style.css";
 
 const CarBooking = (props) => {
   console.log(props)
-  console.log(props.additionalDrivers)
+  const navigate = useNavigate();
+
+
+
+  const [firstName, setFirstName] = useState(' ')
+  const [lastName, setLastName] = useState(' ')
+  const [emailAddress, setEmailAddress] = useState(' ')
+  const [contactNumber, setContactNumber] = useState(' ')
+
+  const [cardholderName, setCardholderName] = useState(' ')
+  const [cardNumber, setCardNumber] = useState(' ')
+  const [expiry, setExpiry] = useState(' ')
+  const [cvv, setCvv] = useState(' ')
+  const [postcode, setPostcode] = useState(' ')
+
+  const ccRegex = "/^(?:4[0-9]{12}(?:[0-9]{3})?|[25][1-7][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$"
 
   const { t } = useTranslation();
 
@@ -40,9 +55,68 @@ const CarBooking = (props) => {
     e.preventDefault();
   };
 
+  async function sleep(msec) {
+    return new Promise(resolve => setTimeout(resolve, msec));
+  }
+
   const onClick = (e) => {
     e.preventDefault();
+
+    if (firstName === '') {
+      alert('Please complete the checkout form')
+    }
+
+    if (lastName === '') {
+      alert('Please complete the checkout form')
+    }
+
+    if (emailAddress === '') {
+      alert('Please complete the checkout form')
+    }
+
+    if (contactNumber === '') {
+      alert('Please complete the checkout form')
+    }
+
+    if (cardholderName === '') {
+      alert('Please complete the checkout form')
+    }
+
+    if (cardNumber === '' || !cardNumber.match(ccRegex)) {
+      alert('Please complete the checkout form')
+    }
+
+    if (expiry === '') {
+      alert('Please complete the checkout form')
+    }
+
+    if (cvv === '') {
+      alert('Please complete the checkout form')
+    }
+
+    if (postcode === '') {
+      alert('Please complete the checkout form')
+    }
+
+    validateForm();
   };
+
+
+  const validateForm = async () => {
+    if (firstName.length > 0,
+      lastName.length > 0,
+      emailAddress.length > 0,
+      contactNumber.length > 0,
+      cardNumber.length > 0,
+      expiry.length > 0,
+      cvv.length > 0,
+      postcode.length > 0) {
+      await sleep(5000);
+      alert("Your payment could not be processed. Please try another payment method or try again later.")
+    } else {
+
+    }
+  }
 
   const min = 2017;
   const max = 2023;
@@ -97,7 +171,7 @@ const CarBooking = (props) => {
                 <div className="car-features clearfix">
                   <ul>
                     <li>
-                      <FaCar /> {t("model")}: {Math.round(rand)}
+                      <FaCar /> {t("model")}: {props.plate}
                     </li>
                     <li>
                       <FaCogs /> {props.rental.gearbox === 'manual' ? 'Manual' : 'Automatic'}
@@ -106,23 +180,23 @@ const CarBooking = (props) => {
                       <FaTachometerAlt /> {props.rental.type}
                     </li>
                   </ul>
-                  <ul>
+                  {/* <ul>
                     <li>
                       <FaEye /> GPS Navigation
                     </li>
                     <li>
-                      <FaLuggageCart /> 2 lugg
+                      <FaLuggageCart /> 3 luggages
                     </li>
                     <li>
                       <FaKey /> Remote Keyless
                     </li>
-                  </ul>
+                  </ul> */}
                   <ul>
                     <li>
                       <FaCar /> Number of seats: {props.rental.seatNumber}
                     </li>
                     <li>
-                      <FaTachometerAlt /> Car band: {props.eliteCategory === 'true' ? 'Luxury band' : 'Normal band'}
+                      <FaTachometerAlt /> Car band: {props.eliteCategory === 'true' ? 'Luxury Band' : 'Standard Band'}
                     </li>
                   </ul>
                 </div>
@@ -142,17 +216,31 @@ const CarBooking = (props) => {
                     <Row>
                       <Col lg={6} md={7}>
                         <p>
+                          {firstName === '' ?
+                            <span style={{ color: 'red' }}>This field is required</span>
+                            : <></>
+                          }
                           <input
+                            style={firstName === '' ? { border: '2px solid #ec3323' } : null}
                             type="text"
                             placeholder="First Name"
+                            value={firstName.trim()}
+                            onChange={(e) => setFirstName(e.target.value)}
                           />
                         </p>
                       </Col>
                       <Col md={6}>
                         <p>
+                          {lastName === '' ?
+                            <span style={{ color: 'red' }}>This field is required</span>
+                            : <></>
+                          }
                           <input
+                            style={lastName === '' ? { border: '2px solid #ec3323' } : null}
                             type="text"
                             placeholder="Last Name"
+                            value={lastName.trim()}
+                            onChange={(e) => setLastName(e.target.value)}
                           />
                         </p>
                       </Col>
@@ -160,17 +248,31 @@ const CarBooking = (props) => {
                     <Row>
                       <Col md={6}>
                         <p>
+                          {emailAddress === '' ?
+                            <span style={{ color: 'red' }}>This field is required</span>
+                            : <></>
+                          }
                           <input
+                            style={emailAddress === '' ? { border: '2px solid #ec3323' } : null}
                             type="email"
                             placeholder="Email Address"
+                            value={emailAddress.trim()}
+                            onChange={(e) => setEmailAddress(e.target.value)}
                           />
                         </p>
                       </Col>
                       <Col md={6}>
                         <p>
+                          {contactNumber === '' ?
+                            <span style={{ color: 'red' }}>This field is required</span>
+                            : <></>
+                          }
                           <input
-                            type="phone"
+                            style={contactNumber === '' ? { border: '2px solid #ec3323' } : null}
+                            type="tel"
                             placeholder="Contact Number"
+                            value={contactNumber.trim()}
+                            onChange={(e) => setContactNumber(e.target.value)}
                           />
                         </p>
                       </Col>
@@ -200,17 +302,31 @@ const CarBooking = (props) => {
                             <Row>
                               <Col md={6}>
                                 <p>
+                                  {cardholderName === '' ?
+                                    <span style={{ color: 'red' }}>This field is required</span>
+                                    : <></>
+                                  }
                                   <input
+                                    style={cardholderName === '' ? { border: '2px solid #ec3323' } : null}
                                     type="text"
                                     placeholder="Cardholder Name"
+                                    value={cardholderName.trim()}
+                                    onChange={(e) => setCardholderName(e.target.value)}
                                   />
                                 </p>
                               </Col>
                               <Col md={6}>
                                 <p>
+                                  {cardNumber === '' ?
+                                    <span style={{ color: 'red' }}>This field is required</span>
+                                    : <></>
+                                  }
                                   <input
+                                    style={cardNumber === '' ? { border: '2px solid #ec3323' } : null}
                                     type="text"
                                     placeholder="16 Digit Card Number"
+                                    value={cardNumber.trim()}
+                                    onChange={(e) => setCardNumber(e.target.value)}
                                   />
                                 </p>
                               </Col>
@@ -218,25 +334,47 @@ const CarBooking = (props) => {
                             <Row>
                               <Col md={6}>
                                 <p>
+                                  {expiry === '' ?
+                                    <span style={{ color: 'red' }}>This field is required</span>
+                                    : <></>
+                                  }
                                   <input
-                                    type="text"
+                                    style={expiry === '' ? { border: '2px solid #ec3323' } : null}
+                                    type="month"
                                     placeholder="Expiry Date"
+                                    value={expiry.trim()}
+                                    onChange={(e) => setExpiry(e.target.value)}
                                   />
                                 </p>
                               </Col>
                               <Col md={6}>
                                 <p>
+                                  {cvv === '' ?
+                                    <span style={{ color: 'red' }}>This field is required</span>
+                                    : <></>
+                                  }
                                   <input
+                                    style={cvv === '' ? { border: '2px solid #ec3323' } : null}
                                     type="text"
+                                    maxLength={4}
                                     placeholder="CVV"
+                                    value={cvv.trim()}
+                                    onChange={(e) => setCvv(e.target.value)}
                                   />
                                 </p>
                               </Col>
                               <Col md={6}>
                                 <p>
+                                  {postcode === '' ?
+                                    <span style={{ color: 'red' }}>This field is required</span>
+                                    : <></>
+                                  }
                                   <input
+                                    style={postcode === '' ? { border: '2px solid #ec3323' } : null}
                                     type="text"
                                     placeholder="Postal Code/ZIP Code"
+                                    value={postcode.trim()}
+                                    onChange={(e) => setPostcode(e.target.value)}
                                   />
                                 </p>
                               </Col>
@@ -268,7 +406,7 @@ const CarBooking = (props) => {
                       </div>
                       <div className="action-btn">
                         <Link to="/" onClick={onClick} className="gauto-btn">
-                          {t("researve_now")}
+                          Reserve Now
                         </Link>
                       </div>
                     </div>
@@ -290,7 +428,7 @@ const CarBooking = (props) => {
                     </tr>
                     <tr>
                       <td>Dropoff location</td>
-                      <td>{props.rental.agencyReturn.name}</td>
+                      <td>{props.dropOffLocation === '' ? <span>{props.pickUpLocation}</span> : <span>{props.dropOffLocation}</span>}</td>
                     </tr>
                     <tr>
                       <td>Pickup date</td>
@@ -332,15 +470,15 @@ const CarBooking = (props) => {
                           <td>Standard Mileage</td>
                           <td>£{Math.round(price * 0.05 * props.rental.durationInDays)}</td>
                         </>
-                        : "long-mileage" ?
+                        : props.upgrades.mileage === "long-mileage" ?
                           <>
                             <td>Unlimited Miles</td>
                             <td>£{Math.round(price * 0.09 * props.rental.durationInDays)}</td>
-                          </> :
-                          <>
-                            <td>Basic Mileage</td>
-                            <td>No added cost</td>
-                          </>}
+                          </> : props.upgrades.mileage === 'basic-mileage' ?
+                            <>
+                              <td>Basic Mileage</td>
+                              <td>No added cost</td>
+                            </> : null}
                     </tr>
                     <tr>
                       {props.upgrades.protection === 'standard-protection' ?
@@ -348,7 +486,7 @@ const CarBooking = (props) => {
                           <td>Standard Protection</td>
                           <td>£{Math.round(price * 0.07 * props.rental.durationInDays)}</td>
                         </>
-                        : 'full-protection' ?
+                        : props.upgrades.protection === 'full-protection' ?
                           <>
                             <td>Full Protection</td>
                             <td>£{Math.round(price * 0.11 * props.rental.durationInDays)}</td>
@@ -442,7 +580,9 @@ const mapStateToProps = (state) => {
   return {
     rental: state.storeRentalReducer.rental,
     upgrades: state.upgradesReducer,
-    pickUpLocation: state.locationReducer.pickupLocation
+    pickUpLocation: state.locationReducer.pickupLocation,
+    dropOffLocation: state.locationReducer.dropOffLocation,
+    plate: state.storeRentalReducer.plate,
   }
 }
 

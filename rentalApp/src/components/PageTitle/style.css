@@ -1,6 +1,6 @@
 /* ===================== PAGE TITLE ======================*/
 .gauto-breadcromb-area {
-  background: url(../../img/breadcromb.jpg) no-repeat fixed 0 0 / cover;
+  background: url(../images/Dory-Chamoun2-1024x575.jpg) no-repeat fixed 0 0 / cover;
   position: relative;
   z-index: 1;
 }
@@ -49,11 +49,13 @@
   fill: #ec3323;
   margin-right: 2px;
 }
+
 @media (max-width: 767px) {
   .breadcromb-box h3 {
     font-size: 30px;
   }
 }
+
 @media only screen and (min-width: 480px) and (max-width: 767px) {
   .breadcromb-box h3 {
     font-size: 30px;

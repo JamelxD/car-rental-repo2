@@ -9,7 +9,7 @@ import { storeCars } from '../../redux/actions/storeCarsActions';
 import { isLoading } from "../../redux/actions/isLoadingActions";
 import { Checkbox } from 'semantic-ui-react'
 import BeatLoader from 'react-spinners/BeatLoader'
-import { storePickupLocation } from "../../redux/actions/locationActions";
+import { storeDropoffLocation, storePickupLocation } from "../../redux/actions/locationActions";
 import usePlacesService from "react-google-autocomplete/lib/usePlacesAutocompleteService";
 
 import {
@@ -32,10 +32,12 @@ const FindCar = (props) => {
     e.preventDefault();
   };
 
+  var current = new Date();
+
   const [location, setLocation] = useState({ pickup: '', dropoff: '' })
   const [carOption, setCarOption] = useState('all')
-  const [startDate, setStartDate] = useState(new Date())
-  const [endDate, setEndDate] = useState(new Date())
+  const [startDate, setStartDate] = useState(moment(current.toString()).hours(8).add(1, "day").toISOString())
+  const [endDate, setEndDate] = useState(moment(current.toString()).hours(8).add(2, "day").toISOString())
   const [differentLocation, setDifferentLocation] = useState(false)
 
 
@@ -61,6 +63,7 @@ const FindCar = (props) => {
     try {
       props.isLoading(true)
       props.storePickupLocation(location.pickup)
+      props.storeDropoffLocation(location.dropoff)
       await getPickUpLatLong()
       await getDropOffLatLong()
       const res = await fetch('http://localhost:9000/api/getCars?' + new URLSearchParams({
@@ -109,6 +112,7 @@ const FindCar = (props) => {
     try {
       props.isLoading(true)
       props.storePickupLocation(location.pickup)
+      props.storeDropoffLocation('')
       await getPickUpLatLong()
       const res = await fetch('http://localhost:9000/api/getCars?' + new URLSearchParams({
         pickUpLat: pickUpLonglatRes[0].location.lat,
@@ -363,6 +367,7 @@ const mapDispatchToProps = (dispatch) => {
     storeCars: (carsArray) => { dispatch(storeCars(carsArray)) },
     isLoading: (boolean) => { dispatch(isLoading(boolean)) },
     storePickupLocation: (location) => { dispatch(storePickupLocation(location)) },
+    storeDropoffLocation: (location) => { dispatch(storeDropoffLocation(location)) },
   }
 }
 

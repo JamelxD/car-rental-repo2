@@ -12,10 +12,10 @@ const ProductSinglePage = () => {
   return (
     <Fragment>
       <Header />
-      <PageTitle
+      {/* <PageTitle
         pageTitle={t("header-navigation.product_details")}
         pagesub={t("header-navigation.product_details")}
-      />
+      /> */}
       <ProductDetails />
       <Footer />
     </Fragment>

@@ -4,3 +4,10 @@ export const storeRental = (car) => {
         payload: car
     }
 }
+
+export const storePlate = (plate) => {
+    return {
+        type: 'STORE_PLATE',
+        payload: plate
+    }
+}
