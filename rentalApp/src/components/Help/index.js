@@ -33,7 +33,7 @@ const Help = () => {
                   <div className="call-text">
                     <p>{t("need_any_help")}</p>
                     <h4>
-                      <a href="tel:4315292093">(431) 529 2093</a>
+                      <a href="tel:16614938483">+1 (661) 493 8483</a>
                     </h4>
                   </div>
                 </div>

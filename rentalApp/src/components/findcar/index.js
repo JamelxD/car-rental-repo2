@@ -145,6 +145,7 @@ const FindCar = (props) => {
       })
 
     } catch (error) {
+      console.log(error)
       props.isLoading(false)
       alert('No cars found')
     }
@@ -155,18 +156,19 @@ const FindCar = (props) => {
       const res = await fetch('http://localhost:9000/api/getLocation?' + new URLSearchParams({
         query: location.pickup
       }), {
-        method: 'get'
-      }, { mode: 'cors' })
+        method: 'get',
+      }, { mode: 'cors' },
+      )
         .then(async response => {
+          console.log(response.json())
           pickUpLonglatRes = (await response.json())
           console.log(pickUpLonglatRes)
           console.log(pickUpLonglatRes[0].location.lat)
           console.log(pickUpLonglatRes[0].location.lng)
           console.log(pickUpLonglatRes[0].name)
         })
-
     } catch (error) {
-
+      console.log(error)
     }
   }
 

@@ -57,7 +57,7 @@ const Header = (props) => {
             <Col md={6}>
               <div className="header-top-left">
                 <p>
-                  {t("need_help")} <FaPhoneAlt /> {t("call")}: +321 123 45 978
+                  {t("need_help")} <FaPhoneAlt /> {t("call")}: +1 (661) 493 8483
                 </p>
               </div>
             </Col>

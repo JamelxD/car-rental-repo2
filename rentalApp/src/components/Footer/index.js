@@ -54,7 +54,7 @@ const Footer = () => {
                     Truxtun Place, 5701 Truxtun Ave. Suite 220, 2nd Floor, Bakersfield, CA, 93309, USA
                   </p>
                   <ul>
-                    <li>{t("footer.phone")}: 326487652 </li>
+                    <li>{t("footer.phone")}: +1 (661) 493 8483 </li>
                     <li>{t("footer.email")}: help@galacticrental.com</li>
                   </ul>
                 </div>
