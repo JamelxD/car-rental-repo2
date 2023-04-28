@@ -34,7 +34,7 @@
 
 .slider-text h2 {
   color: #fff;
-  font-size: 65px;
+  font-size: 40px;
   font-weight: 500;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
   text-transform: capitalize;
@@ -62,38 +62,47 @@
   .slider-text h2 {
     font-size: 50px;
   }
+
   .gauto-main-slide {
     height: 460px;
   }
 }
+
 @media (max-width: 767px) {
   .slider-text {
     width: 100%;
     text-align: center;
     margin: 0 auto;
   }
+
   .slider-text p {
     font-size: 20px;
   }
+
   .slider-text h2 {
     font-size: 35px;
   }
+
   .gauto-main-slide {
     height: 380px;
   }
 }
+
 @media only screen and (min-width: 480px) and (max-width: 767px) {
   .slider-text {
     width: 100%;
     text-align: center;
     margin: 0 auto;
   }
+
   .slider-text p {
     font-size: 20px;
   }
+
   .slider-text h2 {
     font-size: 35px;
   }
+
   .gauto-main-slide {
     height: 380px;
   }

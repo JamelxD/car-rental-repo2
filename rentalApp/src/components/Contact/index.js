@@ -90,8 +90,8 @@ const Contact = () => {
               <h3>{t("contact_page.info_title")} </h3>
               <div className="contact-details">
                 <p>
-                  <i className="fa fa-map-marker" /> 125 Big fella St. Road, New
-                  York, Hi 5654775{" "}
+                  <i className="fa fa-map-marker" />
+                  Truxtun Place, 5701 Truxtun Ave. Suite 220, 2nd Floor, Bakersfield, CA, 93309, USA
                 </p>
                 <div className="single-contact-btn">
                   <h4>{t("contact_page.info_email")}</h4>

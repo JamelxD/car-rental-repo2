@@ -15,6 +15,8 @@ import logo from "../../img/footer-logo.png";
 import img1 from "../../img/post-thumb-3.jpg";
 import img2 from "../../img/post-thumb-2.jpg";
 import img3 from "../../img/post-thumb-1.jpg";
+import image from "../images/logo.png"
+
 
 import "./style.css";
 
@@ -38,28 +40,27 @@ const Footer = () => {
               <div className="single-footer">
                 <div className="footer-logo">
                   <Link to="/">
-                    <img src={logo} alt="footer-logo" />
+                    <img src={image} alt="footer-logo" />
                   </Link>
                 </div>
-                <p>
+                {/* <p>
                   sed do eiusmod tempor incididunt ut labore et dolore magna as
                   aliqua. Ut enim ad minim veniam, quis nostrud exercitation
                   ullamco.
-                </p>
+                </p> */}
                 <div className="footer-address">
-                  <h3>{t("footer.head_office")}</h3>
+                  {/* <h3>{t("footer.head_office")}</h3> */}
                   <p>
-                    125 Big fella St. Road, <span>New York, Hi 5654775</span>
+                    Truxtun Place, 5701 Truxtun Ave. Suite 220, 2nd Floor, Bakersfield, CA, 93309, USA
                   </p>
                   <ul>
                     <li>{t("footer.phone")}: 326487652 </li>
-                    <li>{t("footer.email")}: example@mail.com</li>
-                    <li>{t("footer.office_time")}: 9AM- 4PM</li>
+                    <li>{t("footer.email")}: help@galacticrental.com</li>
                   </ul>
                 </div>
               </div>
             </Col>
-            <Col lg={6}>
+            {/* <Col lg={6}>
               <div className="single-footer quick_links">
                 <h3>{t("footer.quick_links")}</h3>
                 <ul className="quick-links">
@@ -112,7 +113,7 @@ const Footer = () => {
                   </button>
                 </form>
               </div>
-            </Col>
+            </Col> */}
             {/* <Col lg={4}>
               <div className="single-footer">
                 <h3> {t("footer.recent_post")}</h3>
@@ -180,7 +181,7 @@ const Footer = () => {
             <Col md={6}>
               <div className="copyright">
                 <p>
-                  © Galactic Rentals Inc, All Rights Reserved
+                  © Galactic Rental LLC, All Rights Reserved
                 </p>
               </div>
             </Col>

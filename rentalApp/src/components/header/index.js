@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
+import { connect } from 'react-redux';
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
 import { Col, Container, Row, Dropdown } from "react-bootstrap";
@@ -11,12 +12,13 @@ import {
   FaGlobe,
 } from "react-icons/fa";
 import MobileMenu from "../../components/MobileMenu";
-
+import { loginUser } from "../../redux/actions/userActions";
 import Logo from "../../img/logo.png";
 import globe from "../../img/globe.png";
 import clock from "../../img/clock.png";
 import "flag-icon-css/css/flag-icons.min.css";
 import "./style.css";
+import image from "../images/logo.png"
 
 const languages = [
   {
@@ -36,7 +38,7 @@ const languages = [
   },
 ];
 
-const Header = () => {
+const Header = (props) => {
   const SubmitHandler = (e) => {
     e.preventDefault();
   };
@@ -60,7 +62,7 @@ const Header = () => {
               </div>
             </Col>
             <Col md={6}>
-              <div className="header-top-right">
+              {props.loggedIn === false ? <div className="header-top-right">
                 <Link to="/login">
                   <FaSignInAlt />
                   {t("login")}
@@ -69,28 +71,14 @@ const Header = () => {
                   <FaUserAlt />
                   {t("register")}
                 </Link>
-                {/* <Dropdown>
-                  <Dropdown.Toggle variant="success" id="dropdown-basic">
-                    <FaGlobe /> {t("language")}
-                  </Dropdown.Toggle>
+              </div> :
+                <div className="header-top-right">
+                  <Link to="/" onClick={() => props.loginUser(false)}>
+                    <FaSignInAlt />
+                    Log Out
+                  </Link>
+                </div>}
 
-                  <Dropdown.Menu>
-                    {languages.map(({ code, name, country_code }) => (
-                      <Dropdown.Item
-                        eventKey={name}
-                        key={country_code}
-                        to="/"
-                        onClick={() => i18next.changeLanguage(code)}
-                      >
-                        <span
-                          className={`flag-icon flag-icon-${country_code}`}
-                        ></span>{" "}
-                        {name}
-                      </Dropdown.Item>
-                    ))}
-                  </Dropdown.Menu>
-                </Dropdown> */}
-              </div>
             </Col>
           </Row>
         </Container>
@@ -101,7 +89,7 @@ const Header = () => {
             <Col md={3}>
               <div className="site-logo">
                 <a href="/">
-                  <img src={Logo} alt="gauto" />
+                  <img src={image} alt="gauto" />
                 </a>
               </div>
             </Col>
@@ -150,27 +138,7 @@ const Header = () => {
                     <li>
                       <Link to="/about">{t("header-navigation.about")}</Link>
                     </li>
-                    <li>
-                      <Link to="/" onClick={onClick}>
-                        {t("header-navigation.service")}
-                      </Link>
-                      <ul>
-                        <li>
-                          <Link to="/service">
-                            {t("header-navigation.terms_conditions")}
-                          </Link>
-                        </li>
-                        <li>
-                          <Link to="/service-single">
-                            {t("header-navigation.privacy_policy")}
-                          </Link>
-                          <Link to="/cookie">
-                            {t("header-navigation.cookie_policy")}
-                          </Link>
-                        </li>
-                      </ul>
-                    </li>
-                    <li>
+                    {/* <li>
                       <Link to="/" onClick={onClick}>
                         {t("header-navigation.cars")}
                       </Link>
@@ -186,13 +154,13 @@ const Header = () => {
                           </Link>
                         </li>
                       </ul>
-                    </li>
+                    </li> */}
                     {/* <li>
                       <Link to="/gallery">
                         {t("header-navigation.gallery")}
                       </Link>
                     </li> */}
-                    <li>
+                    {/* <li>
                       <Link to="/" onClick={onClick}>
                         {t("header-navigation.shop")}
                       </Link>
@@ -218,8 +186,8 @@ const Header = () => {
                           </Link>
                         </li>
                       </ul>
-                    </li>
-                    <li>
+                    </li> */}
+                    {/* <li>
                       <Link to="/" onClick={onClick}>
                         {t("header-navigation.pages")}
                       </Link>
@@ -248,44 +216,29 @@ const Header = () => {
                           </Link>
                         </li>
                       </ul>
-                    </li>
+                    </li> */}
                     <li>
                       <Link to="/contact">
                         {t("header-navigation.contact")}
                       </Link>
                     </li>
                     <li>
-                      <Link to="/service">
+                      <Link to="/terms-and-conditions">
                         {t("header-navigation.terms_conditions")}
                       </Link>
                     </li>
                     <li>
-                      <Link to="/service-single">
+                      <Link to="/privacy-policy">
                         {t("header-navigation.privacy_policy")}
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to="/cookie">
+                        Cookie Policy
                       </Link>
                     </li>
                   </ul>
                 </nav>
-              </div>
-            </Col>
-            <Col lg={3} sm={12}>
-              <div className="main-search-right">
-                <MobileMenu />
-                {/* <div className="header-cart-box">
-                  <div className="login dropdown">
-                    <Link to="/cart" className="cart-icon" id="dropdownMenu1">
-                      <span>2</span>
-                    </Link>
-                  </div>
-                </div> */}
-                {/* <div className="search-box">
-                  <form onSubmit={SubmitHandler}>
-                    <input type="search" placeholder="Search" />
-                    <button type="submit">
-                      <FaSearch />
-                    </button>
-                  </form>
-                </div> */}
               </div>
             </Col>
           </Row>
@@ -295,4 +248,16 @@ const Header = () => {
   );
 };
 
-export default Header;
+const mapStateToProps = (state) => {
+  return {
+    loggedIn: state.userReducer.login,
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    loginUser: (details) => { dispatch(loginUser(details)) }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

@@ -18,16 +18,13 @@ const Help = () => {
                 <h2
                   dangerouslySetInnerHTML={{
                     __html: t("partner_location_text", {
-                      partner_count: "<span>150</span>",
+                      partner_count: "<span>100</span>",
                       interpolation: { escapeValue: false },
                     }),
                   }}
                 ></h2>
                 <p>
-                  Labore dolore magna aliqua ipsum veniam quis nostrud
-                  exercitation voluptate velit cillum dolore feu fugiat nulla
-                  excepteur sint occaecat sed ipsum cupidatat proident culpa
-                  exercitation ullamco laboris aliquik.
+                  At Galactic Rental, we have partnered with over 100 brokers to offer you a wide selection of vehicles at an affordable rate!
                 </p>
                 <div className="call-number">
                   <div className="call-icon">

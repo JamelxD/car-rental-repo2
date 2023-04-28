@@ -5,6 +5,7 @@ import { FaPhoneAlt } from "react-icons/fa";
 
 import img1 from "../../img/about-page.jpg";
 import img2 from "../../img/cars.png";
+import image from "../images/4e640b55551911.59897a997111a-800x533.jpg"
 
 import "./style.css";
 
@@ -19,19 +20,16 @@ const AboutPage = () => {
             <Col lg={6}>
               <div className="about-page-left">
                 <h4>{t("about_page.subtitle")}</h4>
-                <h3>{t("about_page.title")}</h3>
+                <h3>We are committed to providing you the best rental solutions</h3>
                 <p>
-                  Claritas est etiam processus dynamicus, qui sequitur
-                  mutationem consuetudi- um lectorum. Mirum est notare quam
-                  littera gothica, quam nunc putamus parum claram, anteposuerit
-                  litterarum formas humanitatis per seacula quarta decima et
-                  quinta decima.
+                  Galactic Rental was born in 2021; being new to the travel/rental space, we are focused on disrupting the market, providing only the
+                  best transport solutions for customers, no matter where in the world they are.
                 </p>
-                <p>
+                {/* <p>
                   Eodem modo typi, qui nunc nobis videntur parum clari, fiant
                   sollemnes in futurum.litterarum formas humanitatis per seacula
                   quarta decima et quinta decima
-                </p>
+                </p> */}
                 <div className="about-page-call">
                   <div className="page-call-icon">
                     <FaPhoneAlt />
@@ -47,14 +45,14 @@ const AboutPage = () => {
             </Col>
             <Col lg={6}>
               <div className="about-page-right">
-                <img src={img1} alt="about page" />
+                <img src={image} alt="about page" />
               </div>
             </Col>
           </Row>
         </Container>
       </section>
 
-      <section className="gauto-about-promo section_70">
+      {/* <section className="gauto-about-promo section_70">
         <Container>
           <Row>
             <Col md={12}>
@@ -77,7 +75,7 @@ const AboutPage = () => {
             </Col>
           </Row>
         </Container>
-      </section>
+      </section> */}
     </>
   );
 };

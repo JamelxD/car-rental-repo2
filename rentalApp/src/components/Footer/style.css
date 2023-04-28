@@ -21,6 +21,7 @@
 .single-footer {
   clear: both;
   color: #aaaeb1;
+  max-width: 50%;
 }
 
 .quick-links {

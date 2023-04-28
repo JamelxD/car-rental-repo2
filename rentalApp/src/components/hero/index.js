@@ -47,11 +47,13 @@ const Hero = () => {
                   <Row>
                     <Col md={6}>
                       <div className="slider-text">
-                        <p>{t("hero_slide_subtitle")}</p>
-                        <h2>{t("hero_slide_title")}</h2>
-                        <Link to="/" onClick={onClick} className="gauto-btn">
+                        {/* <p>{t("hero_slide_subtitle")}</p> */}
+                        {/* <h2>{t("hero_slide_title")}</h2> */}
+                        {/* <Link to="/" onClick={onClick} className="gauto-btn">
                           {t("researve_now")}
-                        </Link>
+                        </Link> */}
+                        <p>Galactic Rental Group</p>
+                        <h2>Search for rental vehicles all over the globe</h2>
                       </div>
                     </Col>
                   </Row>
@@ -71,11 +73,8 @@ const Hero = () => {
                   <Row>
                     <Col md={6}>
                       <div className="slider-text">
-                        <p>{t("hero_slide_subtitle")}</p>
-                        <h2>{t("hero_slide_title")}</h2>
-                        <Link to="/" onClick={onClick} className="gauto-btn">
-                          {t("researve_now")}
-                        </Link>
+                        <p>Galactic Rental Group</p>
+                        <h2>Search for rental vehicles all over the globe</h2>
                       </div>
                     </Col>
                   </Row>

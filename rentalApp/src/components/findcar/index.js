@@ -145,7 +145,8 @@ const FindCar = (props) => {
       })
 
     } catch (error) {
-      alert('no cars found')
+      props.isLoading(false)
+      alert('No cars found')
     }
   }
 

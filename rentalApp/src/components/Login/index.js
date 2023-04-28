@@ -1,16 +1,41 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Container, Row, Col } from "react-bootstrap";
 import { FaKey, FaLock, FaUser } from "react-icons/fa";
+import { connect } from 'react-redux';
+import { loginUser } from "../../redux/actions/userActions";
 
 import "./style.css";
 
-const Login = () => {
+const Login = (props) => {
   const { t } = useTranslation();
 
-  const SubmitHandler = (e) => {
+  console.log(props)
+
+  const navigate = useNavigate();
+
+  async function sleep(msec) {
+    return new Promise(resolve => setTimeout(resolve, msec));
+  }
+
+  const [emailAddress, setEmailAddress] = useState(' ')
+  const [password, setPassword] = useState(' ')
+
+  const SubmitHandler = async (e) => {
     e.preventDefault();
+
+    props.userDetails.map(x => {
+      if (x.email === emailAddress && x.pass === password) {
+        alert("You have been logged in!")
+        props.loginUser(true)
+        navigate({
+          pathname: '/',
+        });
+      } else {
+        alert("Invalid login credentials, please try again.")
+      }
+    })
   };
 
   const onClick = (e) => {
@@ -28,28 +53,42 @@ const Login = () => {
                 <h3>{t("login_page.singin")}</h3>
               </div>
               <form onSubmit={SubmitHandler}>
+                {emailAddress === '' ?
+                  <span style={{ color: 'red' }}>Please provide a valid email address</span>
+                  : <></>
+                }
                 <div className="account-form-group">
                   <input
+                    style={emailAddress === '' ? { border: '2px solid #ec3323' } : null}
                     type="text"
-                    placeholder={t("login_page.user_email")}
+                    placeholder="Email Address"
                     name="username"
+                    value={emailAddress.trim()}
+                    onChange={(e) => setEmailAddress(e.target.value)}
                   />
                   <FaUser />
                 </div>
+                {password === '' ?
+                  <span style={{ color: 'red' }}>Please enter a password</span>
+                  : <></>
+                }
                 <div className="account-form-group">
                   <input
+                    style={password === '' ? { border: '2px solid #ec3323' } : null}
                     type="password"
                     placeholder={t("login_page.password")}
                     name="password"
+                    value={password.trim()}
+                    onChange={(e) => setPassword(e.target.value)}
                   />
                   <FaLock />
                 </div>
                 <div className="remember-row">
-                  <p className="lost-pass">
+                  {/* <p className="lost-pass">
                     <Link to="/" onClick={onClick}>
                       {t("login_page.f_password")}
                     </Link>
-                  </p>
+                  </p> */}
                   <p className="checkbox remember">
                     <input
                       className="checkbox-spin"
@@ -64,7 +103,7 @@ const Login = () => {
                 </div>
                 <p>
                   <button type="submit" className="gauto-theme-btn">
-                    {t("login_page.btn")}
+                    Login
                   </button>
                 </p>
               </form>
@@ -79,4 +118,16 @@ const Login = () => {
   );
 };
 
-export default Login;
+const mapStateToProps = (state) => {
+  return {
+    userDetails: state.userReducer.register,
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    loginUser: (details) => { dispatch(loginUser(details)) }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

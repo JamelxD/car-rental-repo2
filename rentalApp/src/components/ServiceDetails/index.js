@@ -8,7 +8,7 @@ import img1 from "../../img/service-details-1.jpg";
 import img2 from "../../img/service-details-2.jpg";
 import { Icon, Checkbox, Segment, Grid } from 'semantic-ui-react'
 import { connect } from 'react-redux';
-import { setMileage, setProtection, setGPS, setRoadsideAssistance, setInteriorDamage, setChildSeat, setTireProtection, incrementDrivers, decrementDrivers } from "../../redux/actions/upgradesActions";
+import { setMileage, setProtection, setGPS, setRoadsideAssistance, setInteriorDamage, setChildSeat, setTireProtection, incrementDrivers, decrementDrivers, setToddlerSeat, setInfantSeat, setToll } from "../../redux/actions/upgradesActions";
 
 
 
@@ -41,7 +41,11 @@ const ServiceDetails = (props) => {
     'roadside_assistance': Math.round(adjustedCost * 0.04 * props.duration),
     'interior_damage': Math.round(adjustedCost * 0.05 * props.duration),
     'child_seat': Math.round(adjustedCost * 0.02 * props.duration),
-    'tire_protection': Math.round(adjustedCost * 0.05 * props.duration)
+    'tire_protection': Math.round(adjustedCost * 0.05 * props.duration),
+
+    'toddler_seat': Math.round(adjustedCost * 0.02 * props.duration),
+    'infant_seat': Math.round(adjustedCost * 0.02 * props.duration),
+    'toll': Math.round(adjustedCost * 0.03 * props.duration)
   }
 
   // console.log(costSheet['added_driver'])
@@ -246,11 +250,11 @@ const ServiceDetails = (props) => {
                             <Segment>
                               <div className='upgrade-header'>
                                 <Icon name='child' size="big" />
-                                Child Seat
+                                Booster Seat
                               </div>
                               <div>
                                 <Icon name='minus' />
-                                Add an infant, toddler or child seat to the vehicle
+                                Add an child booster seat to the vehicle. (Suitable for ages 4 and up)
                               </div>
                               <div className="toggle">
                                 <Checkbox toggle onChange={() => props.setChildSeat(costSheet['child_seat'])} checked={props.childSeat} />
@@ -269,6 +273,54 @@ const ServiceDetails = (props) => {
                               </div>
                               <div className="toggle">
                                 <Checkbox toggle onChange={() => props.setTireProtection(costSheet['tire_protection'])} checked={props.tireProtection} />
+                              </div>
+                            </Segment>
+                          </Grid.Column>
+                        </Grid.Row>
+
+                        <Grid.Row columns='equal' stretched>
+                          <Grid.Column>
+                            <Segment>
+                              <div className='upgrade-header'>
+                                <Icon name='child' size="big" />
+                                Toddler Seat
+                              </div>
+                              <div>
+                                <Icon name='minus' />
+                                Add a toddler seat to the vehicle. (Suitable for ages 1-4)
+                              </div>
+                              <div className="toggle">
+                                <Checkbox toggle onChange={() => props.setToddlerSeat(costSheet['toddler_seat'])} checked={props.toddlerSeat} />
+                              </div>
+                            </Segment>
+                          </Grid.Column>
+                          <Grid.Column>
+                            <Segment>
+                              <div className='upgrade-header'>
+                                <Icon name='child' size="big" />
+                                Infant Seat
+                              </div>
+                              <div>
+                                <Icon name='minus' />
+                                Add an infant seat to the vehicle. (Suitable for children below the age of 1)
+                              </div>
+                              <div className="toggle">
+                                <Checkbox toggle onChange={() => props.setInfantSeat(costSheet['infant_seat'])} checked={props.infantSeat} />
+                              </div>
+                            </Segment>
+                          </Grid.Column>
+                          <Grid.Column>
+                            <Segment>
+                              <div className='upgrade-header'>
+                                <Icon name='road' size="big" />
+                                Toll Pass
+                              </div>
+                              <div>
+                                <Icon name='minus' />
+                                Gain access to toll roads and express lanes.
+                              </div>
+                              <div className="toggle">
+                                <Checkbox toggle onChange={() => props.setToll(costSheet['toll'])} checked={props.toll} />
                               </div>
                             </Segment>
                           </Grid.Column>
@@ -293,9 +345,11 @@ const ServiceDetails = (props) => {
                 {props.gps === true ? <div><Icon name='minus' />GPS Guaranteed for this vehicle</div> : <div />}
                 {props.roadsideAssistance === true ? <div><Icon name='minus' />24/7 Roadside assistance and breakdown cover</div> : <div />}
                 {props.interiorDamage === true ? <div><Icon name='minus' />Interior damage cover</div> : <div />}
-                {props.childSeat === true ? <div><Icon name='minus' />Child seat</div> : <div />}
+                {props.childSeat === true ? <div><Icon name='minus' />Child seat included</div> : <div />}
                 {props.tireProtection === true ? <div><Icon name='minus' />Tire and Windscreen cover</div> : <div />}
-
+                {props.toddlerSeat === true ? <div><Icon name='minus' />Toddler seat included</div> : <div />}
+                {props.infantSeat === true ? <div><Icon name='minus' />Infant seat included</div> : <div />}
+                {props.toll === true ? <div><Icon name='minus' />Access to toll gates and express lanes</div> : <div />}
               </div>
               <div className="offer-action">
                 <Link to="/car-booking" className="offer-btn-2">
@@ -320,6 +374,9 @@ const mapStateToProps = (state) => {
     interiorDamage: state.upgradesReducer.interiorDamage,
     childSeat: state.upgradesReducer.childSeat,
     tireProtection: state.upgradesReducer.tireProtection,
+    toddlerSeat: state.upgradesReducer.toddlerSeat,
+    infantSeat: state.upgradesReducer.infantSeat,
+    toll: state.upgradesReducer.toll,
     price: state.storeRentalReducer.rental.costs.total,
     duration: state.storeRentalReducer.rental.durationInDays,
     upgradesTotal: state.upgradesReducer.upgradesTotal
@@ -335,7 +392,10 @@ const mapDispatchToProps = (dispatch) => {
     setRoadsideAssistance: (value) => { dispatch(setRoadsideAssistance(value)) },
     setInteriorDamage: (value) => { dispatch(setInteriorDamage(value)) },
     setChildSeat: (value) => { dispatch(setChildSeat(value)) },
-    setTireProtection: (value) => { dispatch(setTireProtection(value)) }
+    setTireProtection: (value) => { dispatch(setTireProtection(value)) },
+    setToddlerSeat: (value) => { dispatch(setToddlerSeat(value)) },
+    setInfantSeat: (value) => { dispatch(setInfantSeat(value)) },
+    setToll: (value) => { dispatch(setToll(value)) }
   }
 }
 

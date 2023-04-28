@@ -28,6 +28,7 @@ import img6 from "../../img/marcedes-offer.png";
 
 import "./style.css";
 import DetailsModal from "./DetailsModal";
+import StaticCar from "./StaticCar";
 
 const CarList = (props) => {
   console.log(props)
@@ -188,6 +189,7 @@ const CarList = (props) => {
             <div className="car-listing-right">
               <div className="car-grid-list">
                 <Row>
+                  <StaticCar />
                   {props.carsData.map(agency => {
                     return (
                       agency.cars.filter(filter => filter[condition.type] === condition.opt).map((item, index) => {

@@ -6,13 +6,15 @@ import storeRentalReducer from './storeRentalReducer';
 import isLoadingReducer from './isLoadingReducer';
 import locationReducer from './locationReducer';
 import upgradesReducer from './upgradesReducer';
+import userReducer from './userReducer';
 
 const rootReducer = combineReducers({
     storeCarsReducer: storeCarsReducer,
     storeRentalReducer: storeRentalReducer,
     isLoadingReducer: isLoadingReducer,
     locationReducer: locationReducer,
-    upgradesReducer: upgradesReducer
+    upgradesReducer: upgradesReducer,
+    userReducer: userReducer
 })
 
 const persistConfig = {

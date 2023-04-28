@@ -7,6 +7,9 @@ const initialState = {
     interiorDamage: false,
     childSeat: false,
     tireProtection: false,
+    toddlerSeat: false,
+    infantSeat: false,
+    toll: false,
     upgradesTotal: 0
 }
 
@@ -85,6 +88,27 @@ const upgradesReducer = (state = initialState, action) => {
             ...state,
             tireProtection: !state.tireProtection,
             upgradesTotal: state.upgradesTotal + newTireProtection
+        }
+    } else if (action.type === 'SET_TODDLER_SEAT') {
+        let newToddlerSeat = action.payload
+        return {
+            ...state,
+            toddlerSeat: !state.toddlerSeat,
+            upgradesTotal: state.upgradesTotal + newToddlerSeat
+        }
+    } else if (action.type === 'SET_INFANT_SEAT') {
+        let newInfantSeat = action.payload
+        return {
+            ...state,
+            infantSeat: !state.infantSeat,
+            upgradesTotal: state.upgradesTotal + newInfantSeat
+        }
+    } else if (action.type === 'SET_TOLL') {
+        let newToll = action.payload
+        return {
+            ...state,
+            toll: !state.toll,
+            upgradesTotal: state.upgradesTotal + newToll
         }
     } else {
         return state

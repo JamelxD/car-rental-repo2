@@ -45,8 +45,8 @@ const AllRoute = () => {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/contact" element={<ContactPage />} />
-          <Route path="/service" element={<TermsConditions />} />
-          <Route path="/service-single" element={<PrivacyPolicy />} />
+          <Route path="/terms-and-conditions" element={<TermsConditions />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/cookie" element={<CookiePage />} />
           <Route element={<ErrorPage />} />
         </Routes>

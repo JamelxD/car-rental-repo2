@@ -60,3 +60,24 @@ export const setTireProtection = (value) => {
         payload: value
     }
 }
+
+export const setToddlerSeat = (value) => {
+    return {
+        type: 'SET_TODDLER_SEAT',
+        payload: value
+    }
+}
+
+export const setInfantSeat = (value) => {
+    return {
+        type: 'SET_INFANT_SEAT',
+        payload: value
+    }
+}
+
+export const setToll = (value) => {
+    return {
+        type: 'SET_TOLL',
+        payload: value
+    }
+}

@@ -29,6 +29,9 @@ import img3 from "../../img/paypal.jpg";
 import image from "../images/credit-card-logos2.png"
 
 import "./style.css";
+import InfoModal from "./InfoModal";
+import { renterRequirements } from "./renterRequirements";
+import { formsOfPayment } from "./formsOfPayment";
 
 const CarBooking = (props) => {
   console.log(props)
@@ -63,54 +66,59 @@ const CarBooking = (props) => {
     e.preventDefault();
 
     if (firstName === '') {
-      alert('Please complete the checkout form')
+      alert('Please enter your first name')
     }
 
     if (lastName === '') {
-      alert('Please complete the checkout form')
+      alert('Please enter your last name')
     }
 
     if (emailAddress === '') {
-      alert('Please complete the checkout form')
+      alert('Please enter your email address')
     }
 
     if (contactNumber === '') {
-      alert('Please complete the checkout form')
+      alert('Please enter your contact number')
     }
 
     if (cardholderName === '') {
-      alert('Please complete the checkout form')
+      alert('Please enter your name as it appears on your card')
     }
 
     if (cardNumber === '' || !cardNumber.match(ccRegex)) {
-      alert('Please complete the checkout form')
+      alert('Please enter your 16 digit card number')
     }
 
     if (expiry === '') {
-      alert('Please complete the checkout form')
+      alert('Please enter the payment card expiry date')
     }
 
     if (cvv === '') {
-      alert('Please complete the checkout form')
+      alert('Please enter your card CVV')
     }
 
     if (postcode === '') {
       alert('Please complete the checkout form')
     }
 
+    if (termsChecked === false) {
+      alert('Please agree to the terms & conditions')
+    }
+
     validateForm();
   };
 
+  console.log(firstName.length)
 
   const validateForm = async () => {
-    if (firstName.length > 0,
-      lastName.length > 0,
-      emailAddress.length > 0,
-      contactNumber.length > 0,
-      cardNumber.length > 0,
-      expiry.length > 0,
-      cvv.length > 0,
-      postcode.length > 0) {
+    if (firstName.length > 1 &&
+      lastName.length > 1 &&
+      emailAddress.length > 1 &&
+      contactNumber.length > 1 &&
+      cardNumber.length > 1 &&
+      expiry.length > 1 &&
+      cvv.length > 1 &&
+      postcode.length > 1) {
       await sleep(5000);
       alert("Your payment could not be processed. Please try another payment method or try again later.")
     } else {
@@ -285,7 +293,7 @@ const CarBooking = (props) => {
                       <h3>{t("car_booking.payment_method")}</h3>
                       <div className="gauto-payment">
                         <div className="payment">
-                          <p>Please enter your debit/credit card details below:</p>
+                          {/* <p>Please enter your debit/credit card details below:</p> */}
                           {/* <input type="radio" id="s-option" name="selector" /> */}
                           {/* <label htmlFor="s-option">
                             {t("car_booking.credit_card")}
@@ -383,20 +391,16 @@ const CarBooking = (props) => {
                           <div style={{ marginTop: '2%' }} />
                           <div className="payment">
                             <p>
-                              Renter must be eligible to hire vehicle
-                              Renter meets the licence, documents, payment and age requirements to hire a vehicle.
-
-                              Renter understands reservation should be modified if requirements are not met in order to avoid cancellation fee.
-
-                              Please read the complete Pay Now Terms & Conditions for details.
-
-
-                              Renter must acknowledge refund policy when booking reservation
-                              Full refund if renter cancels 3 days or more before booking
-
-                              Fee charged if renter cancels less than 3 days
-
+                              Renter must be eligible to hire vehicle.
                             </p>
+                            <p>Renter meets the licence, documents, payment and age requirements to hire a vehicle.</p>
+                            <p>Renter understands reservation should be modified if requirements are not met in order to avoid cancellation fee. Please read the entire Terms & Conditions for details.</p>
+                            <p>Renter must acknowledge refund policy when booking reservation.</p>
+                            <p>Full refund if renter cancels 3 days or more before booking. Renter will incur a fee if renter cancels less than 3 days.</p>
+
+                            <InfoModal link="Renter Requirements" title="Renter Requirements" info={renterRequirements()} />
+                            <InfoModal link="Forms of Payment" title="Renter Requirements" info={formsOfPayment()} />
+                            <br />
                             <p>
                               <Checkbox checked={termsChecked} onChange={() => { setTermsChecked(!termsChecked) }} style={{ marginRight: '1%' }} />
                               I have read and accept the <Link to={"/terms-and-conditions"}>terms and conditions </Link>.
@@ -428,7 +432,7 @@ const CarBooking = (props) => {
                     </tr>
                     <tr>
                       <td>Dropoff location</td>
-                      <td>{props.dropOffLocation === '' ? <span>{props.pickUpLocation}</span> : <span>{props.dropOffLocation}</span>}</td>
+                      {props.dropOffLocation === '' ? <td>{props.pickUpLocation}</td> : <td>{props.dropOffLocation}</td>}
                     </tr>
                     <tr>
                       <td>Pickup date</td>
@@ -541,6 +545,30 @@ const CarBooking = (props) => {
                         <>
                           <td>Tire and Windscreen Cover</td>
                           <td>£{Math.round(price * 0.05 * props.rental.durationInDays)}</td>
+                        </>
+                        : <></>}
+                    </tr>
+                    <tr>
+                      {props.upgrades.toddlerSeat === true ?
+                        <>
+                          <td>Toddler Seat</td>
+                          <td>£{Math.round(price * 0.02 * props.rental.durationInDays)}</td>
+                        </>
+                        : <></>}
+                    </tr>
+                    <tr>
+                      {props.upgrades.infantSeat === true ?
+                        <>
+                          <td>Infant Seat</td>
+                          <td>£{Math.round(price * 0.02 * props.rental.durationInDays)}</td>
+                        </>
+                        : <></>}
+                    </tr>
+                    <tr>
+                      {props.upgrades.toll === true ?
+                        <>
+                          <td>Toll Pass</td>
+                          <td>£{Math.round(price * 0.03 * props.rental.durationInDays)}</td>
                         </>
                         : <></>}
                     </tr>

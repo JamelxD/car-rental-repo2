@@ -16,37 +16,37 @@ const About = () => {
           <Col lg={6}>
             <div className="about-left">
               <h4>{t("about_us_title")}</h4>
-              <h2>{t("welcome_title")}</h2>
-              <p>{t("about_text")}</p>
+              <h2>Welcome to Galactic Rental</h2>
+              <p>We are a trusted name in the rental vehicle space and have been operating since 2021, serving customers from Europe to America.</p>
               <div className="about-list">
                 <ul>
                   <li>
                     <span>
                       <FaCheck />
                     </span>
-                    {t("trusted_name")}
+                    Trusted in the space
                   </li>
                   <li>
                     <span>
                       <FaCheck />
                     </span>
-                    {t("deal_brands")}
+                    Large selection of vehicles
                   </li>
                   <li>
                     <span>
                       <FaCheck />
                     </span>
-                    {t("larger_stocks")}
+                    Fast checkout
                   </li>
                   <li>
                     <span>
                       <FaCheck />
                     </span>
-                    {t("worldwide_location")}
+                    Locations worldwide
                   </li>
                 </ul>
               </div>
-              <div className="about-signature">
+              {/* <div className="about-signature">
                 <div className="signature-left">
                   <img src={signature} alt="signature" />
                 </div>
@@ -54,7 +54,7 @@ const About = () => {
                   <h3>Robertho Garcia</h3>
                   <p>{t("president")}</p>
                 </div>
-              </div>
+              </div> */}
             </div>
           </Col>
           <Col lg={6}>
