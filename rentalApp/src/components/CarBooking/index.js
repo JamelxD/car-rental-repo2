@@ -34,7 +34,6 @@ import { renterRequirements } from "./renterRequirements";
 import { formsOfPayment } from "./formsOfPayment";
 
 const CarBooking = (props) => {
-  console.log(props)
   const navigate = useNavigate();
 
 
@@ -107,8 +106,6 @@ const CarBooking = (props) => {
 
     validateForm();
   };
-
-  console.log(firstName.length)
 
   const validateForm = async () => {
     if (firstName.length > 1 &&

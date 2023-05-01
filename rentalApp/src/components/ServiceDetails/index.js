@@ -17,10 +17,8 @@ import "./style.css";
 const ServiceDetails = (props) => {
   const { t } = useTranslation();
 
-  console.log(props)
 
   const adjustedCost = Math.round((props.price) / 190)
-  console.log(adjustedCost)
 
   const onClick = (e) => {
     e.preventDefault();
@@ -47,8 +45,6 @@ const ServiceDetails = (props) => {
     'infant_seat': Math.round(adjustedCost * 0.02 * props.duration),
     'toll': Math.round(adjustedCost * 0.03 * props.duration)
   }
-
-  // console.log(costSheet['added_driver'])
 
   return (
     <section className="gauto-service-details-area section_70">

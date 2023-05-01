@@ -13,26 +13,27 @@ var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+// app.set('view engine', 'jade');
 app.disable('etag');
 
-app.use(cors());
+app.use(cors({
+  origin: '*'
+}));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use(express.static(path.join(__dirname, '../hotel', 'public')));
-
-// app.use(express.static(path.join(__dirname, '../../../../usr/share/nginx', 'html')))
+app.options('*', function (req, res) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Credentials', true);
+  res.header('Access-Control-Allow-Methods', 'POST, GET, PUT, DELTE, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+});
 
 
 app.use('/api/getCars', getCarsRouter);
 app.use('/api/getLocation', getLocationRouter)
-
-
-// console.log(path.join(__dirname, '../../../../usr/share/nginx', 'html'))
-console.log(path.join(__dirname, '../hotel', 'public'))
 
 
 // catch 404 and forward to error handler

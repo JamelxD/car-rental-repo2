@@ -25,7 +25,7 @@ import img3 from "../../img/audi-offer.png";
 import img4 from "../../img/bmw-offer.png";
 import img5 from "../../img/toyota-offer-2.png";
 import img6 from "../../img/marcedes-offer.png";
-import image from "./980773133149442491e6a3d2279d0f23.jpg"
+import image from "./chevrolet-camaro-coupe-2d-gelb-2013.png"
 
 import "./style.css";
 import DetailsModal from "./DetailsModal";
@@ -39,7 +39,7 @@ const StaticCar = (props) => {
         "startDate": "2023-04-29T07:23:07.000Z",
         "endDate": "2023-04-30T07:23:07.000Z",
         "costs": {
-            "total": 33662,
+            "total": 50000,
             "currency": "EUR",
             "symbol": "€"
         },
@@ -96,8 +96,8 @@ const StaticCar = (props) => {
         },
         "agencyLogoUrl": "http://api.lyko.tech/v2.1/rentcars/cars/b4f1d93a-c023-4c31-9cd5-4d6955d5e7bd/agency/picture",
         "agencyReturnLogoUrl": "http://api.lyko.tech/v2.1/rentcars/cars/b4f1d93a-c023-4c31-9cd5-4d6955d5e7bd/agency-return/picture",
-        "name": "Lamborghini Urus",
-        "carGroup": "MEDIUM",
+        "name": "Ferrari Urus",
+        "carGroup": "SUV",
         "pictureUrl": image,
         "seatNumber": 5,
         "luggage": {
@@ -122,7 +122,7 @@ const StaticCar = (props) => {
             "currency": "EUR",
             "symbol": "€"
         },
-        "driverMinimumAge": 21,
+        "driverMinimumAge": 25,
         "deductible": {
             "thiefDeductible": {
                 "total": 100000,
@@ -155,12 +155,12 @@ const StaticCar = (props) => {
                 <div className="offer-text">
                     <h3>{staticDetails.name}</h3>
                     <h4>
-                        £500<span>/ {t("day")}</span>
+                        £{Math.round((staticDetails.costs.total) / 190)}<span>/ {t("day")}</span>
                     </h4>
                     <ul>
                         <li>
                             <FaCar />
-                            {t("model")}: 2019
+                            {t("model")}: 2022
                         </li>
                         <li>
                             <FaCogs />

@@ -31,8 +31,6 @@ import DetailsModal from "./DetailsModal";
 import StaticCar from "./StaticCar";
 
 const CarList = (props) => {
-  console.log(props)
-
 
   var properties = {
     allCars: 'active',
@@ -61,9 +59,6 @@ const CarList = (props) => {
 
   // setProperty()
 
-
-  // console.log(properties)
-  console.log(property)
 
   const min = 2017;
   const max = 2023;
@@ -193,8 +188,6 @@ const CarList = (props) => {
                   {props.carsData.map(agency => {
                     return (
                       agency.cars.filter(filter => filter[condition.type] === condition.opt).map((item, index) => {
-                        // console.log(item)
-                        // console.log(index)
                         return (
                           <Col md={6}>
                             <div className="single-offers">

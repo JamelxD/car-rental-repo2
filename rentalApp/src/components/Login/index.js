@@ -11,8 +11,6 @@ import "./style.css";
 const Login = (props) => {
   const { t } = useTranslation();
 
-  console.log(props)
-
   const navigate = useNavigate();
 
   async function sleep(msec) {

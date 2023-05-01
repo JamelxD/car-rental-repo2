@@ -45,20 +45,11 @@ const FindCar = (props) => {
     setLocation(location => ({ ...location, [type]: place.formatted_address }))
   }
 
-  console.log(props.autoLocSuggest)
-  console.log(props.autoLocSuggest.formatted_address)
-  console.log(location)
-  console.log(location.pickup)
-
-  console.log(props.autoLocSuggest)
-
-
   useEffect(() => {
     props.isLoading(false)
   }, [])
 
   const navigate = useNavigate();
-  console.log("car option " + carOption)
   const searchCars = async () => {
     try {
       props.isLoading(true)
@@ -82,10 +73,13 @@ const FindCar = (props) => {
         stDate: startDate,
         eDate: endDate,
       }), {
-        method: 'get'
+        method: 'get',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
       }).then(async response => {
         var result = await response.json()
-        console.log(result)
         if (response.status === 200 && result.length !== 0 && result.code !== "VALIDATION_FAILED") {
           props.storeCars(result)
           props.isLoading(false)
@@ -123,10 +117,13 @@ const FindCar = (props) => {
         stDate: startDate,
         eDate: endDate,
       }), {
-        method: 'get'
+        method: 'get',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
       }).then(async response => {
         var result = await response.json()
-        console.log(result)
         if (response.status === 200 && result.length !== 0 && result.code !== "VALIDATION_FAILED") {
           props.storeCars(result)
           props.isLoading(false)
@@ -145,7 +142,6 @@ const FindCar = (props) => {
       })
 
     } catch (error) {
-      console.log(error)
       props.isLoading(false)
       alert('No cars found')
     }
@@ -157,18 +153,16 @@ const FindCar = (props) => {
         query: location.pickup
       }), {
         method: 'get',
-      }, { mode: 'cors' },
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+      }
       )
         .then(async response => {
-          console.log(response.json())
           pickUpLonglatRes = (await response.json())
-          console.log(pickUpLonglatRes)
-          console.log(pickUpLonglatRes[0].location.lat)
-          console.log(pickUpLonglatRes[0].location.lng)
-          console.log(pickUpLonglatRes[0].name)
         })
     } catch (error) {
-      console.log(error)
     }
   }
 
@@ -177,14 +171,14 @@ const FindCar = (props) => {
       const res = await fetch('http://localhost:9000/api/getLocation?' + new URLSearchParams({
         query: location.dropoff
       }), {
-        method: 'get'
+        method: 'get',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
       }, { mode: 'cors' })
         .then(async response => {
           dropOffLonglatRes = (await response.json())
-          console.log(dropOffLonglatRes)
-          console.log(dropOffLonglatRes[0].location.lat)
-          console.log(dropOffLonglatRes[0].location.lng)
-          console.log(dropOffLonglatRes[0].name)
         })
 
     } catch (error) {

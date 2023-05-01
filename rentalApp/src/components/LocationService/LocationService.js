@@ -6,9 +6,7 @@ const LocationService = (props) => {
     const { ref, autocompleteRef } = usePlacesWidget({
         apiKey: 'AIzaSyCkeiEl0P1RTGE60itkTtpKTHme_hUTQhw',
         onPlaceSelected: (place) => {
-            console.log(props.location)
             props.setLocation(place)
-            console.log(place);
         },
         options: {
             types: ["geocode", "establishment"],
