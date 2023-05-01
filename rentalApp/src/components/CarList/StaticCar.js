@@ -25,7 +25,8 @@ import img3 from "../../img/audi-offer.png";
 import img4 from "../../img/bmw-offer.png";
 import img5 from "../../img/toyota-offer-2.png";
 import img6 from "../../img/marcedes-offer.png";
-import image from "./chevrolet-camaro-coupe-2d-gelb-2013.png"
+import image from "./kindpng_5679985.png"
+
 
 import "./style.css";
 import DetailsModal from "./DetailsModal";
@@ -35,11 +36,11 @@ const StaticCar = (props) => {
     const staticDetails = {
         "carId": "b4f1d93a-c023-4c31-9cd5-4d6955d5e7bd",
         "operatorId": "rentcar_broker",
-        "operatorName": "Broker - Rent a car",
+        "operatorName": "Broker - Sixt",
         "startDate": "2023-04-29T07:23:07.000Z",
         "endDate": "2023-04-30T07:23:07.000Z",
         "costs": {
-            "total": 50000,
+            "total": 7000,
             "currency": "EUR",
             "symbol": "€"
         },
@@ -96,7 +97,7 @@ const StaticCar = (props) => {
         },
         "agencyLogoUrl": "http://api.lyko.tech/v2.1/rentcars/cars/b4f1d93a-c023-4c31-9cd5-4d6955d5e7bd/agency/picture",
         "agencyReturnLogoUrl": "http://api.lyko.tech/v2.1/rentcars/cars/b4f1d93a-c023-4c31-9cd5-4d6955d5e7bd/agency-return/picture",
-        "name": "Ferrari Urus",
+        "name": "Range Sport",
         "carGroup": "SUV",
         "pictureUrl": image,
         "seatNumber": 5,
@@ -107,8 +108,8 @@ const StaticCar = (props) => {
         "co2Emission": 151,
         "category": "compact",
         "eliteCategory": false,
-        "type": "4-5 door",
-        "gearbox": "manual",
+        "type": "5 door",
+        "gearbox": "auto",
         "acriss": "CDMR",
         "durationInDays": 1,
         "termsAndConditionsUrl": "http://api.lyko.tech/v2.1/rentcars/cars/b4f1d93a-c023-4c31-9cd5-4d6955d5e7bd/pdf-terms-and-conditions",
@@ -155,7 +156,7 @@ const StaticCar = (props) => {
                 <div className="offer-text">
                     <h3>{staticDetails.name}</h3>
                     <h4>
-                        £{Math.round((staticDetails.costs.total) / 190)}<span>/ {t("day")}</span>
+                        ${Math.round((staticDetails.costs.total) / 190)}<span>/ {t("day")}</span>
                     </h4>
                     <ul>
                         <li>
@@ -169,7 +170,7 @@ const StaticCar = (props) => {
                         </li>
                         <li>
                             <FaCogs />
-                            {staticDetails.unlimitedDistance === true ? 'Unlimited Mileage' : '50 miles a day'}
+                            {staticDetails.unlimitedDistance === true ? 'Unlimited Mileage' : 'Mileage: 1225 miles'}
                         </li>
                         <li>
                             <FaCogs />
@@ -200,7 +201,7 @@ const StaticCar = (props) => {
                     <div className="offer-action">
                         <DetailsModal key={90}
                             name={staticDetails.name}
-                            mileage={staticDetails.unlimitedDistance === true ? 'Mileage: Unlimited Mileage' : 'Mileage: 50 miles a day'}
+                            mileage={staticDetails.unlimitedDistance === true ? 'Mileage: Unlimited Mileage' : 'Mileage: 1225 miles'}
                             driverMinimumAge={staticDetails.driverMinimumAge}
                             gearbox={staticDetails.gearbox}
                             luggage={staticDetails.luggage}

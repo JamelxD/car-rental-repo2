@@ -32,6 +32,8 @@ import "./style.css";
 import InfoModal from "./InfoModal";
 import { renterRequirements } from "./renterRequirements";
 import { formsOfPayment } from "./formsOfPayment";
+import { bookingConditions } from "./bookingConditions";
+import { cancellationPolicy } from "./cancellationPolicy";
 
 const CarBooking = (props) => {
   const navigate = useNavigate();
@@ -391,12 +393,14 @@ const CarBooking = (props) => {
                               Renter must be eligible to hire vehicle.
                             </p>
                             <p>Renter meets the licence, documents, payment and age requirements to hire a vehicle.</p>
-                            <p>Renter understands reservation should be modified if requirements are not met in order to avoid cancellation fee. Please read the entire Terms & Conditions for details.</p>
+                            <p>Renter understands the cancellation policy. Please read the cancellation policy for details.</p>
                             <p>Renter must acknowledge refund policy when booking reservation.</p>
-                            <p>Full refund if renter cancels 3 days or more before booking. Renter will incur a fee if renter cancels less than 3 days.</p>
+                            <p>Flexible cancellation, reservation can be cancelled before the start of the rental.</p>
 
                             <InfoModal link="Renter Requirements" title="Renter Requirements" info={renterRequirements()} />
                             <InfoModal link="Forms of Payment" title="Renter Requirements" info={formsOfPayment()} />
+                            <InfoModal link="Cancellation Policy" title="Cancellation Policy" info={cancellationPolicy()} />
+                            <InfoModal link="Booking Conditions" title="Booking Conditions" info={bookingConditions()} />
                             <br />
                             <p>
                               <Checkbox checked={termsChecked} onChange={() => { setTermsChecked(!termsChecked) }} style={{ marginRight: '1%' }} />
@@ -456,7 +460,7 @@ const CarBooking = (props) => {
                   <tbody>
                     <tr>
                       <td>Subtotal</td>
-                      <td>£{price}</td>
+                      <td>${price}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -469,12 +473,12 @@ const CarBooking = (props) => {
                       {props.upgrades.mileage === "standard-mileage" ?
                         <>
                           <td>Standard Mileage</td>
-                          <td>£{Math.round(price * 0.05 * props.rental.durationInDays)}</td>
+                          <td>${Math.round(price * 0.05 * props.rental.durationInDays)}</td>
                         </>
                         : props.upgrades.mileage === "long-mileage" ?
                           <>
                             <td>Unlimited Miles</td>
-                            <td>£{Math.round(price * 0.09 * props.rental.durationInDays)}</td>
+                            <td>${Math.round(price * 0.09 * props.rental.durationInDays)}</td>
                           </> : props.upgrades.mileage === 'basic-mileage' ?
                             <>
                               <td>Basic Mileage</td>
@@ -498,18 +502,78 @@ const CarBooking = (props) => {
                           </>}
                     </tr>
                     <tr>
+                      <>
+                        <td>
+                          Flexible Cancellation
+                        </td>
+                        <td>
+                          No added cost
+                        </td>
+                      </>
+                    </tr>
+                    <tr>
+                      <>
+                        <td>
+                          Loss Damage Waiver (including theft protection)
+                        </td>
+                        <td>
+                          No added cost
+                        </td>
+                      </>
+                    </tr>
+                    <tr>
+                      <>
+                        <td>
+                          GPS Guaranteed
+                        </td>
+                        <td>
+                          No added cost
+                        </td>
+                      </>
+                    </tr>
+                    <tr>
+                      <>
+                        <td>
+                          Loss Damage Waiver
+                        </td>
+                        <td>
+                          No added cost
+                        </td>
+                      </>
+                    </tr>
+                    <tr>
+                      <>
+                        <td>
+                          Supplemental Liability Insurance
+                        </td>
+                        <td>
+                          No added cost
+                        </td>
+                      </>
+                    </tr>
+                    <tr>
+                      <>
+                        <td>
+                          Airport Shuttle to Rental Car Center
+                        </td>
+                        <td>
+                          No added cost
+                        </td>
+                      </>
+                    </tr>
+                    <tr>
                       {props.upgrades.additionalDrivers > 0 ?
                         <>
                           <td>{props.upgrades.additionalDrivers} Additional Drivers</td>
-                          <td>£{Math.round(price * 0.07 * props.upgrades.additionalDrivers * props.rental.durationInDays)}</td>
+                          <td>${Math.round(price * 0.07 * props.upgrades.additionalDrivers * props.rental.durationInDays)}</td>
                         </>
                         : <></>}
                     </tr>
                     <tr>
                       {props.upgrades.gps === true ?
                         <>
-                          <td>GPS Guaranteed</td>
-                          <td>£{Math.round(price * 0.03 * props.rental.durationInDays)}</td>
+                          <td>GPS Premium + Maps</td>
+                          <td>${Math.round(price * 0.03 * props.rental.durationInDays)}</td>
                         </>
                         : <></>}
                     </tr>
@@ -517,7 +581,7 @@ const CarBooking = (props) => {
                       {props.upgrades.roadsideAssistance === true ?
                         <>
                           <td>Roadside Assistance</td>
-                          <td>£{Math.round(price * 0.04 * props.rental.durationInDays)}</td>
+                          <td>${Math.round(price * 0.04 * props.rental.durationInDays)}</td>
                         </>
                         : <></>}
                     </tr>
@@ -525,7 +589,7 @@ const CarBooking = (props) => {
                       {props.upgrades.interiorDamage === true ?
                         <>
                           <td>Interior Damage Cover</td>
-                          <td>£{Math.round(price * 0.05 * props.rental.durationInDays)}</td>
+                          <td>${Math.round(price * 0.05 * props.rental.durationInDays)}</td>
                         </>
                         : <></>}
                     </tr>
@@ -533,7 +597,7 @@ const CarBooking = (props) => {
                       {props.upgrades.childSeat === true ?
                         <>
                           <td>Child Seat</td>
-                          <td>£{Math.round(price * 0.02 * props.rental.durationInDays)}</td>
+                          <td>${Math.round(price * 0.02 * props.rental.durationInDays)}</td>
                         </>
                         : <></>}
                     </tr>
@@ -541,7 +605,7 @@ const CarBooking = (props) => {
                       {props.upgrades.tireProtection === true ?
                         <>
                           <td>Tire and Windscreen Cover</td>
-                          <td>£{Math.round(price * 0.05 * props.rental.durationInDays)}</td>
+                          <td>${Math.round(price * 0.05 * props.rental.durationInDays)}</td>
                         </>
                         : <></>}
                     </tr>
@@ -549,7 +613,7 @@ const CarBooking = (props) => {
                       {props.upgrades.toddlerSeat === true ?
                         <>
                           <td>Toddler Seat</td>
-                          <td>£{Math.round(price * 0.02 * props.rental.durationInDays)}</td>
+                          <td>${Math.round(price * 0.02 * props.rental.durationInDays)}</td>
                         </>
                         : <></>}
                     </tr>
@@ -557,7 +621,7 @@ const CarBooking = (props) => {
                       {props.upgrades.infantSeat === true ?
                         <>
                           <td>Infant Seat</td>
-                          <td>£{Math.round(price * 0.02 * props.rental.durationInDays)}</td>
+                          <td>${Math.round(price * 0.02 * props.rental.durationInDays)}</td>
                         </>
                         : <></>}
                     </tr>
@@ -565,7 +629,7 @@ const CarBooking = (props) => {
                       {props.upgrades.toll === true ?
                         <>
                           <td>Toll Pass</td>
-                          <td>£{Math.round(price * 0.03 * props.rental.durationInDays)}</td>
+                          <td>${Math.round(price * 0.03 * props.rental.durationInDays)}</td>
                         </>
                         : <></>}
                     </tr>
@@ -589,7 +653,7 @@ const CarBooking = (props) => {
                   <tbody>
                     <tr>
                       <td>Total Price</td>
-                      <td>£{price + props.upgrades.upgradesTotal}</td>
+                      <td>${price + props.upgrades.upgradesTotal}</td>
                     </tr>
                   </tbody>
                 </table>

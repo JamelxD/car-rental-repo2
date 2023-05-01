@@ -81,11 +81,11 @@ const ServiceDetails = (props) => {
                             </div>
                             <div>
                               <Icon name='minus' />
-                              Drive up to 750 miles during your rental period
+                              Drive up to 750 additional miles during your rental period
                             </div>
                             <div>
                               <Icon name='minus' />
-                              Extra costs incurred for additional miles.
+                              $0.75/Extra Mile.
                             </div>
                           </RadioButton>
                           <RadioButton value="basic-mileage">
@@ -94,11 +94,11 @@ const ServiceDetails = (props) => {
                             </div>
                             <div>
                               <Icon name='minus' />
-                              Drive up to 400 miles during your rental period
+                              Drive up to 1225 miles during your rental period
                             </div>
                             <div>
                               <Icon name='minus' />
-                              Extra costs incurred for additional miles.
+                              $0.75/Extra Mile.
                             </div>
                           </RadioButton>
                         </RadioGroup>
@@ -198,11 +198,11 @@ const ServiceDetails = (props) => {
                             <Segment>
                               <div className='upgrade-header'>
                                 <Icon name='compass outline' size="big" />
-                                GPS
+                                GPS + Maps + Support
                               </div>
                               <div>
                                 <Icon name='minus' />
-                                Add a SatNav to your vehicle
+                                Satnav with premium maps and support add on
                               </div>
                               <div className="toggle">
                                 <Checkbox toggle onChange={() => props.setGPS(costSheet['gps'])} checked={props.gps} />
@@ -335,8 +335,8 @@ const ServiceDetails = (props) => {
                 You have added:
               </p>
               <div className="simple-text">
-                {props.mileage === 'basic-mileage' ? <div><Icon name='minus' />Basic Mileage: Up to 600 miles allowance for your rental period, additional miles will incur extra costs.</div> : props.mileage === 'long-mileage' ? <div><Icon name='minus' />Long Distance: Unlimited miles for the duration of your rental period.</div> : props.mileage === "standard-mileage" ? <div><Icon name='minus' />Standard Mileage: Up to 300 miles allowance for your rental period, additional miles will incur extra costs.</div> : null}
-                {props.protection === 'standard-protection' ? <div><Icon name='minus' />Standard Protection: Cover for damage to tires, windshield, windows and theft cover.</div> : props.protection === 'full-protection' ? <div><Icon name='minus' />Full Protection:  Cover for damage to tires, windshield, windows, interior, theft cover and roadside assistance.</div> : props.protection === 'basic-protection' ? <div><Icon name='minus' />Basic Protection: Damage and theft cover up to £1,000,000, cover for tire, windshield and window damage.</div> : <></>}
+                {props.mileage === 'basic-mileage' ? <div><Icon name='minus' />Basic Mileage: Up to 1225 miles allowance for your rental period, additional miles will incur $0.75/Extra mile.</div> : props.mileage === 'long-mileage' ? <div><Icon name='minus' />Long Distance: Unlimited miles for the duration of your rental period.</div> : props.mileage === "standard-mileage" ? <div><Icon name='minus' />Standard Mileage: Up to 750 additional miles allowance for your rental period, additional miles will incur $0.75/Extra mile.</div> : null}
+                {props.protection === 'standard-protection' ? <div><Icon name='minus' />Standard Protection: Cover for damage to tires, windshield, windows and theft cover.</div> : props.protection === 'full-protection' ? <div><Icon name='minus' />Full Protection:  Cover for damage to tires, windshield, windows, interior, theft cover and roadside assistance.</div> : props.protection === 'basic-protection' ? <div><Icon name='minus' />Basic Protection: Damage and theft cover up to $1,000,000, cover for tire, windshield and window damage.</div> : <></>}
                 {props.additionalDrivers > 0 ? <div><Icon name='minus' />Additional Drivers: {props.additionalDrivers}</div> : <div />}
                 {props.gps === true ? <div><Icon name='minus' />GPS Guaranteed for this vehicle</div> : <div />}
                 {props.roadsideAssistance === true ? <div><Icon name='minus' />24/7 Roadside assistance and breakdown cover</div> : <div />}
