@@ -48,6 +48,7 @@ const CarList = (props) => {
   const [condition, setCondition] = useState('');
   const [property, setProperty] = useState(properties)
 
+  console.log(props.autoLocSuggest)
   // var global = 'ok'
 
   // const setProperty = async () => {
@@ -184,79 +185,84 @@ const CarList = (props) => {
             <div className="car-listing-right">
               <div className="car-grid-list">
                 <Row>
-                  <StaticCar />
-                  {props.carsData.map(agency => {
-                    return (
-                      agency.cars.filter(filter => filter[condition.type] === condition.opt).map((item, index) => {
-                        return (
-                          <Col md={6}>
-                            <div className="single-offers">
-                              <div className="offer-image">
-                                <img crossorigin="anonymous" src={item.pictureUrl} alt="offer 1" />
-                              </div>
-                              <div className="offer-text">
-                                <h3>{item.name}</h3>
-                                <h4>
-                                  ${Math.round((item.costs.total) / 190)}<span>/ {t("day")}</span>
-                                </h4>
-                                <ul>
-                                  <li>
-                                    <FaCar />
-                                    {t("model")}: {plate = Math.round(min + Math.random() * (max - min)).toString()}
-                                  </li>
-                                  <li>
-                                    <FaCogs />
-                                    {item.gearbox === 'auto' ? 'Automatic' : 'Manual'}
-                                    {/* ternery operator */}
-                                  </li>
-                                  <li>
-                                    <FaCogs />
-                                    {item.unlimitedDistance === true ? 'Unlimited Mileage' : '50 miles a day'}
-                                  </li>
-                                  <li>
-                                    <FaCogs />
-                                    <Icon name='car' size='small' />
-                                    {item.type}
-                                  </li>
-                                  <li>
-                                    <FaCogs />
-                                    {item.operatorName}
-                                  </li>
-                                  <li>
-                                    <FaCar />
-                                    Minimum Age: {item.driverMinimumAge}
-                                  </li>
-                                  <li>
-                                    <FaCar />
-                                    Luggages: {item.luggage.big + 3}
-                                  </li>
-                                </ul>
-                                <div className="offer-action">
-                                  <Link to="/upgrades" className="offer-btn-1" onClick={() => { props.storeRental(item); props.storePlate(plate) }}>
-                                    {t("rent_car")}
-                                  </Link>
+                  {props.autoLocSuggest === 'Miami, FL, USA' || props.autoLocSuggest === '2100 NW 42nd Ave, Miami, FL 33142, USA' ? <>
+                    <StaticCar />
+                  </>
+                    : <></>}
+                  {Object.keys(props.carsData).length !== 0 ? <>
+                    {props.carsData.map(agency => {
+                      return (
+                        agency.cars.filter(filter => filter[condition.type] === condition.opt).map((item, index) => {
+                          return (
+                            <Col md={6}>
+                              <div className="single-offers">
+                                <div className="offer-image">
+                                  <img crossorigin="anonymous" src={item.pictureUrl} alt="offer 1" />
                                 </div>
+                                <div className="offer-text">
+                                  <h3>{item.name}</h3>
+                                  <h4>
+                                    ${Math.round((item.costs.total) / 190)}<span>/ {t("day")}</span>
+                                  </h4>
+                                  <ul>
+                                    <li>
+                                      <FaCar />
+                                      {t("model")}: {plate = Math.round(min + Math.random() * (max - min)).toString()}
+                                    </li>
+                                    <li>
+                                      <FaCogs />
+                                      {item.gearbox === 'auto' ? 'Automatic' : 'Manual'}
+                                      {/* ternery operator */}
+                                    </li>
+                                    <li>
+                                      <FaCogs />
+                                      {item.unlimitedDistance === true ? 'Unlimited Mileage' : '50 miles a day'}
+                                    </li>
+                                    <li>
+                                      <FaCogs />
+                                      <Icon name='car' size='small' />
+                                      {item.type}
+                                    </li>
+                                    <li>
+                                      <FaCogs />
+                                      {item.operatorName}
+                                    </li>
+                                    <li>
+                                      <FaCar />
+                                      Minimum Age: {item.driverMinimumAge}
+                                    </li>
+                                    <li>
+                                      <FaCar />
+                                      Luggages: {item.luggage.big + 3}
+                                    </li>
+                                  </ul>
+                                  <div className="offer-action">
+                                    <Link to="/upgrades" className="offer-btn-1" onClick={() => { props.storeRental(item); props.storePlate(plate) }}>
+                                      {t("rent_car")}
+                                    </Link>
+                                  </div>
 
-                                {/* <div className="spacer" /> */}
+                                  {/* <div className="spacer" /> */}
 
-                                <div className="offer-action">
-                                  <DetailsModal key={index}
-                                    name={item.name}
-                                    mileage={item.unlimitedDistance === true ? 'Mileage: Unlimited Mileage' : 'Mileage: 50 miles a day'}
-                                    driverMinimumAge={item.driverMinimumAge}
-                                    gearbox={item.gearbox}
-                                    luggage={item.luggage}
-                                    seatNumber={item.seatNumber}
-                                  />
+                                  <div className="offer-action">
+                                    <DetailsModal key={index}
+                                      name={item.name}
+                                      mileage={item.unlimitedDistance === true ? 'Mileage: Unlimited Mileage' : 'Mileage: 50 miles a day'}
+                                      driverMinimumAge={item.driverMinimumAge}
+                                      gearbox={item.gearbox}
+                                      luggage={item.luggage}
+                                      seatNumber={item.seatNumber}
+                                    />
+                                  </div>
                                 </div>
                               </div>
-                            </div>
-                          </Col>
-                        )
-                      })
-                    )
-                  }
-                  )}
+                            </Col>
+                          )
+                        })
+                      )
+                    }
+                    )}
+                  </> : <></>}
                 </Row>
               </div>
               {/* <div className="pagination-box-row">
@@ -299,7 +305,8 @@ const CarList = (props) => {
 };
 const mapStateToProps = (state) => {
   return {
-    carsData: state.storeCarsReducer.carsData
+    carsData: state.storeCarsReducer.carsData,
+    autoLocSuggest: state.locationReducer.pickupLocation
   }
 }
 const mapDispatchToProps = (dispatch) => {
