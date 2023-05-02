@@ -153,7 +153,7 @@ const CarBooking = (props) => {
                 <div className="price-rating">
                   <div className="price-rent">
                     <h4>
-                      £{price}<span>/ {t("day")}</span>
+                      ${price}<span>/ {t("day")}</span>
                     </h4>
                   </div>
                   <div className="car-rating">
@@ -489,12 +489,12 @@ const CarBooking = (props) => {
                       {props.upgrades.protection === 'standard-protection' ?
                         <>
                           <td>Standard Protection</td>
-                          <td>£{Math.round(price * 0.07 * props.rental.durationInDays)}</td>
+                          <td>${Math.round(price * 0.07 * props.rental.durationInDays)}</td>
                         </>
                         : props.upgrades.protection === 'full-protection' ?
                           <>
                             <td>Full Protection</td>
-                            <td>£{Math.round(price * 0.11 * props.rental.durationInDays)}</td>
+                            <td>${Math.round(price * 0.11 * props.rental.durationInDays)}</td>
                           </> :
                           <>
                             <td>Basic Protection</td>

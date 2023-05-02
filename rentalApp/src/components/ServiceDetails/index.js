@@ -152,7 +152,7 @@ const ServiceDetails = (props) => {
                             </div>
                             <div>
                               <Icon name='minus' />
-                              Damage and theft of rental vehicle - up to £1,000.00 financial responsibility
+                              Damage and theft of rental vehicle - up to $1,000.00 financial responsibility
                             </div>
                             <div>
                               <Icon name='minus' />

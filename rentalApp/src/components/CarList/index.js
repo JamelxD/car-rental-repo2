@@ -197,7 +197,7 @@ const CarList = (props) => {
                               <div className="offer-text">
                                 <h3>{item.name}</h3>
                                 <h4>
-                                  £{Math.round((item.costs.total) / 190)}<span>/ {t("day")}</span>
+                                  ${Math.round((item.costs.total) / 190)}<span>/ {t("day")}</span>
                                 </h4>
                                 <ul>
                                   <li>
