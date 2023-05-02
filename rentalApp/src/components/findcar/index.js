@@ -57,7 +57,7 @@ const FindCar = (props) => {
       props.storeDropoffLocation(location.dropoff)
       await getPickUpLatLong()
       await getDropOffLatLong()
-      const res = await fetch('http://localhost:9000/api/getCars?' + new URLSearchParams({
+      const res = await fetch('https://galacticrental.com/api/getCars?' + new URLSearchParams({
         // JSON.stringify({
         //   lat: longlatRes[0].location.lat,
         //   long: longlatRes[0].location.lng,
@@ -108,7 +108,7 @@ const FindCar = (props) => {
       props.storePickupLocation(location.pickup)
       props.storeDropoffLocation('')
       await getPickUpLatLong()
-      const res = await fetch('http://localhost:9000/api/getCars?' + new URLSearchParams({
+      const res = await fetch('https://galacticrental.com/api/getCars?' + new URLSearchParams({
         pickUpLat: pickUpLonglatRes[0].location.lat,
         pickUpLong: pickUpLonglatRes[0].location.lng,
         dropOffLat: '',
@@ -135,6 +135,13 @@ const FindCar = (props) => {
           props.isLoading(false)
           alert('Please fill out the required fields')
         }
+        else if (result.length === 0
+          && location.pickup === 'Miami, FL, USA' || location.pickup === '2100 NW 42nd Ave, Miami, FL 33142, USA') {
+          props.isLoading(false)
+          navigate({
+            pathname: '/car-listing',
+          });
+        }
         else {
           props.isLoading(false)
           alert('No cars found')
@@ -149,7 +156,7 @@ const FindCar = (props) => {
 
   const getPickUpLatLong = async () => {
     try {
-      const res = await fetch('http://localhost:9000/api/getLocation?' + new URLSearchParams({
+      const res = await fetch('https://galacticrental.com/api/getLocation?' + new URLSearchParams({
         query: location.pickup
       }), {
         method: 'get',
@@ -168,7 +175,7 @@ const FindCar = (props) => {
 
   const getDropOffLatLong = async () => {
     try {
-      const res = await fetch('http://localhost:9000/api/getLocation?' + new URLSearchParams({
+      const res = await fetch('https://galacticrental.com/api/getLocation?' + new URLSearchParams({
         query: location.dropoff
       }), {
         method: 'get',
