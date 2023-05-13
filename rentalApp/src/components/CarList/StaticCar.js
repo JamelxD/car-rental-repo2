@@ -25,7 +25,7 @@ import img3 from "../../img/audi-offer.png";
 import img4 from "../../img/bmw-offer.png";
 import img5 from "../../img/toyota-offer-2.png";
 import img6 from "../../img/marcedes-offer.png";
-import image from "./kindpng_5679985.png"
+import image from "./bmw4-convert.jpg"
 
 
 import "./style.css";
@@ -37,14 +37,14 @@ const StaticCar = (props) => {
         "carId": "b4f1d93a-c023-4c31-9cd5-4d6955d5e7bd",
         "operatorId": "rentcar_broker",
         "operatorName": "Broker - Sixt",
-        "startDate": "2023-04-29T07:23:07.000Z",
-        "endDate": "2023-04-30T07:23:07.000Z",
+        "startDate": "2023-05-20T07:23:07.000Z",
+        "endDate": "2023-05-27T07:23:07.000Z",
         "costs": {
-            "total": 7000,
+            "total": 9520,
             "currency": "EUR",
             "symbol": "€"
         },
-        "expireAt": "2023-04-28T13:49:54.191Z",
+        "expireAt": "2023-05-27T13:49:54.191Z",
         "agencyReturn": {
             "agencyId": "29715",
             "address": {
@@ -97,21 +97,21 @@ const StaticCar = (props) => {
         },
         "agencyLogoUrl": "http://api.lyko.tech/v2.1/rentcars/cars/b4f1d93a-c023-4c31-9cd5-4d6955d5e7bd/agency/picture",
         "agencyReturnLogoUrl": "http://api.lyko.tech/v2.1/rentcars/cars/b4f1d93a-c023-4c31-9cd5-4d6955d5e7bd/agency-return/picture",
-        "name": "Range Sport",
-        "carGroup": "SUV",
+        "name": "Luxury Convertible - BMW 4 Series or similar",
+        "carGroup": "Convertible",
         "pictureUrl": image,
-        "seatNumber": 5,
+        "seatNumber": 4,
         "luggage": {
-            "big": 0,
+            "big": 1,
             "small": 0
         },
         "co2Emission": 151,
         "category": "compact",
-        "eliteCategory": false,
-        "type": "5 door",
+        "eliteCategory": true,
+        "type": "2 door",
         "gearbox": "auto",
         "acriss": "CDMR",
-        "durationInDays": 1,
+        "durationInDays": 7,
         "termsAndConditionsUrl": "http://api.lyko.tech/v2.1/rentcars/cars/b4f1d93a-c023-4c31-9cd5-4d6955d5e7bd/pdf-terms-and-conditions",
         "included": [],
         "excluded": [
@@ -159,10 +159,10 @@ const StaticCar = (props) => {
                         ${Math.round((staticDetails.costs.total) / 190)}<span>/ {t("day")}</span>
                     </h4>
                     <ul>
-                        <li>
+                        {/* <li>
                             <FaCar />
                             {t("model")}: 2022
-                        </li>
+                        </li> */}
                         <li>
                             <FaCogs />
                             {staticDetails.gearbox === 'auto' ? 'Automatic' : 'Manual'}
@@ -172,11 +172,11 @@ const StaticCar = (props) => {
                             <FaCogs />
                             {staticDetails.unlimitedDistance === true ? 'Unlimited Mileage' : 'Mileage: 1225 miles'}
                         </li>
-                        <li>
+                        {/* <li>
                             <FaCogs />
                             <Icon name='car' size='small' />
                             {staticDetails.type}
-                        </li>
+                        </li> */}
                         <li>
                             <FaCogs />
                             {staticDetails.operatorName}
@@ -187,7 +187,7 @@ const StaticCar = (props) => {
                         </li>
                         <li>
                             <FaCar />
-                            Luggages: {staticDetails.luggage.big + 3}
+                            Luggages: {staticDetails.luggage.big}
                         </li>
                     </ul>
                     <div className="offer-action">

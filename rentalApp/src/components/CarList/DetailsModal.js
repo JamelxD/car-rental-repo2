@@ -47,7 +47,7 @@ export default function DetailsModal(props) {
                                 Gearbox: {props.gearbox === 'auto' ? 'Automatic' : 'Manual'}
                             </li>
                             <li>
-                                Luggages: {props.luggage.big + 3}
+                                Luggages: {props.luggage.big}
                             </li>
                             <li>
                                 Number of seats: {props.seatNumber}

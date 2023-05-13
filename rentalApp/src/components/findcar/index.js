@@ -136,7 +136,7 @@ const FindCar = (props) => {
           alert('Please fill out the required fields')
         }
         else if (result.length === 0
-          && location.pickup === 'Miami, FL, USA' || location.pickup === '2100 NW 42nd Ave, Miami, FL 33142, USA') {
+          && location.pickup === 'Miami, FL, USA' || location.pickup === '3900 NW 25th Street, 414 Rental Car Ctr, Miami, FL 33142, USA') {
           props.isLoading(false)
           navigate({
             pathname: '/car-listing',

@@ -72,10 +72,10 @@ const ServiceDetails = (props) => {
                             </div>
                             <div>
                               <Icon name='minus' />
-                              Unlimited Miles
+                              Cross country miles during your rental period
                             </div>
                           </RadioButton>
-                          <RadioButton value="standard-mileage">
+                          {/* <RadioButton value="standard-mileage">
                             <div className='upgrade-header'>
                               Standard
                             </div>
@@ -87,19 +87,19 @@ const ServiceDetails = (props) => {
                               <Icon name='minus' />
                               $0.75/Extra Mile.
                             </div>
-                          </RadioButton>
+                          </RadioButton> */}
                           <RadioButton value="basic-mileage">
                             <div className='upgrade-header'>
                               Basic
                             </div>
                             <div>
                               <Icon name='minus' />
-                              Drive up to 1225 miles during your rental period
+                              Unlimited miles during your rental period
                             </div>
-                            <div>
+                            {/* <div>
                               <Icon name='minus' />
                               $0.75/Extra Mile.
-                            </div>
+                            </div> */}
                           </RadioButton>
                         </RadioGroup>
                       </div>
@@ -107,7 +107,7 @@ const ServiceDetails = (props) => {
                   </Accordion.Item>
                   <Accordion.Item eventKey="1" className="single_faq_accordian">
                     <Accordion.Header className="faq_accordian_header">
-                      Protection
+                      Protection - Collision Cover
                     </Accordion.Header>
                     <Accordion.Body>
                       <div className='radio'>
@@ -122,7 +122,7 @@ const ServiceDetails = (props) => {
                             </div>
                             <div>
                               <Icon name='minus' />
-                              Damage to tires, windshield and windows
+                              Roadside assistance
                             </div>
                             <div>
                               <Icon name='minus' />
@@ -130,7 +130,7 @@ const ServiceDetails = (props) => {
                             </div>
                             <div>
                               <Icon name='minus' />
-                              Roadside assistance
+                              Provided by Allianz Travel
                             </div>
                           </RadioButton>
                           <RadioButton value="standard-protection">
@@ -143,7 +143,7 @@ const ServiceDetails = (props) => {
                             </div>
                             <div>
                               <Icon name='minus' />
-                              Damage to tires, windshield and windows
+                              Provided by Allianz Travel
                             </div>
                           </RadioButton>
                           <RadioButton value="basic-protection">
@@ -152,11 +152,12 @@ const ServiceDetails = (props) => {
                             </div>
                             <div>
                               <Icon name='minus' />
-                              Damage and theft of rental vehicle - up to $1,000.00 financial responsibility
+                              This plan provides $75,000 in physical damage coverage as well as benefits for theft & vandalism.
+                              
                             </div>
                             <div>
                               <Icon name='minus' />
-                              Damage to tires, windshield and windows
+                              Provided by Allianz Travel
                             </div>
                           </RadioButton>
                         </RadioGroup>
@@ -335,8 +336,8 @@ const ServiceDetails = (props) => {
                 You have added:
               </p>
               <div className="simple-text">
-                {props.mileage === 'basic-mileage' ? <div><Icon name='minus' />Basic Mileage: Up to 1225 miles allowance for your rental period, additional miles will incur $0.75/Extra mile.</div> : props.mileage === 'long-mileage' ? <div><Icon name='minus' />Long Distance: Unlimited miles for the duration of your rental period.</div> : props.mileage === "standard-mileage" ? <div><Icon name='minus' />Standard Mileage: Up to 750 additional miles allowance for your rental period, additional miles will incur $0.75/Extra mile.</div> : null}
-                {props.protection === 'standard-protection' ? <div><Icon name='minus' />Standard Protection: Cover for damage to tires, windshield, windows and theft cover.</div> : props.protection === 'full-protection' ? <div><Icon name='minus' />Full Protection:  Cover for damage to tires, windshield, windows, interior, theft cover and roadside assistance.</div> : props.protection === 'basic-protection' ? <div><Icon name='minus' />Basic Protection: Damage and theft cover up to $1,000,000, cover for tire, windshield and window damage.</div> : <></>}
+                {props.mileage === 'basic-mileage' ? <div><Icon name='minus' />Basic Mileage: Unlimited Mileage for this selection</div> : props.mileage === 'long-mileage' ? <div><Icon name='minus' />Long Distance: Unlimited miles for the duration of your rental period. Cross country included.</div> : props.mileage === "standard-mileage" ? <div><Icon name='minus' />Standard Mileage: Up to 750 additional miles allowance for your rental period, additional miles will incur $0.75/Extra mile.</div> : null}
+                {props.protection === 'standard-protection' ? <div><Icon name='minus' />Standard Protection: Cover for damage to tires, windshield, windows and theft cover.</div> : props.protection === 'full-protection' ? <div><Icon name='minus' />Full Protection:  Cover for damage to tires, windshield, windows, interior, theft cover and roadside assistance.</div> : props.protection === 'basic-protection' ? <div><Icon name='minus' />Basic Protection: This plan provides $75,000 in physical damage coverage as well as benefits for theft & vandalism. Offered and sold by Allianz Global Assistance. You can view more information <Link to={"https://www.allianztravelinsurance.com/"}> here</Link></div> : <></>}
                 {props.additionalDrivers > 0 ? <div><Icon name='minus' />Additional Drivers: {props.additionalDrivers}</div> : <div />}
                 {props.gps === true ? <div><Icon name='minus' />GPS Guaranteed for this vehicle</div> : <div />}
                 {props.roadsideAssistance === true ? <div><Icon name='minus' />24/7 Roadside assistance and breakdown cover</div> : <div />}

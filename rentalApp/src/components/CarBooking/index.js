@@ -177,9 +177,9 @@ const CarBooking = (props) => {
                 </p> */}
                 <div className="car-features clearfix">
                   <ul>
-                    <li>
+                    {/* <li>
                       <FaCar /> {t("model")}: {props.plate}
-                    </li>
+                    </li> */}
                     <li>
                       <FaCogs /> {props.rental.gearbox === 'manual' ? 'Manual' : 'Automatic'}
                     </li>
@@ -203,7 +203,7 @@ const CarBooking = (props) => {
                       <FaCar /> Number of seats: {props.rental.seatNumber}
                     </li>
                     <li>
-                      <FaTachometerAlt /> Car band: {props.eliteCategory === 'true' ? 'Luxury Band' : 'Standard Band'}
+                      <FaTachometerAlt /> Car band: {props.eliteCategory === 'true' ? 'Luxury ta' : 'Luxury'}
                     </li>
                   </ul>
                 </div>
@@ -395,7 +395,7 @@ const CarBooking = (props) => {
                             <p>Renter meets the licence, documents, payment and age requirements to hire a vehicle.</p>
                             <p>Renter understands the cancellation policy. Please read the cancellation policy for details.</p>
                             <p>Renter must acknowledge refund policy when booking reservation.</p>
-                            <p>Flexible cancellation, reservation can be cancelled before the start of the rental.</p>
+                            <p>Non-refundable, non-transferable and non-changeable even if the reservation is not used.</p>
 
                             <InfoModal link="Renter Requirements" title="Renter Requirements" info={renterRequirements()} />
                             <InfoModal link="Forms of Payment" title="Renter Requirements" info={formsOfPayment()} />
@@ -429,11 +429,12 @@ const CarBooking = (props) => {
                   <tbody>
                     <tr>
                       <td>Pickup location</td>
-                      <td>{props.pickUpLocation}</td>
+                      {/* <td>{props.pickUpLocation}</td> */}
+                      <td>SIXT RENT A CAR - 3900 NW 25th Street, 414 Rental Car Ctr, Miami, FL 33142, USA</td>
                     </tr>
                     <tr>
                       <td>Dropoff location</td>
-                      {props.dropOffLocation === '' ? <td>{props.pickUpLocation}</td> : <td>{props.dropOffLocation}</td>}
+                      {props.dropOffLocation === '' ? <td>SIXT RENT A CAR - 3900 NW 25th Street, 414 Rental Car Ctr, Miami, FL 33142, USA</td> : <td>{props.dropOffLocation}</td>}
                     </tr>
                     <tr>
                       <td>Pickup date</td>
@@ -460,7 +461,7 @@ const CarBooking = (props) => {
                   <tbody>
                     <tr>
                       <td>Subtotal</td>
-                      <td>${price}</td>
+                      <td>${(price * props.rental.durationInDays + props.upgrades.upgradesTotal)* 0.8} </td>
                     </tr>
                   </tbody>
                 </table>
@@ -497,8 +498,8 @@ const CarBooking = (props) => {
                             <td>${Math.round(price * 0.11 * props.rental.durationInDays)}</td>
                           </> :
                           <>
-                            <td>Basic Protection</td>
-                            <td>No added cost</td>
+                            <td>Basic Protection (Allianz Insurance Collision Cover)</td>
+                            <td>No added cost.</td>
                           </>}
                     </tr>
                     <tr>
@@ -642,7 +643,7 @@ const CarBooking = (props) => {
                   <tbody>
                     <tr>
                       <td>VAT (20%)</td>
-                      <td>Included</td>
+                      <td>${(price * props.rental.durationInDays + props.upgrades.upgradesTotal) * 0.2}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -653,7 +654,8 @@ const CarBooking = (props) => {
                   <tbody>
                     <tr>
                       <td>Total Price</td>
-                      <td>${price + props.upgrades.upgradesTotal}</td>
+                      <td>${price * props.rental.durationInDays  + props.upgrades.upgradesTotal}</td>
+                      
                     </tr>
                   </tbody>
                 </table>
