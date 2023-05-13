@@ -37,14 +37,14 @@ const StaticCar = (props) => {
         "carId": "b4f1d93a-c023-4c31-9cd5-4d6955d5e7bd",
         "operatorId": "rentcar_broker",
         "operatorName": "Broker - Sixt",
-        "startDate": "2023-04-29T07:23:07.000Z",
-        "endDate": "2023-04-30T07:23:07.000Z",
+        "startDate": "2023-05-20T07:23:07.000Z",
+        "endDate": "2023-05-27T07:23:07.000Z",
         "costs": {
             "total": 9520,
             "currency": "EUR",
             "symbol": "€"
         },
-        "expireAt": "2023-04-28T13:49:54.191Z",
+        "expireAt": "2023-05-27T13:49:54.191Z",
         "agencyReturn": {
             "agencyId": "29715",
             "address": {
@@ -111,7 +111,7 @@ const StaticCar = (props) => {
         "type": "2 door",
         "gearbox": "auto",
         "acriss": "CDMR",
-        "durationInDays": 1,
+        "durationInDays": 7,
         "termsAndConditionsUrl": "http://api.lyko.tech/v2.1/rentcars/cars/b4f1d93a-c023-4c31-9cd5-4d6955d5e7bd/pdf-terms-and-conditions",
         "included": [],
         "excluded": [
