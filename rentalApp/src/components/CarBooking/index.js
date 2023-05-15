@@ -461,7 +461,7 @@ const CarBooking = (props) => {
                   <tbody>
                     <tr>
                       <td>Subtotal</td>
-                      <td>${(price * props.rental.durationInDays + props.upgrades.upgradesTotal)* 0.8} </td>
+                      <td>${Math.round((price * props.rental.durationInDays + props.upgrades.upgradesTotal) * 0.8)} </td>
                     </tr>
                   </tbody>
                 </table>
@@ -643,7 +643,7 @@ const CarBooking = (props) => {
                   <tbody>
                     <tr>
                       <td>VAT (20%)</td>
-                      <td>${(price * props.rental.durationInDays + props.upgrades.upgradesTotal) * 0.2}</td>
+                      <td>${Math.round((price * props.rental.durationInDays + props.upgrades.upgradesTotal) * 0.2)}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -654,8 +654,8 @@ const CarBooking = (props) => {
                   <tbody>
                     <tr>
                       <td>Total Price</td>
-                      <td>${price * props.rental.durationInDays  + props.upgrades.upgradesTotal}</td>
-                      
+                      <td>${price * props.rental.durationInDays + props.upgrades.upgradesTotal}</td>
+
                     </tr>
                   </tbody>
                 </table>

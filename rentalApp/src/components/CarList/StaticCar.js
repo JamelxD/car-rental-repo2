@@ -40,7 +40,7 @@ const StaticCar = (props) => {
         "startDate": "2023-05-20T07:23:07.000Z",
         "endDate": "2023-05-27T07:23:07.000Z",
         "costs": {
-            "total": 9520,
+            "total": 11300,
             "currency": "EUR",
             "symbol": "€"
         },
@@ -119,7 +119,7 @@ const StaticCar = (props) => {
         ],
         "unlimitedDistance": true,
         "noShowFee": {
-            "total": 9500,
+            "total": 9400,
             "currency": "EUR",
             "symbol": "€"
         },
