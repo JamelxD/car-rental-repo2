@@ -4,7 +4,9 @@ export const cancellationPolicy = () => {
     return (
         <div>
             <p>
-                Non-refundable, non-transferable and non-changeable (including for COVID-19) even if the reservation is not used.
+                {/* Non-refundable, non-transferable and non-changeable (including for COVID-19) even if the reservation is not used. */}
+
+                Free cancellation and fully refundable up to 48 hours before pick-up.
 
                 Review the location's policy for possible age or local renter restrictions.
 

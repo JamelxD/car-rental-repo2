@@ -19,9 +19,10 @@ import {
 import "./style.css";
 import { render } from "react-dom";
 import LocationService from "../LocationService/LocationService";
+import { storePickupDate } from "../../redux/actions/dateActions";
 
 registerLicense(
-  "ORg4AjUWIQA/Gnt2VVhiQlFadVlJXGFWfVJpTGpQdk5xdV9DaVZUTWY/P1ZhSXxRdk1jXX9cc3dRR2BbWEM="
+  "ORg4AjUWIQA/Gnt2UVhhQlVFfV1dXGVWfFN0QXNfdV5wflBAcDwsT3RfQFljSH9Ud01iW3xfeHFQQg=="
 );
 
 const FindCar = (props) => {
@@ -55,6 +56,7 @@ const FindCar = (props) => {
       props.isLoading(true)
       props.storePickupLocation(location.pickup)
       props.storeDropoffLocation(location.dropoff)
+      props.storePickupDate(startDate)
       await getPickUpLatLong()
       await getDropOffLatLong()
       const res = await fetch('https://galacticrental.com/api/getCars?' + new URLSearchParams({
@@ -107,6 +109,7 @@ const FindCar = (props) => {
       props.isLoading(true)
       props.storePickupLocation(location.pickup)
       props.storeDropoffLocation('')
+      props.storePickupDate(startDate)
       await getPickUpLatLong()
       const res = await fetch('https://galacticrental.com/api/getCars?' + new URLSearchParams({
         pickUpLat: pickUpLonglatRes[0].location.lat,
@@ -124,7 +127,8 @@ const FindCar = (props) => {
         },
       }).then(async response => {
         var result = await response.json()
-        if (response.status === 200 && result.length !== 0 && result.code !== "VALIDATION_FAILED") {
+        if (response.status === 200 && result.length !== 0 && result.code !== "VALIDATION_FAILED" && moment(startDate).isAfter(moment(endDate)) === false) {
+          // console.log(result)
           props.storeCars(result)
           props.isLoading(false)
           navigate({
@@ -135,8 +139,12 @@ const FindCar = (props) => {
           props.isLoading(false)
           alert('Please fill out the required fields')
         }
+        else if (moment(startDate).isAfter(moment(endDate)) === true) {
+          props.isLoading(false)
+          alert('Pick up date can not be after the drop off date')
+        }
         else if (result.length === 0
-          && location.pickup === 'Miami, FL, USA' || location.pickup === '3900 NW 25th Street, 414 Rental Car Ctr, Miami, FL 33142, USA') {
+          && location.pickup === 'Miami, FL, USA' && startDate.includes('2024-05-15') || location.pickup === '3900 NW 25th Street, 414 Rental Car Ctr, Miami, FL 33142, USA' && startDate.includes('2024-05-15')) {
           props.isLoading(false)
           navigate({
             pathname: '/car-listing',
@@ -372,6 +380,7 @@ const mapDispatchToProps = (dispatch) => {
     isLoading: (boolean) => { dispatch(isLoading(boolean)) },
     storePickupLocation: (location) => { dispatch(storePickupLocation(location)) },
     storeDropoffLocation: (location) => { dispatch(storeDropoffLocation(location)) },
+    storePickupDate: (date) => { dispatch(storePickupDate(date)) }
   }
 }
 

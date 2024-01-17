@@ -25,7 +25,7 @@ import img3 from "../../img/audi-offer.png";
 import img4 from "../../img/bmw-offer.png";
 import img5 from "../../img/toyota-offer-2.png";
 import img6 from "../../img/marcedes-offer.png";
-import image from "./bmw4-convert.jpg"
+import image from "./bmw-x7-40i-4d-suv-grey-2021.png"
 
 
 import "./style.css";
@@ -37,14 +37,14 @@ const StaticCar = (props) => {
         "carId": "b4f1d93a-c023-4c31-9cd5-4d6955d5e7bd",
         "operatorId": "rentcar_broker",
         "operatorName": "Broker - Sixt",
-        "startDate": "2023-05-20T07:23:07.000Z",
-        "endDate": "2023-05-27T07:23:07.000Z",
+        "startDate": "2024-05-15T07:23:07.000Z",
+        "endDate": "2024-05-20T07:23:07.000Z",
         "costs": {
-            "total": 11300,
+            "total": 9800,
             "currency": "EUR",
             "symbol": "€"
         },
-        "expireAt": "2023-05-27T13:49:54.191Z",
+        "expireAt": "2024-05-20T13:49:54.191Z",
         "agencyReturn": {
             "agencyId": "29715",
             "address": {
@@ -97,21 +97,21 @@ const StaticCar = (props) => {
         },
         "agencyLogoUrl": "http://api.lyko.tech/v2.1/rentcars/cars/b4f1d93a-c023-4c31-9cd5-4d6955d5e7bd/agency/picture",
         "agencyReturnLogoUrl": "http://api.lyko.tech/v2.1/rentcars/cars/b4f1d93a-c023-4c31-9cd5-4d6955d5e7bd/agency-return/picture",
-        "name": "Luxury Convertible - BMW 4 Series or similar",
-        "carGroup": "Convertible",
+        "name": "BMW X7 or similar SUV",
+        "carGroup": "SUV",
         "pictureUrl": image,
-        "seatNumber": 4,
+        "seatNumber": 7,
         "luggage": {
             "big": 1,
-            "small": 0
+            "small": 1
         },
         "co2Emission": 151,
         "category": "compact",
         "eliteCategory": true,
-        "type": "2 door",
+        "type": "4 door",
         "gearbox": "auto",
         "acriss": "CDMR",
-        "durationInDays": 7,
+        "durationInDays": 5,
         "termsAndConditionsUrl": "http://api.lyko.tech/v2.1/rentcars/cars/b4f1d93a-c023-4c31-9cd5-4d6955d5e7bd/pdf-terms-and-conditions",
         "included": [],
         "excluded": [
@@ -187,7 +187,7 @@ const StaticCar = (props) => {
                         </li>
                         <li>
                             <FaCar />
-                            Luggages: {staticDetails.luggage.big}
+                            Luggages: {staticDetails.luggage.big} Large{staticDetails.luggage.small > 0 ? <>, {staticDetails.luggage.small} Small</> : null}
                         </li>
                     </ul>
                     <div className="offer-action">

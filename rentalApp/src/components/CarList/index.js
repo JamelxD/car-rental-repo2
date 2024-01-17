@@ -48,7 +48,7 @@ const CarList = (props) => {
   const [condition, setCondition] = useState('');
   const [property, setProperty] = useState(properties)
 
-  console.log(props.autoLocSuggest)
+  // console.log(props)
   // var global = 'ok'
 
   // const setProperty = async () => {
@@ -189,7 +189,7 @@ const CarList = (props) => {
                     <StaticCar />
                   </>
                     : <></>}
-                  {Object.keys(props.carsData).length !== 0 ? <>
+                  {Object.keys(props.carsData).length !== 0 && props.carsData.code !== 'ERROR' ? <>
                     {props.carsData.map(agency => {
                       return (
                         agency.cars.filter(filter => filter[condition.type] === condition.opt).map((item, index) => {
@@ -306,7 +306,8 @@ const CarList = (props) => {
 const mapStateToProps = (state) => {
   return {
     carsData: state.storeCarsReducer.carsData,
-    autoLocSuggest: state.locationReducer.pickupLocation
+    autoLocSuggest: state.locationReducer.pickupLocation,
+    pickUpDate: state.dateReducer.date
   }
 }
 const mapDispatchToProps = (dispatch) => {

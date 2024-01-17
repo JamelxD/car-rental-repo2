@@ -395,7 +395,8 @@ const CarBooking = (props) => {
                             <p>Renter meets the licence, documents, payment and age requirements to hire a vehicle.</p>
                             <p>Renter understands the cancellation policy. Please read the cancellation policy for details.</p>
                             <p>Renter must acknowledge refund policy when booking reservation.</p>
-                            <p>Non-refundable, non-transferable and non-changeable even if the reservation is not used.</p>
+                            {/* <p>Non-refundable, non-transferable and non-changeable even if the reservation is not used.</p> */}
+                            <p>Free cancellation and fully refundable up to 48 hours before pick-up.</p>
 
                             <InfoModal link="Renter Requirements" title="Renter Requirements" info={renterRequirements()} />
                             <InfoModal link="Forms of Payment" title="Renter Requirements" info={formsOfPayment()} />
@@ -482,7 +483,7 @@ const CarBooking = (props) => {
                             <td>${Math.round(price * 0.09 * props.rental.durationInDays)}</td>
                           </> : props.upgrades.mileage === 'basic-mileage' ?
                             <>
-                              <td>Basic Mileage</td>
+                              <td>Basic Mileage (Unlimited Mileage)</td>
                               <td>No added cost</td>
                             </> : null}
                     </tr>
@@ -505,7 +506,7 @@ const CarBooking = (props) => {
                     <tr>
                       <>
                         <td>
-                          Flexible Cancellation
+                          Flexible Cancellation (Free up to 48 hours before pick-up)
                         </td>
                         <td>
                           No added cost
@@ -515,7 +516,7 @@ const CarBooking = (props) => {
                     <tr>
                       <>
                         <td>
-                          Loss Damage Waiver (including theft protection)
+                          Collision Damage Waiver with £0 excess
                         </td>
                         <td>
                           No added cost
@@ -525,14 +526,14 @@ const CarBooking = (props) => {
                     <tr>
                       <>
                         <td>
-                          GPS Guaranteed
+                          Theft Protection with £0 excess
                         </td>
                         <td>
                           No added cost
                         </td>
                       </>
                     </tr>
-                    <tr>
+                    {/* <tr>
                       <>
                         <td>
                           Loss Damage Waiver
@@ -561,7 +562,7 @@ const CarBooking = (props) => {
                           No added cost
                         </td>
                       </>
-                    </tr>
+                    </tr> */}
                     <tr>
                       {props.upgrades.additionalDrivers > 0 ?
                         <>
