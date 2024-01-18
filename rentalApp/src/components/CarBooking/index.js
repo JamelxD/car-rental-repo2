@@ -129,7 +129,7 @@ const CarBooking = (props) => {
   const max = 2023;
   const rand = min + Math.random() * (max - min);
 
-  const price = Math.round((props.rental.costs.total) / 190)
+  const price = Math.round((props.rental.costs.total) / 2100)
 
   const [termsChecked, setTermsChecked] = useState(false)
 
@@ -143,7 +143,7 @@ const CarBooking = (props) => {
             <Col lg={6}>
               <div className="car-booking-image">
                 {/* </div> <div style={{ height: '500px', width: '80%', backgroundColor: 'red' }}> */}
-                <img crossOrigin="anonymous" src={props.rental.pictureUrl} alt="offer 1" />
+                <img crossOrigin="true" src={props.rental.pictureUrl} alt="offer 1" />
               </div>
             </Col>
             <Col lg={6}>
@@ -430,12 +430,13 @@ const CarBooking = (props) => {
                   <tbody>
                     <tr>
                       <td>Pickup location</td>
-                      {/* <td>{props.pickUpLocation}</td> */}
-                      <td>SIXT RENT A CAR - 3900 NW 25th Street, 414 Rental Car Ctr, Miami, FL 33142, USA</td>
+                      <td>{props.pickUpLocation === 'Miami, FL, USA' || '2100 NW 42nd Ave, Miami, FL 33142, USA' ? 'Miami Airport (SIXT RENT A CAR - 3900 NW 25th Street, 414 Rental Car Ctr, Miami, FL 33142, USA)' : props.pickUpLocation}</td>
+                      {/* <td>SIXT RENT A CAR - 3900 NW 25th Street, 414 Rental Car Ctr, Miami, FL 33142, USA</td> */}
                     </tr>
                     <tr>
                       <td>Dropoff location</td>
-                      {props.dropOffLocation === '' ? <td>SIXT RENT A CAR - 3900 NW 25th Street, 414 Rental Car Ctr, Miami, FL 33142, USA</td> : <td>{props.dropOffLocation}</td>}
+                      {props.dropOffLocation === '' && props.pickUpLocation === 'Miami, FL, USA' || '2100 NW 42nd Ave, Miami, FL 33142, USA' ?
+                        <td>Miami Airport (SIXT RENT A CAR - 3900 NW 25th Street, 414 Rental Car Ctr, Miami, FL 33142, USA)</td> : <td>{props.dropOffLocation}</td>}
                     </tr>
                     <tr>
                       <td>Pickup date</td>

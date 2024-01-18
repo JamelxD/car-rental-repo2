@@ -4,3 +4,9 @@ export const storeCars = (carsArray) => {
         payload: carsArray
     }
 }
+
+export const clearCars = () => {
+    return {
+        type: 'CLEAR_CARS'
+    }
+}

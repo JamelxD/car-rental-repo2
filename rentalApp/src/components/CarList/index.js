@@ -197,12 +197,12 @@ const CarList = (props) => {
                             <Col md={6}>
                               <div className="single-offers">
                                 <div className="offer-image">
-                                  <img crossorigin="anonymous" src={item.pictureUrl} alt="offer 1" />
+                                  <img crossOrigin="true" src={item.pictureUrl + '/'} alt={'offer ' + index} />
                                 </div>
                                 <div className="offer-text">
                                   <h3>{item.name}</h3>
                                   <h4>
-                                    ${Math.round((item.costs.total) / 190)}<span>/ {t("day")}</span>
+                                    ${Math.round((item.costs.total) / 2100)}<span>/ {t("day")}</span>
                                   </h4>
                                   <ul>
                                     <li>

@@ -5,7 +5,7 @@ import { registerLicense } from "@syncfusion/ej2-base";
 import { useNavigate } from 'react-router-dom';
 import moment from 'moment';
 import { connect } from 'react-redux';
-import { storeCars } from '../../redux/actions/storeCarsActions';
+import { clearCars, storeCars } from '../../redux/actions/storeCarsActions';
 import { isLoading } from "../../redux/actions/isLoadingActions";
 import { Checkbox } from 'semantic-ui-react'
 import BeatLoader from 'react-spinners/BeatLoader'
@@ -48,6 +48,7 @@ const FindCar = (props) => {
 
   useEffect(() => {
     props.isLoading(false)
+    props.clearCars();
   }, [])
 
   const navigate = useNavigate();
@@ -380,7 +381,8 @@ const mapDispatchToProps = (dispatch) => {
     isLoading: (boolean) => { dispatch(isLoading(boolean)) },
     storePickupLocation: (location) => { dispatch(storePickupLocation(location)) },
     storeDropoffLocation: (location) => { dispatch(storeDropoffLocation(location)) },
-    storePickupDate: (date) => { dispatch(storePickupDate(date)) }
+    storePickupDate: (date) => { dispatch(storePickupDate(date)) },
+    clearCars: () => { dispatch(clearCars()) },
   }
 }
 
