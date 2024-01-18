@@ -40,7 +40,7 @@ const StaticCar = (props) => {
         "startDate": "2024-05-15T07:23:07.000Z",
         "endDate": "2024-05-20T07:23:07.000Z",
         "costs": {
-            "total": 9800,
+            "total": 120000,
             "currency": "EUR",
             "symbol": "€"
         },
@@ -156,7 +156,7 @@ const StaticCar = (props) => {
                 <div className="offer-text">
                     <h3>{staticDetails.name}</h3>
                     <h4>
-                        ${Math.round((staticDetails.costs.total) / 190)}<span>/ {t("day")}</span>
+                        ${Math.round((staticDetails.costs.total) / 2100)}<span>/ {t("day")}</span>
                     </h4>
                     <ul>
                         {/* <li>

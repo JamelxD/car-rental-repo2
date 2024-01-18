@@ -18,7 +18,7 @@ const ServiceDetails = (props) => {
   const { t } = useTranslation();
 
 
-  const adjustedCost = Math.round((props.price) / 190)
+  const adjustedCost = Math.round((props.price) / 2100)
 
   const onClick = (e) => {
     e.preventDefault();
