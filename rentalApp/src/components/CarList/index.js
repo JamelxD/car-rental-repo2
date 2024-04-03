@@ -29,6 +29,7 @@ import img6 from "../../img/marcedes-offer.png";
 import "./style.css";
 import DetailsModal from "./DetailsModal";
 import StaticCar from "./StaticCar";
+import StaticCar2 from "./StaticCar2";
 
 const CarList = (props) => {
 
@@ -185,8 +186,14 @@ const CarList = (props) => {
             <div className="car-listing-right">
               <div className="car-grid-list">
                 <Row>
-                  {props.autoLocSuggest === 'Miami, FL, USA' || props.autoLocSuggest === '2100 NW 42nd Ave, Miami, FL 33142, USA' ? <>
+                  {props.autoLocSuggest === 'Miami, FL, USA' || props.autoLocSuggest === '2100 NW 42nd Ave, Miami, FL 33142, USA' || props.autoLocSuggest === '3900 NW 25th Street, 414 Rental Car Ctr, Miami, FL 33142, USA' ? <>
+                    {/* {props.autoLocSuggest === 'Dubai - United Arab Emirates' || props.autoLocSuggest.includes('United Arab Emirates') ? <> */}
+
                     <StaticCar />
+                  </>
+                    : <></>}
+                  {props.autoLocSuggest === 'Houston, TX, USA' || props.autoLocSuggest === '2800 N Terminal Rd, Houston, TX 77032, USA' || props.autoLocSuggest === '8100 Monroe Rd, Houston, TX 77061, USA' ? <>
+                    <StaticCar2 />
                   </>
                     : <></>}
                   {Object.keys(props.carsData).length !== 0 && props.carsData.code !== 'ERROR' ? <>
@@ -202,7 +209,7 @@ const CarList = (props) => {
                                 <div className="offer-text">
                                   <h3>{item.name}</h3>
                                   <h4>
-                                    ${Math.round((item.costs.total) / 2100)}<span>/ {t("day")}</span>
+                                    ${Math.round((item.costs.total) / 625)}<span>/ {t("day")}</span>
                                   </h4>
                                   <ul>
                                     <li>

@@ -34,6 +34,7 @@ import { renterRequirements } from "./renterRequirements";
 import { formsOfPayment } from "./formsOfPayment";
 import { bookingConditions } from "./bookingConditions";
 import { cancellationPolicy } from "./cancellationPolicy";
+import TermsModal from "./TermsModal";
 
 const CarBooking = (props) => {
   const navigate = useNavigate();
@@ -129,10 +130,9 @@ const CarBooking = (props) => {
   const max = 2023;
   const rand = min + Math.random() * (max - min);
 
-  const price = Math.round((props.rental.costs.total) / 2100)
+  const price = Math.round((props.rental.costs.total) / 625)
 
   const [termsChecked, setTermsChecked] = useState(false)
-
 
   return (
     <>
@@ -150,6 +150,8 @@ const CarBooking = (props) => {
               <div className="car-booking-right">
                 <p className="rental-tag">{props.rental.operatorName}</p>
                 <h3>{props.rental.name}</h3>
+                {(props.rental.name == 'Dodge Ram 1500 or similar') ?
+                  <h4>Medium Pickup Truck</h4> : <></>}
                 <div className="price-rating">
                   <div className="price-rent">
                     <h4>
@@ -186,6 +188,9 @@ const CarBooking = (props) => {
                     <li>
                       <FaTachometerAlt /> {props.rental.type}
                     </li>
+                    <li>
+                      <FaCogs /> Air Conditioning
+                    </li>
                   </ul>
                   {/* <ul>
                     <li>
@@ -203,7 +208,7 @@ const CarBooking = (props) => {
                       <FaCar /> Number of seats: {props.rental.seatNumber}
                     </li>
                     <li>
-                      <FaTachometerAlt /> Car band: {props.eliteCategory === 'true' ? 'Luxury ta' : 'Luxury'}
+                      <FaTachometerAlt /> Car band: {props.eliteCategory === 'true' ? 'Luxury' : 'Pickup Truck'}
                     </li>
                   </ul>
                 </div>
@@ -396,10 +401,12 @@ const CarBooking = (props) => {
                             <p>Renter understands the cancellation policy. Please read the cancellation policy for details.</p>
                             <p>Renter must acknowledge refund policy when booking reservation.</p>
                             {/* <p>Non-refundable, non-transferable and non-changeable even if the reservation is not used.</p> */}
-                            <p>Free cancellation and fully refundable up to 48 hours before pick-up.</p>
+                            {/* <p>Free cancellation and fully refundable up to 48 hours before pick-up.</p> */}
 
-                            <InfoModal link="Renter Requirements" title="Renter Requirements" info={renterRequirements()} />
-                            <InfoModal link="Forms of Payment" title="Renter Requirements" info={formsOfPayment()} />
+                            <TermsModal link="Important Rental information for this Vehicle" title="Important Rental information for this Vehicle" />
+
+                            {/* <InfoModal link="Renter Requirements" title="Renter Requirements" info={renterRequirements()} /> */}
+                            {/* <InfoModal link="Forms of Payment" title="Forms of Payment" info={formsOfPayment()} /> */}
                             <InfoModal link="Cancellation Policy" title="Cancellation Policy" info={cancellationPolicy()} />
                             <InfoModal link="Booking Conditions" title="Booking Conditions" info={bookingConditions()} />
                             <br />
@@ -430,21 +437,25 @@ const CarBooking = (props) => {
                   <tbody>
                     <tr>
                       <td>Pickup location</td>
-                      <td>{props.pickUpLocation === 'Miami, FL, USA' || '2100 NW 42nd Ave, Miami, FL 33142, USA' ? 'Miami Airport (SIXT RENT A CAR - 3900 NW 25th Street, 414 Rental Car Ctr, Miami, FL 33142, USA)' : props.pickUpLocation}</td>
+                      <td>{props.pickUpLocation === 'Miami, FL, USA' || props.pickUpLocation === '2100 NW 42nd Ave, Miami, FL 33142, USA' ? 'Miami Airport (SIXT RENT A CAR - 3900 NW 25th Street, 414 Rental Car Ctr, Miami, FL 33142, USA)' : props.pickUpLocation === 'Houston, TX, USA' || props.pickUpLocation === '2800 N Terminal Rd, Houston, TX 77032, USA' || props.pickUpLocation === '8100 Monroe Rd, Houston, TX 77061, USA' ? 'Enterprise Rent-A-Car (George Bush Intercontinental Airport)' : props.pickUpLocation}</td>
+                      {/* <td>{props.pickUpLocation === 'Houston, TX, USA' || '2800 N Terminal Rd, Houston, TX 77032, USA' || '8100 Monroe Rd, Houston, TX 77061, USA' ? 'Houston George Bush Intercontinental Airport' : props.pickUpLocation}</td> */}
                       {/* <td>SIXT RENT A CAR - 3900 NW 25th Street, 414 Rental Car Ctr, Miami, FL 33142, USA</td> */}
                     </tr>
                     <tr>
                       <td>Dropoff location</td>
-                      {props.dropOffLocation === '' && props.pickUpLocation === 'Miami, FL, USA' || '2100 NW 42nd Ave, Miami, FL 33142, USA' ?
-                        <td>Miami Airport (SIXT RENT A CAR - 3900 NW 25th Street, 414 Rental Car Ctr, Miami, FL 33142, USA)</td> : <td>{props.dropOffLocation}</td>}
+                      {props.dropOffLocation === '' && props.pickUpLocation === 'Miami, FL, USA' || props.dropOffLocation === '' && props.pickUpLocation === '2100 NW 42nd Ave, Miami, FL 33142, USA' ?
+                        <td>Miami Airport (SIXT RENT A CAR - 3900 NW 25th Street, 414 Rental Car Ctr, Miami, FL 33142, USA)</td> : props.pickUpLocation === 'Houston, TX, USA' || props.pickUpLocation === '2800 N Terminal Rd, Houston, TX 77032, USA' || props.pickUpLocation === '8100 Monroe Rd, Houston, TX 77061, USA' ?
+                          <td>Enterprise Rent-A-Car (George Bush Intercontinental Airport)</td> : <td>{props.dropOffLocation}</td>}
+                      {/* {props.dropOffLocation === '' && props.pickUpLocation === 'Houston, TX, USA' || '2800 N Terminal Rd, Houston, TX 77032, USA' || '8100 Monroe Rd, Houston, TX 77061, USA' ?
+                        <td>Houston George Bush Intercontinental Airport</td> : <td>{props.dropOffLocation}</td>} */}
                     </tr>
                     <tr>
                       <td>Pickup date</td>
-                      <td>{moment(props.rental.startDate).format("MM/DD/YYYY")}</td>
+                      <td>{moment(props.rental.startDate).format("MM/DD/YYYY")} - {props.times.times.pickupTime}</td>
                     </tr>
                     <tr>
                       <td>Dropoff date</td>
-                      <td>{moment(props.rental.endDate).format("MM/DD/YYYY")}</td>
+                      <td>{moment(props.rental.endDate).format("MM/DD/YYYY")} - {props.times.times.dropoffTime}</td>
                     </tr>
                     <tr>
                       <td>Driver minimum age</td>
@@ -452,7 +463,10 @@ const CarBooking = (props) => {
                     </tr>
                     <tr>
                       <td>Rental period</td>
-                      <td>{props.rental.durationInDays} days</td>
+                      {props.rental.durationInDays > 1 ?
+                        <td>{props.rental.durationInDays} days</td> :
+                        <td>{props.rental.durationInDays} day</td>}
+                      {/* <td>{props.rental.durationInDays} days</td> */}
                     </tr>
                   </tbody>
                 </table>
@@ -484,11 +498,11 @@ const CarBooking = (props) => {
                             <td>${Math.round(price * 0.09 * props.rental.durationInDays)}</td>
                           </> : props.upgrades.mileage === 'basic-mileage' ?
                             <>
-                              <td>Basic Mileage (Unlimited Mileage)</td>
+                              <td>Unlimited Mileage</td>
                               <td>No added cost</td>
                             </> : null}
                     </tr>
-                    <tr>
+                    {/* <tr>
                       {props.upgrades.protection === 'standard-protection' ?
                         <>
                           <td>Standard Protection</td>
@@ -501,13 +515,13 @@ const CarBooking = (props) => {
                           </> :
                           <>
                             <td>Basic Protection (Allianz Insurance Collision Cover)</td>
-                            <td>No added cost.</td>
+                            <td>No added cost</td>
                           </>}
-                    </tr>
+                    </tr> */}
                     <tr>
                       <>
                         <td>
-                          Flexible Cancellation (Free up to 48 hours before pick-up)
+                          Flexible/Free Cancellation (Pay at Pick-Up)
                         </td>
                         <td>
                           No added cost
@@ -517,7 +531,7 @@ const CarBooking = (props) => {
                     <tr>
                       <>
                         <td>
-                          Collision Damage Waiver with £0 excess
+                          Loss Damage Waiver
                         </td>
                         <td>
                           No added cost
@@ -527,10 +541,30 @@ const CarBooking = (props) => {
                     <tr>
                       <>
                         <td>
-                          Theft Protection with £0 excess
+                          Liability Insurance Supplement
                         </td>
                         <td>
                           No added cost
+                        </td>
+                      </>
+                    </tr>
+                    <tr>
+                      <>
+                        <td>
+                          Airport Concession Fee
+                        </td>
+                        <td>
+                          No added cost
+                        </td>
+                      </>
+                    </tr>
+                    <tr>
+                      <>
+                        <td>
+                          Total taxes and fees
+                        </td>
+                        <td>
+                          Included in total
                         </td>
                       </>
                     </tr>
@@ -676,6 +710,7 @@ const mapStateToProps = (state) => {
     pickUpLocation: state.locationReducer.pickupLocation,
     dropOffLocation: state.locationReducer.dropOffLocation,
     plate: state.storeRentalReducer.plate,
+    times: state.timeReducer,
   }
 }
 

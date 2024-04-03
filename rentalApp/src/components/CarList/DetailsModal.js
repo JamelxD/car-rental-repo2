@@ -47,11 +47,32 @@ export default function DetailsModal(props) {
                                 Gearbox: {props.gearbox === 'auto' ? 'Automatic' : 'Manual'}
                             </li>
                             <li>
-                                Luggages: {props.luggage.big} Large{props.luggage.small > 0 ? <>, {props.luggage.small} Small</> : null}
-                            </li>
-                            <li>
                                 Number of seats: {props.seatNumber}
                             </li>
+                            {props.hertz === true ?
+                                <>
+                                    <li>
+                                        Number of passengers: 5 Passengers
+                                    </li>
+                                    <li>
+                                        Luggages: 2 Large Suitcases
+                                    </li>
+                                    <li>
+                                        Air Conditioning
+                                    </li>
+                                    <li>
+                                        Dual Airbags
+                                    </li>
+                                    <li>
+                                        ABS
+                                    </li>
+                                    <li>
+                                        18 miles/gallon (approx.)
+                                    </li>
+                                </>
+
+
+                                : <></>}
                         </ul>
                     </Typography>
                 </Box>

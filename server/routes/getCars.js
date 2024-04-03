@@ -17,7 +17,7 @@ router.get('/', function (req, res, next) {
     operators: 'all',
     limit: '30'
   }
-  console.log(rentalCar)
+  // console.log(rentalCar)
   //res.append('x-api-key',lyko.x_api_key)
   if (req.query.carOpt !== 'all') {
     xmlHttp.open("GET", `https://api.lyko.tech/v2.1/rentcars?pickUpPoint=${rentalCar.pickUpPoint}&dropOffPoint=${rentalCar.dropOffPoint}&startDate=${rentalCar.startDate}&endDate=${rentalCar.endDate}&carGroups[]=${rentalCar['carGroups[]']}&operators=${rentalCar.operators}&limit=${rentalCar.limit}`)

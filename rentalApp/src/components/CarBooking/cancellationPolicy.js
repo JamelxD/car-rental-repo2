@@ -6,11 +6,12 @@ export const cancellationPolicy = () => {
             <p>
                 {/* Non-refundable, non-transferable and non-changeable (including for COVID-19) even if the reservation is not used. */}
 
-                Free cancellation and fully refundable up to 48 hours before pick-up.
+                Free cancellation.<br /><br />
 
-                Review the location's policy for possible age or local renter restrictions.
+                Review the location's policy for possible age or local renter restrictions.<br /><br />
 
-                Rental car cancellation fees may apply. See booking conditions for the full partner policy.</p>
+                {/* Rental car cancellation fees may apply. See booking conditions for the full partner policy. */}
+            </p>
         </div>
     )
 }

@@ -25,26 +25,26 @@ import img3 from "../../img/audi-offer.png";
 import img4 from "../../img/bmw-offer.png";
 import img5 from "../../img/toyota-offer-2.png";
 import img6 from "../../img/marcedes-offer.png";
-import image from "./bmw-x7-40i-4d-suv-grey-2021.png"
+import image from "./2021-ram-1500-rebel-extended-pick-up-black_featured.avif"
 
 
 import "./style.css";
 import DetailsModal from "./DetailsModal";
 
-const StaticCar = (props) => {
+const StaticCar2 = (props) => {
 
     const staticDetails = {
         "carId": "b4f1d93a-c023-4c31-9cd5-4d6955d5e7bd",
         "operatorId": "rentcar_broker",
-        "operatorName": "Broker - Sixt",
-        "startDate": "2024-05-15T07:23:07.000Z",
-        "endDate": "2024-05-20T07:23:07.000Z",
+        "operatorName": "Enterprise Rent-A-Car",
+        "startDate": "2024-05-20T07:23:07.000Z",
+        "endDate": "2024-05-27T07:23:07.000Z",
         "costs": {
-            "total": 32000,
+            "total": 23000,
             "currency": "EUR",
             "symbol": "€"
         },
-        "expireAt": "2024-05-20T13:49:54.191Z",
+        "expireAt": "2024-05-27T13:49:54.191Z",
         "agencyReturn": {
             "agencyId": "29715",
             "address": {
@@ -97,13 +97,13 @@ const StaticCar = (props) => {
         },
         "agencyLogoUrl": "http://api.lyko.tech/v2.1/rentcars/cars/b4f1d93a-c023-4c31-9cd5-4d6955d5e7bd/agency/picture",
         "agencyReturnLogoUrl": "http://api.lyko.tech/v2.1/rentcars/cars/b4f1d93a-c023-4c31-9cd5-4d6955d5e7bd/agency-return/picture",
-        "name": "BMW X7 or similar",
-        "carGroup": "SUV",
+        "name": "Dodge Ram 1500 or similar",
+        "carGroup": "Medium Pickup Truck",
         "pictureUrl": image,
-        "seatNumber": 7,
+        "seatNumber": 5,
         "luggage": {
-            "big": 1,
-            "small": 1
+            "big": 2,
+            "small": 0
         },
         "co2Emission": 151,
         "category": "compact",
@@ -111,7 +111,7 @@ const StaticCar = (props) => {
         "type": "4 door",
         "gearbox": "auto",
         "acriss": "CDMR",
-        "durationInDays": 5,
+        "durationInDays": 7,
         "termsAndConditionsUrl": "http://api.lyko.tech/v2.1/rentcars/cars/b4f1d93a-c023-4c31-9cd5-4d6955d5e7bd/pdf-terms-and-conditions",
         "included": [],
         "excluded": [
@@ -123,7 +123,7 @@ const StaticCar = (props) => {
             "currency": "EUR",
             "symbol": "€"
         },
-        "driverMinimumAge": 21,
+        "driverMinimumAge": 25,
         "deductible": {
             "thiefDeductible": {
                 "total": 100000,
@@ -206,6 +206,7 @@ const StaticCar = (props) => {
                             gearbox={staticDetails.gearbox}
                             luggage={staticDetails.luggage}
                             seatNumber={staticDetails.seatNumber}
+                            hertz={true}
                         />
                     </div>
                 </div>
@@ -221,4 +222,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(StaticCar);
+export default connect(null, mapDispatchToProps)(StaticCar2);

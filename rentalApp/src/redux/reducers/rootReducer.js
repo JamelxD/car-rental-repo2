@@ -8,6 +8,7 @@ import locationReducer from './locationReducer';
 import upgradesReducer from './upgradesReducer';
 import userReducer from './userReducer';
 import dateReducer from './dateReducer';
+import timeReducer from './timeReducer';
 
 const rootReducer = combineReducers({
     storeCarsReducer: storeCarsReducer,
@@ -16,13 +17,14 @@ const rootReducer = combineReducers({
     locationReducer: locationReducer,
     upgradesReducer: upgradesReducer,
     userReducer: userReducer,
-    dateReducer: dateReducer
+    dateReducer: dateReducer,
+    timeReducer: timeReducer
 })
 
 const persistConfig = {
     key: 'root',
     storage,
-    blacklist: ['locationReducer', 'upgradesReducer']
+    blacklist: ['upgradesReducer']
 }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
