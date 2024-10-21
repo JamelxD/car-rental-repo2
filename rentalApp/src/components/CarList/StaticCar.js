@@ -123,7 +123,7 @@ const StaticCar = (props) => {
             "currency": "EUR",
             "symbol": "€"
         },
-        "driverMinimumAge": 21,
+        "driverMinimumAge": 25,
         "deductible": {
             "thiefDeductible": {
                 "total": 100000,
@@ -156,7 +156,7 @@ const StaticCar = (props) => {
                 <div className="offer-text">
                     <h3>{staticDetails.name}</h3>
                     <h4>
-                        ${Math.round((staticDetails.costs.total) / 625)}<span>/ {t("day")}</span>
+                        {props.currency.currency}{Math.round((staticDetails.costs.total * props.currency.conversion) / 625)}<span>/ {t("day")}</span>
                     </h4>
                     <ul>
                         {/* <li>
@@ -221,4 +221,10 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(StaticCar);
+const mapStateToProps = (state) => {
+    return {
+        currency: state.currencyReducer
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(StaticCar);

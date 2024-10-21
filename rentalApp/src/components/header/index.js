@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
 import { Col, Container, Row, Dropdown } from "react-bootstrap";
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import {
   FaPhoneAlt,
   FaSignInAlt,
@@ -13,6 +14,9 @@ import {
 } from "react-icons/fa";
 import MobileMenu from "../../components/MobileMenu";
 import { loginUser } from "../../redux/actions/userActions";
+import { toUSD } from "../../redux/actions/currencyActions";
+import { toGBP } from "../../redux/actions/currencyActions";
+import { toEUR } from "../../redux/actions/currencyActions";
 import Logo from "../../img/logo.png";
 import globe from "../../img/globe.png";
 import clock from "../../img/clock.png";
@@ -71,6 +75,20 @@ const Header = (props) => {
                   <FaUserAlt />
                   {t("register")}
                 </Link>
+                <Dropdown>
+                  <AttachMoneyIcon />
+                  <Dropdown.Toggle variant="success" id="dropdown-basic">
+                    Currency
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu>
+                    <div onClick={() => props.toUSD()}>
+                      <Dropdown.Item href="#?currency=USD">USD</Dropdown.Item>
+                    </div>
+                    <Dropdown.Item onClick={() => props.toGBP()} href="#?currency=GBP">GBP</Dropdown.Item>
+                    <Dropdown.Item onClick={() => props.toEUR()} href="#?currency=EUR">EUR</Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
               </div> :
                 <div className="header-top-right">
                   <Link to="/" onClick={() => props.loginUser(false)}>
@@ -256,7 +274,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    loginUser: (details) => { dispatch(loginUser(details)) }
+    loginUser: (details) => { dispatch(loginUser(details)) },
+    toUSD: () => { dispatch(toUSD()) },
+    toGBP: () => { dispatch(toGBP()) },
+    toEUR: () => { dispatch(toEUR()) },
   }
 }
 

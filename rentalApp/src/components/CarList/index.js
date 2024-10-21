@@ -209,7 +209,7 @@ const CarList = (props) => {
                                 <div className="offer-text">
                                   <h3>{item.name}</h3>
                                   <h4>
-                                    ${Math.round((item.costs.total) / 625)}<span>/ {t("day")}</span>
+                                    {props.currency.currency}{Math.round((item.costs.total * props.currency.conversion) / 625)}<span>/ {t("day")}</span>
                                   </h4>
                                   <ul>
                                     <li>
@@ -314,7 +314,8 @@ const mapStateToProps = (state) => {
   return {
     carsData: state.storeCarsReducer.carsData,
     autoLocSuggest: state.locationReducer.pickupLocation,
-    pickUpDate: state.dateReducer.date
+    pickUpDate: state.dateReducer.date,
+    currency: state.currencyReducer
   }
 }
 const mapDispatchToProps = (dispatch) => {

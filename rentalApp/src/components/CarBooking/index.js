@@ -67,41 +67,41 @@ const CarBooking = (props) => {
   const onClick = (e) => {
     e.preventDefault();
 
-    if (firstName === '') {
+    if (firstName === ' ') {
       alert('Please enter your first name')
     }
 
-    if (lastName === '') {
+    if (lastName === ' ') {
       alert('Please enter your last name')
     }
 
-    if (emailAddress === '') {
+    if (emailAddress === ' ') {
       alert('Please enter your email address')
     }
 
-    if (contactNumber === '') {
+    if (contactNumber === ' ') {
       alert('Please enter your contact number')
     }
 
-    if (cardholderName === '') {
-      alert('Please enter your name as it appears on your card')
-    }
+    // if (cardholderName === '') {
+    //   alert('Please enter your name as it appears on your card')
+    // }
 
-    if (cardNumber === '' || !cardNumber.match(ccRegex)) {
-      alert('Please enter your 16 digit card number')
-    }
+    // if (cardNumber === '' || !cardNumber.match(ccRegex)) {
+    //   alert('Please enter your 16 digit card number')
+    // }
 
-    if (expiry === '') {
-      alert('Please enter the payment card expiry date')
-    }
+    // if (expiry === '') {
+    //   alert('Please enter the payment card expiry date')
+    // }
 
-    if (cvv === '') {
-      alert('Please enter your card CVV')
-    }
+    // if (cvv === '') {
+    //   alert('Please enter your card CVV')
+    // }
 
-    if (postcode === '') {
-      alert('Please complete the checkout form')
-    }
+    // if (postcode === '') {
+    //   alert('Please complete the checkout form')
+    // }
 
     if (termsChecked === false) {
       alert('Please agree to the terms & conditions')
@@ -114,13 +114,14 @@ const CarBooking = (props) => {
     if (firstName.length > 1 &&
       lastName.length > 1 &&
       emailAddress.length > 1 &&
-      contactNumber.length > 1 &&
-      cardNumber.length > 1 &&
-      expiry.length > 1 &&
-      cvv.length > 1 &&
-      postcode.length > 1) {
+      contactNumber.length > 1
+      // cardNumber.length > 1 &&
+      // expiry.length > 1 &&
+      // cvv.length > 1 &&
+      // postcode.length > 1
+    ) {
       await sleep(5000);
-      alert("Your payment could not be processed. Please try another payment method or try again later.")
+      alert("There was a problem trying to process your reservation. Please try again later.")
     } else {
 
     }
@@ -130,7 +131,7 @@ const CarBooking = (props) => {
   const max = 2023;
   const rand = min + Math.random() * (max - min);
 
-  const price = Math.round((props.rental.costs.total) / 625)
+  const price = Math.round((props.rental.costs.total * props.currency.conversion) / 625)
 
   const [termsChecked, setTermsChecked] = useState(false)
 
@@ -150,12 +151,12 @@ const CarBooking = (props) => {
               <div className="car-booking-right">
                 <p className="rental-tag">{props.rental.operatorName}</p>
                 <h3>{props.rental.name}</h3>
-                {(props.rental.name == 'Dodge Ram 1500 or similar') ?
-                  <h4>Medium Pickup Truck</h4> : <></>}
+                {(props.rental.name == 'Full-size Jeep Wrangler or comparable') ?
+                  <h4>Full Size</h4> : <></>}
                 <div className="price-rating">
                   <div className="price-rent">
                     <h4>
-                      ${price}<span>/ {t("day")}</span>
+                      {props.currency.currency}{price}<span>/ {t("day")}</span>
                     </h4>
                   </div>
                   <div className="car-rating">
@@ -208,7 +209,7 @@ const CarBooking = (props) => {
                       <FaCar /> Number of seats: {props.rental.seatNumber}
                     </li>
                     <li>
-                      <FaTachometerAlt /> Car band: {props.eliteCategory === 'true' ? 'Luxury' : 'Pickup Truck'}
+                      <FaTachometerAlt /> Car band: {props.eliteCategory === true ? 'Luxury' : 'SUV'}
                     </li>
                   </ul>
                 </div>
@@ -401,7 +402,7 @@ const CarBooking = (props) => {
                             <p>Renter understands the cancellation policy. Please read the cancellation policy for details.</p>
                             <p>Renter must acknowledge refund policy when booking reservation.</p>
                             {/* <p>Non-refundable, non-transferable and non-changeable even if the reservation is not used.</p> */}
-                            {/* <p>Free cancellation and fully refundable up to 48 hours before pick-up.</p> */}
+                            <p>Free cancellation and fully refundable up to 48 hours before pick-up.</p>
 
                             <TermsModal link="Important Rental information for this Vehicle" title="Important Rental information for this Vehicle" />
 
@@ -437,7 +438,7 @@ const CarBooking = (props) => {
                   <tbody>
                     <tr>
                       <td>Pickup location</td>
-                      <td>{props.pickUpLocation === 'Miami, FL, USA' || props.pickUpLocation === '2100 NW 42nd Ave, Miami, FL 33142, USA' ? 'Miami Airport (SIXT RENT A CAR - 3900 NW 25th Street, 414 Rental Car Ctr, Miami, FL 33142, USA)' : props.pickUpLocation === 'Houston, TX, USA' || props.pickUpLocation === '2800 N Terminal Rd, Houston, TX 77032, USA' || props.pickUpLocation === '8100 Monroe Rd, Houston, TX 77061, USA' ? 'Enterprise Rent-A-Car (George Bush Intercontinental Airport)' : props.pickUpLocation}</td>
+                      <td>{props.pickUpLocation === 'Miami, FL, USA' || props.pickUpLocation === '2100 NW 42nd Ave, Miami, FL 33142, USA' ? 'Miami Airport (SIXT RENT A CAR - 3900 NW 25th Street, 414 Rental Car Ctr, Miami, FL 33142, USA)' : props.pickUpLocation === 'Houston, TX, USA' || props.pickUpLocation === '2800 N Terminal Rd, Houston, TX 77032, USA' || props.pickUpLocation === '8100 Monroe Rd, Houston, TX 77061, USA' ? 'Alamo (George Bush Intercontinental Airport IAH)' : props.pickUpLocation}</td>
                       {/* <td>{props.pickUpLocation === 'Houston, TX, USA' || '2800 N Terminal Rd, Houston, TX 77032, USA' || '8100 Monroe Rd, Houston, TX 77061, USA' ? 'Houston George Bush Intercontinental Airport' : props.pickUpLocation}</td> */}
                       {/* <td>SIXT RENT A CAR - 3900 NW 25th Street, 414 Rental Car Ctr, Miami, FL 33142, USA</td> */}
                     </tr>
@@ -445,7 +446,7 @@ const CarBooking = (props) => {
                       <td>Dropoff location</td>
                       {props.dropOffLocation === '' && props.pickUpLocation === 'Miami, FL, USA' || props.dropOffLocation === '' && props.pickUpLocation === '2100 NW 42nd Ave, Miami, FL 33142, USA' ?
                         <td>Miami Airport (SIXT RENT A CAR - 3900 NW 25th Street, 414 Rental Car Ctr, Miami, FL 33142, USA)</td> : props.pickUpLocation === 'Houston, TX, USA' || props.pickUpLocation === '2800 N Terminal Rd, Houston, TX 77032, USA' || props.pickUpLocation === '8100 Monroe Rd, Houston, TX 77061, USA' ?
-                          <td>Enterprise Rent-A-Car (George Bush Intercontinental Airport)</td> : <td>{props.dropOffLocation}</td>}
+                          <td>Alamo (Dallas Fort Worth International Airport DFW)</td> : <td>{props.dropOffLocation}</td>}
                       {/* {props.dropOffLocation === '' && props.pickUpLocation === 'Houston, TX, USA' || '2800 N Terminal Rd, Houston, TX 77032, USA' || '8100 Monroe Rd, Houston, TX 77061, USA' ?
                         <td>Houston George Bush Intercontinental Airport</td> : <td>{props.dropOffLocation}</td>} */}
                     </tr>
@@ -477,7 +478,7 @@ const CarBooking = (props) => {
                   <tbody>
                     <tr>
                       <td>Subtotal</td>
-                      <td>${Math.round((price * props.rental.durationInDays + props.upgrades.upgradesTotal) * 0.8)} </td>
+                      <td>{props.currency.currency}{Math.round((price * props.rental.durationInDays + props.upgrades.upgradesTotal) * 0.8)} </td>
                     </tr>
                   </tbody>
                 </table>
@@ -521,7 +522,7 @@ const CarBooking = (props) => {
                     <tr>
                       <>
                         <td>
-                          Flexible/Free Cancellation (Pay at Pick-Up)
+                          Flexible/Free Cancellation (Free up to 48 hours before pick-up)
                         </td>
                         <td>
                           No added cost
@@ -531,7 +532,7 @@ const CarBooking = (props) => {
                     <tr>
                       <>
                         <td>
-                          Loss Damage Waiver
+                          Collision Damage Waiver with {props.currency.currency}0 excess
                         </td>
                         <td>
                           No added cost
@@ -541,14 +542,14 @@ const CarBooking = (props) => {
                     <tr>
                       <>
                         <td>
-                          Liability Insurance Supplement
+                          Theft Protection with {props.currency.currency}0 excess
                         </td>
                         <td>
                           No added cost
                         </td>
                       </>
                     </tr>
-                    <tr>
+                    {/* <tr>
                       <>
                         <td>
                           Airport Concession Fee
@@ -567,7 +568,7 @@ const CarBooking = (props) => {
                           Included in total
                         </td>
                       </>
-                    </tr>
+                    </tr> */}
                     {/* <tr>
                       <>
                         <td>
@@ -602,7 +603,7 @@ const CarBooking = (props) => {
                       {props.upgrades.additionalDrivers > 0 ?
                         <>
                           <td>{props.upgrades.additionalDrivers} Additional Drivers</td>
-                          <td>${Math.round(price * 0.07 * props.upgrades.additionalDrivers * props.rental.durationInDays)}</td>
+                          <td>{props.currency.currency}{Math.round(price * 0.07 * props.upgrades.additionalDrivers * props.rental.durationInDays)}</td>
                         </>
                         : <></>}
                     </tr>
@@ -610,7 +611,7 @@ const CarBooking = (props) => {
                       {props.upgrades.gps === true ?
                         <>
                           <td>GPS Premium + Maps</td>
-                          <td>${Math.round(price * 0.03 * props.rental.durationInDays)}</td>
+                          <td>{props.currency.currency}{Math.round(price * 0.03 * props.rental.durationInDays)}</td>
                         </>
                         : <></>}
                     </tr>
@@ -618,7 +619,7 @@ const CarBooking = (props) => {
                       {props.upgrades.roadsideAssistance === true ?
                         <>
                           <td>Roadside Assistance</td>
-                          <td>${Math.round(price * 0.04 * props.rental.durationInDays)}</td>
+                          <td>{props.currency.currency}{Math.round(price * 0.04 * props.rental.durationInDays)}</td>
                         </>
                         : <></>}
                     </tr>
@@ -626,7 +627,7 @@ const CarBooking = (props) => {
                       {props.upgrades.interiorDamage === true ?
                         <>
                           <td>Interior Damage Cover</td>
-                          <td>${Math.round(price * 0.05 * props.rental.durationInDays)}</td>
+                          <td>{props.currency.currency}{Math.round(price * 0.05 * props.rental.durationInDays)}</td>
                         </>
                         : <></>}
                     </tr>
@@ -634,7 +635,7 @@ const CarBooking = (props) => {
                       {props.upgrades.childSeat === true ?
                         <>
                           <td>Child Seat</td>
-                          <td>${Math.round(price * 0.02 * props.rental.durationInDays)}</td>
+                          <td>{props.currency.currency}{Math.round(price * 0.02 * props.rental.durationInDays)}</td>
                         </>
                         : <></>}
                     </tr>
@@ -642,7 +643,7 @@ const CarBooking = (props) => {
                       {props.upgrades.tireProtection === true ?
                         <>
                           <td>Tire and Windscreen Cover</td>
-                          <td>${Math.round(price * 0.05 * props.rental.durationInDays)}</td>
+                          <td>{props.currency.currency}{Math.round(price * 0.05 * props.rental.durationInDays)}</td>
                         </>
                         : <></>}
                     </tr>
@@ -650,7 +651,7 @@ const CarBooking = (props) => {
                       {props.upgrades.toddlerSeat === true ?
                         <>
                           <td>Toddler Seat</td>
-                          <td>${Math.round(price * 0.02 * props.rental.durationInDays)}</td>
+                          <td>{props.currency.currency}{Math.round(price * 0.02 * props.rental.durationInDays)}</td>
                         </>
                         : <></>}
                     </tr>
@@ -658,7 +659,7 @@ const CarBooking = (props) => {
                       {props.upgrades.infantSeat === true ?
                         <>
                           <td>Infant Seat</td>
-                          <td>${Math.round(price * 0.02 * props.rental.durationInDays)}</td>
+                          <td>{props.currency.currency}{Math.round(price * 0.02 * props.rental.durationInDays)}</td>
                         </>
                         : <></>}
                     </tr>
@@ -666,7 +667,7 @@ const CarBooking = (props) => {
                       {props.upgrades.toll === true ?
                         <>
                           <td>Toll Pass</td>
-                          <td>${Math.round(price * 0.03 * props.rental.durationInDays)}</td>
+                          <td>{props.currency.currency}{Math.round(price * 0.03 * props.rental.durationInDays)}</td>
                         </>
                         : <></>}
                     </tr>
@@ -679,7 +680,7 @@ const CarBooking = (props) => {
                   <tbody>
                     <tr>
                       <td>VAT (20%)</td>
-                      <td>${Math.round((price * props.rental.durationInDays + props.upgrades.upgradesTotal) * 0.2)}</td>
+                      <td>{props.currency.currency}{Math.round((price * props.rental.durationInDays + props.upgrades.upgradesTotal) * 0.2)}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -690,7 +691,7 @@ const CarBooking = (props) => {
                   <tbody>
                     <tr>
                       <td>Total Price</td>
-                      <td>${price * props.rental.durationInDays + props.upgrades.upgradesTotal}</td>
+                      <td>{props.currency.currency}{Math.round(price * props.rental.durationInDays + props.upgrades.upgradesTotal)}</td>
 
                     </tr>
                   </tbody>
@@ -711,6 +712,7 @@ const mapStateToProps = (state) => {
     dropOffLocation: state.locationReducer.dropOffLocation,
     plate: state.storeRentalReducer.plate,
     times: state.timeReducer,
+    currency: state.currencyReducer
   }
 }
 

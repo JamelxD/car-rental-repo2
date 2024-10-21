@@ -9,6 +9,7 @@ import upgradesReducer from './upgradesReducer';
 import userReducer from './userReducer';
 import dateReducer from './dateReducer';
 import timeReducer from './timeReducer';
+import currencyReducer from './currencyReducer';
 
 const rootReducer = combineReducers({
     storeCarsReducer: storeCarsReducer,
@@ -18,7 +19,8 @@ const rootReducer = combineReducers({
     upgradesReducer: upgradesReducer,
     userReducer: userReducer,
     dateReducer: dateReducer,
-    timeReducer: timeReducer
+    timeReducer: timeReducer,
+    currencyReducer: currencyReducer
 })
 
 const persistConfig = {

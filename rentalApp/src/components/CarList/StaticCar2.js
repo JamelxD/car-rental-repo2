@@ -25,7 +25,7 @@ import img3 from "../../img/audi-offer.png";
 import img4 from "../../img/bmw-offer.png";
 import img5 from "../../img/toyota-offer-2.png";
 import img6 from "../../img/marcedes-offer.png";
-import image from "./2021-ram-1500-rebel-extended-pick-up-black_featured.avif"
+import image from "./item-2-1000w.webp"
 
 
 import "./style.css";
@@ -36,9 +36,9 @@ const StaticCar2 = (props) => {
     const staticDetails = {
         "carId": "b4f1d93a-c023-4c31-9cd5-4d6955d5e7bd",
         "operatorId": "rentcar_broker",
-        "operatorName": "Enterprise Rent-A-Car",
+        "operatorName": "Alamo",
         "startDate": "2024-05-20T07:23:07.000Z",
-        "endDate": "2024-05-27T07:23:07.000Z",
+        "endDate": "2024-05-30T07:23:07.000Z",
         "costs": {
             "total": 23000,
             "currency": "EUR",
@@ -97,8 +97,8 @@ const StaticCar2 = (props) => {
         },
         "agencyLogoUrl": "http://api.lyko.tech/v2.1/rentcars/cars/b4f1d93a-c023-4c31-9cd5-4d6955d5e7bd/agency/picture",
         "agencyReturnLogoUrl": "http://api.lyko.tech/v2.1/rentcars/cars/b4f1d93a-c023-4c31-9cd5-4d6955d5e7bd/agency-return/picture",
-        "name": "Dodge Ram 1500 or similar",
-        "carGroup": "Medium Pickup Truck",
+        "name": "Full-size Jeep Wrangler or comparable",
+        "carGroup": "Full-size",
         "pictureUrl": image,
         "seatNumber": 5,
         "luggage": {
@@ -107,11 +107,11 @@ const StaticCar2 = (props) => {
         },
         "co2Emission": 151,
         "category": "compact",
-        "eliteCategory": true,
-        "type": "4 door",
+        "eliteCategory": false,
+        "type": "2 door",
         "gearbox": "auto",
         "acriss": "CDMR",
-        "durationInDays": 7,
+        "durationInDays": 10,
         "termsAndConditionsUrl": "http://api.lyko.tech/v2.1/rentcars/cars/b4f1d93a-c023-4c31-9cd5-4d6955d5e7bd/pdf-terms-and-conditions",
         "included": [],
         "excluded": [
@@ -156,7 +156,7 @@ const StaticCar2 = (props) => {
                 <div className="offer-text">
                     <h3>{staticDetails.name}</h3>
                     <h4>
-                        ${Math.round((staticDetails.costs.total) / 625)}<span>/ {t("day")}</span>
+                        {props.currency.currency}{Math.round((staticDetails.costs.total * props.currency.conversion) / 625)}<span>/ {t("day")}</span>
                     </h4>
                     <ul>
                         {/* <li>
@@ -222,4 +222,10 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(StaticCar2);
+const mapStateToProps = (state) => {
+    return {
+        currency: state.currencyReducer
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(StaticCar2);

@@ -52,22 +52,13 @@ export default function DetailsModal(props) {
                             {props.hertz === true ?
                                 <>
                                     <li>
-                                        Number of passengers: 5 Passengers
+                                        Luggages: 2 Bags
                                     </li>
                                     <li>
-                                        Luggages: 2 Large Suitcases
+                                        Number of Doors: 2 doors
                                     </li>
                                     <li>
                                         Air Conditioning
-                                    </li>
-                                    <li>
-                                        Dual Airbags
-                                    </li>
-                                    <li>
-                                        ABS
-                                    </li>
-                                    <li>
-                                        18 miles/gallon (approx.)
                                     </li>
                                 </>
 

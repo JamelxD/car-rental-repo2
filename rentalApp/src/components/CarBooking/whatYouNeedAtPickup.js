@@ -72,9 +72,7 @@ export const whatYouNeedAtPickup = () => {
             <p>When you booked your car, you booked a certain make and model &lsquo;or similar&rsquo; (&lsquo;similar&rsquo; means same gearbox, similar size, similar engine, etc.). The counter staff may provide a different car - not the exact make and model that you were expecting.</p>
 
             <p>Age Requirements<br />
-                To drive this car, you must be at least 21.</p>
-
-            <p>To drive this car, you must be under the age of 26.</p>
+                To drive this car, you must be at least 25.</p>
 
             <p>Arrival details<br />
                 If you are arriving by plane, the car hire company needs your arrival flight number at least 3 days before your rental is due to start. If you do not provide your flight number, the car hire company cannot be held responsible if your plane is delayed and as a result your car is not available. Please ensure that you enter your flight number and not any other number the airline may have sent you, such as a confirmation number.</p>
