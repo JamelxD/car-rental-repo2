@@ -18,6 +18,12 @@ const currencyReducer = (state = initialState, action) => {
             currency: '€',
             conversion: 0.94
         }
+    } else if (action.type ==='TO_AUD') {
+        return {
+            ...state,
+            currency: 'A$',
+            conversion: 1.51
+        }
     } else {
         return state
     }

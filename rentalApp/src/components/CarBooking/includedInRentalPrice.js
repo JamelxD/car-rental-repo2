@@ -19,11 +19,11 @@ export const includedInRentalPrice = () => {
 
             <p>
                 <div style={{ fontWeight: 'bold' }}>Collision Damage Waiver (CDW)</div><br />
-                This rental includes Collision Damage Waiver with zero excess. This cover is only valid if you stick to the terms of the rental agreement. It only covers the car's bodywork. It doesn't cover charges (e.g. for towing or off-road time), or anything in the car (e.g. child seats, GPS devices or personal belongings), or damage caused by the negligence of anyone driving the car.</p>
+                If the car’s bodywork gets damaged, the most you’ll pay towards repairs covered by the Collision Damage Waiver is the damage excess. This cover is only valid if you stick to the terms of the rental agreement. It doesn’t cover other parts of the car (e.g. glass, wheels, interior, roof or undercarriage), or charges (e.g. for towing or off-road time), or anything in the car (e.g. child seats, GPS devices or personal belongings).</p>
 
             <p>
                 <div style={{ fontWeight: 'bold' }}>Theft Cover</div><br />
-                This rental includes Theft Protection with zero excess: if the car is stolen, or damaged while someone is trying to steal it, you won&rsquo;t pay anything at all towards the cost of replacing or repairing it. This cover is only valid if you stick to the terms of the rental agreement.</p>
+                If the car is stolen, the most you’ll pay towards replacement costs covered by the policy is the theft excess. This cover is only valid if you stick to the terms of the rental agreement.</p>
 
             <p>
                 <div style={{ fontWeight: 'bold' }}>Third-Party Liability (TPL)</div><br />

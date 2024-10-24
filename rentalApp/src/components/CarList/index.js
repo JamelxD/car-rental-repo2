@@ -186,13 +186,13 @@ const CarList = (props) => {
             <div className="car-listing-right">
               <div className="car-grid-list">
                 <Row>
-                  {props.autoLocSuggest === 'Miami, FL, USA' || props.autoLocSuggest === '2100 NW 42nd Ave, Miami, FL 33142, USA' || props.autoLocSuggest === '3900 NW 25th Street, 414 Rental Car Ctr, Miami, FL 33142, USA' ? <>
+                  {props.autoLocSuggest === 'Melbourne VIC, Australia' || props.autoLocSuggest === 'Arrival Dr, Melbourne Airport VIC 3045, Australia' || props.autoLocSuggest === 'Arrival Dr, Tullamarine VIC 3043, Australia' ? <>
                     {/* {props.autoLocSuggest === 'Dubai - United Arab Emirates' || props.autoLocSuggest.includes('United Arab Emirates') ? <> */}
 
                     <StaticCar />
                   </>
                     : <></>}
-                  {props.autoLocSuggest === 'Houston, TX, USA' || props.autoLocSuggest === '2800 N Terminal Rd, Houston, TX 77032, USA' || props.autoLocSuggest === '8100 Monroe Rd, Houston, TX 77061, USA' ? <>
+                  {props.autoLocSuggest === 'Gold Coast QLD, Australia' || props.autoLocSuggest === 'Eastern Ave, Bilinga QLD 4225, Australia' || props.autoLocSuggest === '84/89 Ferny Ave, Surfers Paradise QLD 4217, Australia' ? <>
                     <StaticCar2 />
                   </>
                     : <></>}

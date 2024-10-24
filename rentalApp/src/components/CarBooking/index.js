@@ -151,8 +151,8 @@ const CarBooking = (props) => {
               <div className="car-booking-right">
                 <p className="rental-tag">{props.rental.operatorName}</p>
                 <h3>{props.rental.name}</h3>
-                {(props.rental.name == 'Full-size Jeep Wrangler or comparable') ?
-                  <h4>Full Size</h4> : <></>}
+                {(props.rental.name == 'Audi Q5 or similar SUV') ?
+                  <h4>Large Car</h4> : <></>}
                 <div className="price-rating">
                   <div className="price-rent">
                     <h4>
@@ -209,7 +209,7 @@ const CarBooking = (props) => {
                       <FaCar /> Number of seats: {props.rental.seatNumber}
                     </li>
                     <li>
-                      <FaTachometerAlt /> Car band: {props.eliteCategory === true ? 'Luxury' : 'SUV'}
+                      <FaTachometerAlt /> Car band: {props.eliteCategory === true ? 'Medium' : 'SUV'}
                     </li>
                   </ul>
                 </div>
@@ -438,15 +438,15 @@ const CarBooking = (props) => {
                   <tbody>
                     <tr>
                       <td>Pickup location</td>
-                      <td>{props.pickUpLocation === 'Miami, FL, USA' || props.pickUpLocation === '2100 NW 42nd Ave, Miami, FL 33142, USA' ? 'Miami Airport (SIXT RENT A CAR - 3900 NW 25th Street, 414 Rental Car Ctr, Miami, FL 33142, USA)' : props.pickUpLocation === 'Houston, TX, USA' || props.pickUpLocation === '2800 N Terminal Rd, Houston, TX 77032, USA' || props.pickUpLocation === '8100 Monroe Rd, Houston, TX 77061, USA' ? 'Alamo (George Bush Intercontinental Airport IAH)' : props.pickUpLocation}</td>
+                      <td>{props.pickUpLocation === 'Melbourne VIC, Australia' || props.pickUpLocation === 'Arrival Dr, Melbourne Airport VIC 3045, Australia' ? 'Melbourne Airport (HERTZ Car Hire - Arrival Drive, Ground Floor, Terminal Car Park, Tullamarine, Australia, VIC 3043)' : props.pickUpLocation === 'Gold Coast QLD, Australia' || props.pickUpLocation === 'Eastern Ave, Bilinga QLD 4225, Australia' || props.pickUpLocation === 'Gold Coast Airport, Gold Coast Hwy, Bilinga QLD 4225, Australia' ? 'East Coast Car Rentals (Gold Coast Airport Airport OOL)' : props.pickUpLocation}</td>
                       {/* <td>{props.pickUpLocation === 'Houston, TX, USA' || '2800 N Terminal Rd, Houston, TX 77032, USA' || '8100 Monroe Rd, Houston, TX 77061, USA' ? 'Houston George Bush Intercontinental Airport' : props.pickUpLocation}</td> */}
                       {/* <td>SIXT RENT A CAR - 3900 NW 25th Street, 414 Rental Car Ctr, Miami, FL 33142, USA</td> */}
                     </tr>
                     <tr>
                       <td>Dropoff location</td>
-                      {props.dropOffLocation === '' && props.pickUpLocation === 'Miami, FL, USA' || props.dropOffLocation === '' && props.pickUpLocation === '2100 NW 42nd Ave, Miami, FL 33142, USA' ?
-                        <td>Miami Airport (SIXT RENT A CAR - 3900 NW 25th Street, 414 Rental Car Ctr, Miami, FL 33142, USA)</td> : props.pickUpLocation === 'Houston, TX, USA' || props.pickUpLocation === '2800 N Terminal Rd, Houston, TX 77032, USA' || props.pickUpLocation === '8100 Monroe Rd, Houston, TX 77061, USA' ?
-                          <td>Alamo (Dallas Fort Worth International Airport DFW)</td> : <td>{props.dropOffLocation}</td>}
+                      {props.dropOffLocation === '' && props.pickUpLocation === 'Melbourne VIC, Australia' || props.dropOffLocation === '' && props.pickUpLocation === 'Arrival Dr, Melbourne Airport VIC 3045, Australia' ?
+                        <td>Melbourne Airport (HERTZ Car Hire - Arrival Dr, Tullamarine VIC 3043, Australia)</td> : props.pickUpLocation === 'Gold Coast QLD, Australia' || props.pickUpLocation === 'Eastern Ave, Bilinga QLD 4225, Australia' || props.pickUpLocation === 'Gold Coast Airport, Gold Coast Hwy, Bilinga QLD 4225, Australia' ?
+                          <td>East Coast Car Rentals (Brisbane Airport BNE)</td> : <td>{props.dropOffLocation}</td>}
                       {/* {props.dropOffLocation === '' && props.pickUpLocation === 'Houston, TX, USA' || '2800 N Terminal Rd, Houston, TX 77032, USA' || '8100 Monroe Rd, Houston, TX 77061, USA' ?
                         <td>Houston George Bush Intercontinental Airport</td> : <td>{props.dropOffLocation}</td>} */}
                     </tr>
@@ -532,7 +532,7 @@ const CarBooking = (props) => {
                     <tr>
                       <>
                         <td>
-                          Collision Damage Waiver with {props.currency.currency}0 excess
+                          Collision Damage Waiver with {props.currency.currency}3536 excess
                         </td>
                         <td>
                           No added cost
@@ -542,7 +542,7 @@ const CarBooking = (props) => {
                     <tr>
                       <>
                         <td>
-                          Theft Protection with {props.currency.currency}0 excess
+                          Theft Protection with {props.currency.currency}3536 excess
                         </td>
                         <td>
                           No added cost

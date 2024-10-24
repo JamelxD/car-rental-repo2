@@ -25,7 +25,8 @@ import img3 from "../../img/audi-offer.png";
 import img4 from "../../img/bmw-offer.png";
 import img5 from "../../img/toyota-offer-2.png";
 import img6 from "../../img/marcedes-offer.png";
-import image from "./bmw-x7-40i-4d-suv-grey-2021.png"
+import imag7 from "./bmw-x7-40i-4d-suv-grey-2021.png"
+import image from "./q5.png"
 
 
 import "./style.css";
@@ -36,11 +37,11 @@ const StaticCar = (props) => {
     const staticDetails = {
         "carId": "b4f1d93a-c023-4c31-9cd5-4d6955d5e7bd",
         "operatorId": "rentcar_broker",
-        "operatorName": "Broker - Sixt",
-        "startDate": "2024-05-15T07:23:07.000Z",
-        "endDate": "2024-05-20T07:23:07.000Z",
+        "operatorName": "Broker - Hertz",
+        "startDate": "2024-11-15T07:23:07.000Z",
+        "endDate": "2024-11-25T07:23:07.000Z",
         "costs": {
-            "total": 32000,
+            "total": 13000,
             "currency": "EUR",
             "symbol": "€"
         },
@@ -91,31 +92,31 @@ const StaticCar = (props) => {
             },
             "renter": {
                 "id": "103",
-                "name": "Sixt"
+                "name": "Hertz"
             },
             "timezone": "Europe/London"
         },
         "agencyLogoUrl": "http://api.lyko.tech/v2.1/rentcars/cars/b4f1d93a-c023-4c31-9cd5-4d6955d5e7bd/agency/picture",
         "agencyReturnLogoUrl": "http://api.lyko.tech/v2.1/rentcars/cars/b4f1d93a-c023-4c31-9cd5-4d6955d5e7bd/agency-return/picture",
-        "name": "BMW X7 or similar",
+        "name": "Audi Q5 or similar",
         "carGroup": "SUV",
         "pictureUrl": image,
-        "seatNumber": 7,
+        "seatNumber": 5,
         "luggage": {
-            "big": 1,
+            "big": 2,
             "small": 1
         },
         "co2Emission": 151,
         "category": "compact",
         "eliteCategory": true,
-        "type": "4 door",
+        "type": "5 door",
         "gearbox": "auto",
         "acriss": "CDMR",
-        "durationInDays": 5,
+        "durationInDays": 10,
         "termsAndConditionsUrl": "http://api.lyko.tech/v2.1/rentcars/cars/b4f1d93a-c023-4c31-9cd5-4d6955d5e7bd/pdf-terms-and-conditions",
         "included": [],
         "excluded": [
-            "Additionnal Young Driver Fees (for driver less than 28 ans), to pay on site : 93 EUR (93.00 EUR)"
+            "Additional Young Driver Fees (for driver less than 28 ans), to pay on site : 93 EUR (93.00 EUR)"
         ],
         "unlimitedDistance": true,
         "noShowFee": {

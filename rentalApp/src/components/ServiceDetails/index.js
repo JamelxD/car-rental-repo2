@@ -130,7 +130,7 @@ const ServiceDetails = (props) => {
                             </div>
                             <div>
                               <Icon name='minus' />
-                              Provided by Allianz Travel
+                              Provided by Zurich Insurance Company Ltd
                             </div>
                           </RadioButton>
                           <RadioButton value="standard-protection">
@@ -143,7 +143,7 @@ const ServiceDetails = (props) => {
                             </div>
                             <div>
                               <Icon name='minus' />
-                              Provided by Allianz Travel
+                              Provided by Zurich Insurance Company Ltd
                             </div>
                           </RadioButton>
                           <RadioButton value="basic-protection">
@@ -152,12 +152,12 @@ const ServiceDetails = (props) => {
                             </div>
                             <div>
                               <Icon name='minus' />
-                              This plan provides Collision Damage Waiver with $0 excess.
+                              This plan provides Collision Damage Waiver with £3536 excess.
 
                             </div>
                             <div>
                               <Icon name='minus' />
-                              Provided by Allianz Travel
+                              Provided by Zurich Insurance Company Ltd
                             </div>
                           </RadioButton>
                         </RadioGroup>
@@ -337,7 +337,7 @@ const ServiceDetails = (props) => {
               </p>
               <div className="simple-text">
                 {props.mileage === 'basic-mileage' ? <div><Icon name='minus' />Basic Mileage: Unlimited Mileage for this selection</div> : props.mileage === 'long-mileage' ? <div><Icon name='minus' />Long Distance: Unlimited miles for the duration of your rental period. Cross country included.</div> : props.mileage === "standard-mileage" ? <div><Icon name='minus' />Standard Mileage: Up to 750 additional miles allowance for your rental period, additional miles will incur $0.75/Extra mile.</div> : null}
-                {props.protection === 'standard-protection' ? <div><Icon name='minus' />Standard Protection: Cover for damage to tires, windshield, windows and theft cover.</div> : props.protection === 'full-protection' ? <div><Icon name='minus' />Full Protection:  Cover for damage to tires, windshield, windows, interior, theft cover and roadside assistance.</div> : props.protection === 'basic-protection' ? <div><Icon name='minus' />Basic Protection: Collision Damage Waiver with $0 excess</div> : <></>}
+                {props.protection === 'standard-protection' ? <div><Icon name='minus' />Standard Protection: Cover for damage to tires, windshield, windows and theft cover.</div> : props.protection === 'full-protection' ? <div><Icon name='minus' />Full Protection:  Cover for damage to tires, windshield, windows, interior, theft cover and roadside assistance.</div> : props.protection === 'basic-protection' ? <div><Icon name='minus' />Basic Protection: Collision Damage Waiver with £3536 excess</div> : <></>}
                 {props.additionalDrivers > 0 ? <div><Icon name='minus' />Additional Drivers: {props.additionalDrivers}</div> : <div />}
                 {props.gps === true ? <div><Icon name='minus' />GPS Guaranteed for this vehicle</div> : <div />}
                 {props.roadsideAssistance === true ? <div><Icon name='minus' />24/7 Roadside assistance and breakdown cover</div> : <div />}

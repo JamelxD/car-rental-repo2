@@ -23,7 +23,7 @@ import LocationService from "../LocationService/LocationService";
 import { storePickupDate } from "../../redux/actions/dateActions";
 
 registerLicense(
-  "Ngo9BigBOggjHTQxAR8/V1NBaF5cXmZCekx0TXxbf1x0ZFRGal9RTnReUiweQnxTdEFjWn1XcXVQQmJUWERzVw=="
+  "Ngo9BigBOggjHTQxAR8/V1NDaF5cWWtCf1NpRmJGfV5ycEVCal9UTnNZUiweQnxTdEFiWX1acHBWQ2VaU0x3Xg=="
 );
 
 const FindCar = (props) => {
@@ -175,7 +175,7 @@ const FindCar = (props) => {
           alert('Pick up date can not be after the drop off date')
         }
         else if ((result.length === 0
-          && location.pickup === 'Miami, FL, USA' && startDate.includes('2024-05-15')) || (location.pickup === '3900 NW 25th Street, 414 Rental Car Ctr, Miami, FL 33142, USA' && startDate.includes('2024-05-15')) || (location.pickup === '2100 NW 42nd Ave, Miami, FL 33142, USA' && startDate.includes('2024-05-15'))) {
+          && location.pickup === 'Melbourne VIC, Australia' && startDate.includes('2024-11-15')) || (location.pickup === 'Arrival Dr, Melbourne Airport VIC 3045, Australia' && startDate.includes('2024-11-15')) || (location.pickup === 'Melbourne Airport (HERTZ Car Hire - Arrival Drive, Ground Floor, Terminal Car Park, Tullamarine, Australia, VIC 3043)' && startDate.includes('2024-11-15'))) {
           // && location.pickup === 'Dubai - United Arab Emirates' && startDate.includes('2024-02-03') || location.pickup.includes('Airport Road - Al Garhoud Airport') && startDate.includes('2024-02-03')) {
           props.isLoading(false)
           navigate({
@@ -183,7 +183,7 @@ const FindCar = (props) => {
           });
         }
         else if ((result.length === 0
-          && location.pickup === 'Houston, TX, USA' && startDate.includes('2024-05-20')) || (location.pickup === '2800 N Terminal Rd, Houston, TX 77032, USA' && startDate.includes('2024-05-20')) || (location.pickup === '8100 Monroe Rd, Houston, TX 77061, USA' && startDate.includes('2024-05-20'))) {
+          && location.pickup === 'Gold Coast QLD, Australia' && startDate.includes('2024-11-06')) || (location.pickup === 'Eastern Ave, Bilinga QLD 4225, Australia' && startDate.includes('2024-11-06')) || (location.pickup === '84/89 Ferny Ave, Surfers Paradise QLD 4217, Australia' && startDate.includes('2024-11-06'))) {
           props.isLoading(false)
           navigate({
             pathname: '/car-listing',
@@ -197,12 +197,12 @@ const FindCar = (props) => {
 
     } catch (error) {
 
-      if ((location.pickup === 'Miami, FL, USA' && startDate.includes('2024-05-15')) || (location.pickup === '3900 NW 25th Street, 414 Rental Car Ctr, Miami, FL 33142, USA' && startDate.includes('2024-05-15')) || (location.pickup === '2100 NW 42nd Ave, Miami, FL 33142, USA' && startDate.includes('2024-05-15'))) {
+      if ((location.pickup === 'Melbourne VIC, Australia' && startDate.includes('2024-11-15')) || (location.pickup === 'Arrival Dr, Melbourne Airport VIC 3045, Australia' && startDate.includes('2024-11-15')) || (location.pickup === 'Melbourne Airport (HERTZ Car Hire - Arrival Drive, Ground Floor, Terminal Car Park, Tullamarine, Australia, VIC 3043' && startDate.includes('2024-11-15'))) {
         props.isLoading(false)
         navigate({
           pathname: '/car-listing',
         });
-      } else if ((location.pickup === 'Houston, TX, USA' && startDate.includes('2024-05-20')) || (location.pickup === '2800 N Terminal Rd, Houston, TX 77032, USA' && startDate.includes('2024-05-20')) || (location.pickup === '8100 Monroe Rd, Houston, TX 77061, USA' && startDate.includes('2024-05-20'))) {
+      } else if ((location.pickup === 'Gold Coast QLD, Australia' && startDate.includes('2024-11-06')) || (location.pickup === 'Eastern Ave, Bilinga QLD 4225, Australia' && startDate.includes('2024-11-15')) || (location.pickup === '84/89 Ferny Ave, Surfers Paradise QLD 4217, Australia' && startDate.includes('2024-11-06'))) {
         props.isLoading(false)
         navigate({
           pathname: '/car-listing',

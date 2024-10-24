@@ -15,3 +15,9 @@ export const toEUR = () => {
         type: 'TO_EUR'
     }
 }
+
+export const toAUD = () => {
+    return {
+        type: 'TO_AUD'
+    }
+}

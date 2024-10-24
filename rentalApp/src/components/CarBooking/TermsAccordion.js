@@ -58,9 +58,9 @@ export default function TermsAccordion() {
                         Credit card
                     </p>
                     <Divider />
-                    <div style={{ fontWeight: 'bold', marginTop: '10px' }}>Security deposit of US$1281.90</div>
+                    <div style={{ fontWeight: 'bold', marginTop: '10px' }}>Security deposit of AUD 200</div>
                     <p>
-                        At pick-up, the main driver will leave a refundable security deposit of US$1,281.90 on their credit card. Cash and debit cards are not accepted. The counter staff will confirm how much this will be.
+                        At pick-up, the main driver will leave a refundable security deposit of AUD 200 on their credit card. Cash and debit cards are not accepted. The counter staff will confirm how much this will be.
                         <br />
                         <br />
                         Accepted cards:
@@ -70,11 +70,15 @@ export default function TermsAccordion() {
                         <br />
                         <AddIcon style={{ marginRight: '5px' }} />
                         Visa
+                        <br />
+                        <AddIcon style={{ marginRight: '5px' }} />
+                        American Express
+                        <br />
                     </p>
                     <Divider />
-                    <div style={{ fontWeight: 'bold', marginTop: '10px' }}>Damage Excess of US$0</div>
+                    <div style={{ fontWeight: 'bold', marginTop: '10px' }}>Damage Excess of AUD 6900</div>
                     <p>
-                        If the car’s bodywork was damaged during your rental, you wouldn't pay anything at all towards repairs.This cover is only valid if you stick to the terms of the rental agreement. It doesn't cover other parts of the car (e.g. windows, wheels, interior or undercarriage), or charges (e.g. for towing or off-road time), or anything in the car (e.g. child seats, GPS devices or personal belongings).
+                    If the car's bodywork gets damaged, the most you'll pay towards repairs covered by the Collision Damage Waiver is the damage excess (A$6,900.00).This cover is only valid if you stick to the terms of the rental agreement. It doesn't cover other parts of the car (e.g. windows, wheels, interior or undercarriage), or charges (e.g. for towing or off-road time), or anything in the car (e.g. child seats, GPS devices or personal belongings).
                     </p>
                     <Divider />
                     <div style={{ fontWeight: 'bold', marginTop: '10px' }}>Unlimited Mileage</div>

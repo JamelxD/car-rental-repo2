@@ -52,10 +52,10 @@ export default function DetailsModal(props) {
                             {props.hertz === true ?
                                 <>
                                     <li>
-                                        Luggages: 2 Bags
+                                        Luggages: 2 Large Bags, 1 Small bag
                                     </li>
                                     <li>
-                                        Number of Doors: 2 doors
+                                        Number of Doors: 5 doors
                                     </li>
                                     <li>
                                         Air Conditioning
