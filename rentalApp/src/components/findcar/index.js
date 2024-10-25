@@ -23,7 +23,7 @@ import LocationService from "../LocationService/LocationService";
 import { storePickupDate } from "../../redux/actions/dateActions";
 
 registerLicense(
-  "Ngo9BigBOggjHTQxAR8/V1NDaF5cWWtCf1NpRmJGfV5ycEVCal9UTnNZUiweQnxTdEFiWX1acHBWQ2VaU0x3Xg=="
+  "	Ngo9BigBOggjHTQxAR8/V1NDaF5cWWtCf1FpRmJGdld5fUVHYVZUTXxaS00DNHVRdkdnWH9cdXRdRmJZVUV+XUc="
 );
 
 const FindCar = (props) => {
