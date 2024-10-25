@@ -25,7 +25,7 @@ import img3 from "../../img/audi-offer.png";
 import img4 from "../../img/bmw-offer.png";
 import img5 from "../../img/toyota-offer-2.png";
 import img6 from "../../img/marcedes-offer.png";
-import image from "./item-2-1000w.webp"
+import image from "./mgz.png"
 
 
 import "./style.css";
@@ -36,9 +36,9 @@ const StaticCar2 = (props) => {
     const staticDetails = {
         "carId": "b4f1d93a-c023-4c31-9cd5-4d6955d5e7bd",
         "operatorId": "rentcar_broker",
-        "operatorName": "Alamo",
-        "startDate": "2024-05-20T07:23:07.000Z",
-        "endDate": "2024-05-30T07:23:07.000Z",
+        "operatorName": "Hertz",
+        "startDate": "2024-11-15T07:23:07.000Z",
+        "endDate": "2024-11-25T07:23:07.000Z",
         "costs": {
             "total": 23000,
             "currency": "EUR",
@@ -97,18 +97,18 @@ const StaticCar2 = (props) => {
         },
         "agencyLogoUrl": "http://api.lyko.tech/v2.1/rentcars/cars/b4f1d93a-c023-4c31-9cd5-4d6955d5e7bd/agency/picture",
         "agencyReturnLogoUrl": "http://api.lyko.tech/v2.1/rentcars/cars/b4f1d93a-c023-4c31-9cd5-4d6955d5e7bd/agency-return/picture",
-        "name": "Full-size Jeep Wrangler or comparable",
-        "carGroup": "Full-size",
+        "name": "MG ZS or similar SUV",
+        "carGroup": "SUV",
         "pictureUrl": image,
         "seatNumber": 5,
         "luggage": {
             "big": 2,
-            "small": 0
+            "small": 1
         },
         "co2Emission": 151,
         "category": "compact",
         "eliteCategory": false,
-        "type": "2 door",
+        "type": "5 door",
         "gearbox": "auto",
         "acriss": "CDMR",
         "durationInDays": 10,

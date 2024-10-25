@@ -17,6 +17,7 @@ import { loginUser } from "../../redux/actions/userActions";
 import { toUSD } from "../../redux/actions/currencyActions";
 import { toGBP } from "../../redux/actions/currencyActions";
 import { toEUR } from "../../redux/actions/currencyActions";
+import { toAUD } from "../../redux/actions/currencyActions";
 import Logo from "../../img/logo.png";
 import globe from "../../img/globe.png";
 import clock from "../../img/clock.png";
@@ -87,6 +88,7 @@ const Header = (props) => {
                     </div>
                     <Dropdown.Item onClick={() => props.toGBP()} href="#?currency=GBP">GBP</Dropdown.Item>
                     <Dropdown.Item onClick={() => props.toEUR()} href="#?currency=EUR">EUR</Dropdown.Item>
+                    <Dropdown.Item onClick={() => props.toAUD()} href="#?currency=EUR">AUD</Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
               </div> :
@@ -278,6 +280,7 @@ const mapDispatchToProps = (dispatch) => {
     toUSD: () => { dispatch(toUSD()) },
     toGBP: () => { dispatch(toGBP()) },
     toEUR: () => { dispatch(toEUR()) },
+    toAUD: () => { dispatch(toAUD()) },
   }
 }
 
